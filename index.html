@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="img/embryo.png">
+<title>Biopunk for Barotrauma</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Биопанк-мод для Barotrauma: живой Биокостюм на инопланетной крови и оружие симбионта.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tektur:wght@500;700;800&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one narrow column descending like a dive — hero at the surface, sections as depth markers down a sonar rail. Single dark look by choice (Europa's ocean). */
+:root {
+  --abyss: #070d12;
+  --water: #0d1820;
+  --panel: #12212b;
+  --line: #1f3540;
+  --bone: #e7dccb;
+  --muted: #8fa3a8;
+  --flesh: #d9435a;
+  --flesh-soft: #f08a95;
+  --sonar: #5fc7b4;
+  --display: "Tektur", "Arial Narrow", system-ui, sans-serif;
+  --body: "Onest", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--abyss); }
+body {
+  background: var(--abyss);
+  color: var(--bone);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0;
+}
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--flesh-soft); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--sonar); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; line-height: 1.1; margin: 0; }
+p { margin: 0; }
+
+/* hero */
+.hero {
+  background:
+    radial-gradient(ellipse 60% 70% at 72% 40%, rgba(217, 67, 90, .22), transparent 70%),
+    linear-gradient(180deg, #10232c 0%, var(--abyss) 100%);
+  border-bottom: 1px solid var(--line);
+}
+.hero .wrap {
+  padding-block: 56px 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--sonar);
+}
+.hero h1 {
+  font-size: clamp(40px, 7vw, 76px);
+  font-weight: 800;
+  letter-spacing: -.01em;
+  margin-top: 14px;
+}
+.hero h1 span { color: var(--flesh); display: block; }
+.hero .lead { margin-top: 20px; max-width: 34em; color: var(--muted); font-size: 18px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--display); font-weight: 700; font-size: 16px;
+  letter-spacing: .02em;
+  padding: 12px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 1px solid var(--flesh);
+}
+.btn.primary { background: var(--flesh); color: #fff; }
+.btn.primary:hover { background: #e85a70; }
+.btn.ghost { color: var(--bone); border-color: var(--line); }
+.btn.ghost:hover { border-color: var(--muted); }
+.suit-figure { position: relative; display: grid; place-items: center; }
+.suit-figure::before {
+  content: ""; position: absolute; width: 78%; aspect-ratio: 1; border-radius: 50%;
+  border: 1px dashed rgba(95, 199, 180, .35);
+  box-shadow: 0 0 0 28px rgba(95, 199, 180, .04), 0 0 0 56px rgba(95, 199, 180, .03);
+}
+.suit-figure img { position: relative; width: min(300px, 80%); height: auto; filter: drop-shadow(0 18px 30px rgba(0,0,0,.6)); }
+.depth-tag {
+  position: absolute; right: 0; bottom: 4%;
+  font-family: var(--mono); font-size: 12px; color: var(--sonar);
+  background: var(--water); border: 1px solid var(--line); padding: 4px 8px; border-radius: 3px;
+}
+
+/* sections */
+section .wrap { padding-block: 64px; }
+section + section { border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: 10px; margin-bottom: 32px; max-width: 40em; }
+.sec-head h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; }
+.sec-head p { color: var(--muted); }
+
+/* suit stats */
+.suit-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.stats { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.stat {
+  display: grid; grid-template-columns: 5.5em minmax(0, 1fr); gap: 16px;
+  padding: 14px 0; border-bottom: 1px solid var(--line); align-items: baseline;
+}
+.stat b {
+  font-family: var(--display); font-size: 24px; font-weight: 700; color: var(--flesh-soft);
+  font-variant-numeric: tabular-nums;
+}
+.stat b.neg { color: var(--sonar); }
+.stat span { color: var(--bone); }
+.stat small { display: block; color: var(--muted); font-size: 14px; }
+.note {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+  padding: 20px 22px; display: grid; gap: 10px;
+}
+.note h3 { font-size: 18px; font-weight: 700; color: var(--sonar); }
+.note p { color: var(--muted); font-size: 15px; }
+.note strong { color: var(--bone); font-weight: 600; }
+
+/* growth steps — a real sequence */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; position: relative; }
+.steps::before {
+  content: ""; position: absolute; left: 39px; top: 20px; bottom: 20px; width: 2px;
+  background: linear-gradient(var(--sonar), var(--flesh));
+  opacity: .5;
+}
+.step {
+  display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 20px;
+  padding: 16px 0; position: relative; align-items: center;
+}
+.step .icon {
+  width: 80px; height: 80px; display: grid; place-items: center;
+  background: var(--water); border: 1px solid var(--line); border-radius: 50%;
+  position: relative;
+}
+.step .icon img { max-width: 56px; max-height: 56px; width: auto; height: auto; }
+.step .icon i {
+  position: absolute; top: -4px; left: -4px;
+  font: 600 12px/1 var(--mono); font-style: normal;
+  background: var(--abyss); color: var(--sonar); border: 1px solid var(--sonar);
+  border-radius: 50%; width: 24px; height: 24px; display: grid; place-items: center;
+}
+.step h3 { font-size: 19px; font-weight: 700; }
+.step p { color: var(--muted); font-size: 15px; margin-top: 4px; }
+.step .where { font-family: var(--mono); font-size: 12px; color: var(--sonar); letter-spacing: .04em; text-transform: uppercase; }
+.recipe { color: var(--bone); }
+.recipe em { font-style: normal; color: var(--flesh-soft); }
+
+/* weapons */
+.weapons { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.weapon { display: grid; grid-template-rows: 150px auto; gap: 14px; }
+.weapon .art {
+  display: grid; place-items: center;
+  background: radial-gradient(circle at 50% 60%, rgba(217, 67, 90, .16), transparent 70%), var(--water);
+  border: 1px solid var(--line); border-radius: 6px; padding: 16px;
+}
+.weapon .art img { max-height: 118px; width: auto; max-width: 100%; }
+.weapon h3 { font-size: 21px; font-weight: 700; }
+.weapon p { color: var(--muted); font-size: 15px; margin-top: 6px; }
+.dmg { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.dmg span {
+  font-family: var(--mono); font-size: 12px; padding: 3px 8px; border-radius: 3px;
+  background: rgba(217, 67, 90, .12); color: var(--flesh-soft); border: 1px solid rgba(217, 67, 90, .3);
+}
+
+/* commands */
+.cmd-groups { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; }
+.cmd-group h3 { font-size: 16px; font-weight: 700; color: var(--sonar); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px; }
+.cmd {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center;
+  padding: 8px 0; border-bottom: 1px solid var(--line);
+}
+.cmd code {
+  font-family: var(--mono); font-size: 14px; color: var(--bone);
+  overflow-x: auto; white-space: nowrap; display: block;
+}
+.cmd small { display: block; color: var(--muted); font-size: 13px; font-family: var(--body); }
+.copy {
+  font: 600 12px/1 var(--mono); color: var(--muted);
+  background: transparent; border: 1px solid var(--line); border-radius: 3px;
+  padding: 7px 10px; cursor: pointer;
+}
+.copy:hover { color: var(--bone); border-color: var(--muted); }
+.copy.done { color: var(--sonar); border-color: var(--sonar); }
+.console-hint { margin-top: 20px; color: var(--muted); font-size: 15px; }
+kbd {
+  font-family: var(--mono); font-size: 13px; padding: 1px 6px; border-radius: 3px;
+  border: 1px solid var(--line); background: var(--water); color: var(--bone);
+}
+
+/* notes */
+.alpha-list { display: grid; gap: 12px; max-width: 46em; padding: 0; margin: 0; list-style: none; }
+.alpha-list li { padding-left: 22px; position: relative; color: var(--muted); }
+.alpha-list li::before { content: ""; position: absolute; left: 0; top: .65em; width: 8px; height: 8px; border-radius: 50%; background: var(--flesh); }
+.alpha-list b { color: var(--bone); font-weight: 600; }
+
+footer { border-top: 1px solid var(--line); }
+footer .wrap { padding-block: 28px; display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 760px) {
+  .hero .wrap { grid-template-columns: 1fr; padding-block: 40px 36px; }
+  .suit-figure { order: -1; }
+  .suit-figure img { width: min(200px, 60%); }
+  .suit-grid, .cmd-groups { grid-template-columns: 1fr; }
+  .weapons { grid-template-columns: 1fr; }
+  section .wrap { padding-block: 48px; }
+  .step { grid-template-columns: 64px minmax(0, 1fr); gap: 16px; }
+  .step .icon { width: 64px; height: 64px; }
+  .step .icon img { max-width: 44px; max-height: 44px; }
+  .steps::before { left: 31px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .suit-figure img { animation: drift 7s ease-in-out infinite; }
+  @keyframes drift { 50% { transform: translateY(-8px); } }
+}
+</style>
+</head>
+<body>
+
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Мод для Barotrauma · альфа 0.0.1</div>
+      <h1>Biopunk <span>for Barotrauma</span></h1>
+      <p class="lead">Живой костюм, выращенный из генов таламуса и питающийся инопланетной кровью. К нему — оружие симбионта, которое раскрывается только в руках сытого носителя. Всё построено на ванильных предметах и механиках.</p>
+      <div class="actions">
+        <a class="btn primary" id="workshop-link" href="https://steamcommunity.com/workshop/browse/?appid=602960&amp;searchtext=Biopunk+for+Barotrauma" target="_blank" rel="noopener">Steam Workshop</a>
+        <a class="btn ghost" href="#commands">Консольные команды</a>
+      </div>
+    </div>
+    <div class="suit-figure">
+      <img src="img/suit.png" alt="Шлем и торс Биокостюма: багровая органическая броня с костяными пластинами" width="126" height="118">
+      <div class="depth-tag">Слот скафандра</div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="suit">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Снаряжение</div>
+      <h2>Биокостюм</h2>
+      <p>Носится в слоте скафандра. Работает на флаконе инопланетной крови, вставленном прямо в костюм. Другого питания не принимает.</p>
+    </div>
+    <div class="suit-grid">
+      <div class="stats">
+        <div class="stat"><b>+8%</b><span>к скорости<small>пока костюм сыт</small></span></div>
+        <div class="stat"><b class="neg">−30%</b><span>получаемого урона<small>раны, кровотечение, ожоги, яд, радиация</small></span></div>
+        <div class="stat"><b>7000</b><span>защита от давления<small>на уровне УЗК</small></span></div>
+        <div class="stat"><b>~5 мин</b><span>на один флакон крови<small>расход идёт только под водой или при нехватке воздуха</small></span></div>
+      </div>
+      <div class="note">
+        <h3>Дышит, как УЗК</h3>
+        <p>Пока вокруг есть пригодный воздух, костюм <strong>не тратит кровь</strong>: носитель дышит воздухом отсека. Под водой или когда кислорода в отсеке меньше половины, костюм начинает пить кровь и сам снабжает носителя кислородом.</p>
+        <p>Без крови симбиоз обрывается, и костюм <strong>сильно сковывает движения</strong>. Держите запасной флакон.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="grow">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Крафт</div>
+      <h2>Как вырастить Биокостюм</h2>
+      <p>Цепочка начинается в заражённом обломке и заканчивается прямо на вас. Шаги 2–4 выполняются на исследовательском терминале.</p>
+    </div>
+    <ol class="steps">
+      <li class="step">
+        <div class="icon"><i>1</i><img src="img/gene_raw.png" alt="" width="55" height="56"></div>
+        <div>
+          <div class="where">Заражённый обломок</div>
+          <h3>Уничтожьте мозг таламуса</h3>
+          <p>Из него всегда выпадает <span class="recipe"><em>неочищенный генетический материал таламуса</em></span>.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="icon"><i>2</i><img src="img/gene.png" alt="" width="55" height="56"></div>
+        <div>
+          <div class="where">Исследовательский терминал</div>
+          <h3>Очистите генматериал</h3>
+          <p class="recipe">Неочищенный генматериал + <em>стабилозин</em> → генетический материал таламуса</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="icon"><i>3</i><img src="img/base.png" alt="" width="166" height="50"></div>
+        <div>
+          <div class="where">Исследовательский терминал</div>
+          <h3>Создайте основу костюма</h3>
+          <p class="recipe">Генматериал + <em>странное яйцо</em> (Peanut, Psilotoad, Orangeboy или Balloon) → основа биокостюма</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="icon"><i>4</i><img src="img/embryo.png" alt="" width="50" height="46"></div>
+        <div>
+          <div class="where">Исследовательский терминал · 45 с</div>
+          <h3>Получите зародыш</h3>
+          <p class="recipe">Основа + <em>останки водолаза</em> → зародыш биокостюма</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="icon"><i>5</i><img src="img/suit.png" alt="" width="126" height="118"></div>
+        <div>
+          <div class="where">Слот скафандра · ~5 мин</div>
+          <h3>Выкормите зародыш</h3>
+          <p>Наденьте зародыш в слот скафандра и вставьте в него инопланетную кровь. Он растёт, пока ест, примерно 3 флакона. Созрев, он сам превращается в Биокостюм прямо на носителе.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="weapons">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Оружие симбионта</div>
+      <h2>Раскрывается только у сытого носителя</h2>
+      <p>В чужих руках это просто оружие. У носителя накормленного Биокостюма оно усиливается и само себя восстанавливает. В альфе выдаётся через консоль.</p>
+    </div>
+    <div class="weapons">
+      <article class="weapon">
+        <div class="art"><img src="img/stinger.png" alt="Жало симбионта: изогнутый живой клинок" width="198" height="46"></div>
+        <div>
+          <h3>Жало симбионта</h3>
+          <p>Живой клинок ближнего боя. У симбионта бьёт в 1,5 раза сильнее, и каждый удар перекачивает кровь жертвы во флакон костюма.</p>
+          <div class="dmg"><span>рваные раны 10</span><span>кровотечение 6</span><span>оглушение 0.2</span></div>
+        </div>
+      </article>
+      <article class="weapon">
+        <div class="art"><img src="img/needler.png" alt="Иглострел: членистое существо с ружейным стволом" width="166" height="109"></div>
+        <div>
+          <h3>Иглострел</h3>
+          <p>Стреляет костяными иглами в кислотном секрете. Заряжается игольной железой. На пустой железе не стреляет.</p>
+          <div class="dmg"><span>рваные раны 7</span><span>кровотечение 7</span><span>кислотный ожог 3</span></div>
+        </div>
+      </article>
+      <article class="weapon">
+        <div class="art"><img src="img/gland.png" alt="Игольная железа: пульсирующий орган в прожилках" width="50" height="59"></div>
+        <div>
+          <h3>Игольная железа</h3>
+          <p>Магазин на 20 игл. У симбионта отращивает одну иглу каждые 6 секунд. Добывается с шипостаев: ищите в инвентаре трупа. Пустую можно перерастить в фабрикаторе с инопланетной кровью.</p>
+          <div class="dmg"><span>20 игл</span><span>+1 / 6 с</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="commands">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Отладка и тесты</div>
+      <h2>Консольные команды</h2>
+      <p>Консоль открывается клавишей <kbd>F3</kbd>. Слово <code>inventory</code> можно заменить на <code>cursor</code>, тогда предмет появится под курсором.</p>
+    </div>
+    <div class="cmd-groups">
+      <div class="cmd-group">
+        <h3>Предметы мода</h3>
+        <div class="cmd"><div><code>spawnitem bioexo inventory</code><small>Биокостюм</small></div><button class="copy" type="button">Копировать</button></div>
+        <div class="cmd"><div><code>spawnitem bioexo_embryo inventory</code><small>Зародыш биокостюма</small></div><button class="copy" type="button">Копировать</button></div>
+        <div class="cmd"><div><code>spawnitem bioexo_suitbase inventory</code><small>Основа биокостюма</small></div><button class="copy" type="button">Копировать</button></div>
+        <div class="cmd"><div><code>spawnitem bioexo_thalamusgene inventory</code><small>Генматериал таламуса</small></div><button class="copy" type="button">Копировать</button></div>
+        <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>Жало симбионта</small></div><button class="copy" type="button">Копировать</button></div>
+        <div class="cmd"><div><code>spawnitem bioexo_needler inventory</code><small>Иглострел</small></div><button class="copy" type="button">Копировать</button></div>
+        <div class="cmd"><div><code>spawnitem bioexo_needlegland inventory</code><small>Игольная железа</small></div><button class="copy" type="button">Копировать</button></div>
+      </div>
+      <div class="cmd-group">
+        <h3>Ингредиенты и сценарии</h3>
+        <div class="cmd"><div><code>spawnitem alienblood inventory</code><small>Инопланетная кровь</small></div><button class="copy" type="button">Копировать</button></div>
+        <div class="cmd"><div><code>spawnitem stabilozine inventory</code><small>Стабилозин</small></div><button class="copy" type="button">Копировать</button></div>
+        <div class="cmd"><div><code>spawnitem diversremains inventory</code><small>Останки водолаза</small></div><button class="copy" type="button">Копировать</button></div>
+        <div class="cmd"><div><code>spawnitem op_researchterminal cursor</code><small>Исследовательский терминал (нужно питание)</small></div><button class="copy" type="button">Копировать</button></div>
+        <div class="cmd"><div><code>spawnsub Dugong_Wrecked true</code><small>Заражённый обломок с таламусом</small></div><button class="copy" type="button">Копировать</button></div>
+        <div class="cmd"><div><code>spawn spineling outside</code><small>Шипостай за бортом</small></div><button class="copy" type="button">Копировать</button></div>
+        <div class="cmd"><div><code>giveaffliction bioexosymbiosis 2</code><small>Симбиоз без костюма, для теста оружия</small></div><button class="copy" type="button">Копировать</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="alpha">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Альфа 0.0.1</div>
+      <h2>Что нужно знать</h2>
+    </div>
+    <ul class="alpha-list">
+      <li><b>Это ранняя альфа.</b> Возможны баги и правки баланса. Пишите о них в комментариях к моду.</li>
+      <li><b>Изменяет мозг таламуса и шипостаев</b> (добавляет им добычу). Может конфликтовать с модами, которые меняют их же.</li>
+      <li><b>Шанс выпадения игольной железы сейчас 100%</b>, чтобы проще было тестировать. В следующих версиях он снизится.</li>
+      <li><b>Жало и Иглострел пока без рецептов</b>, их можно получить только через консоль.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Biopunk for Barotrauma · альфа 0.0.1</span>
+    <span>Фанатский мод. Barotrauma принадлежит FakeFish и Undertow Games.</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var code = btn.parentElement.querySelector('code');
+    var text = code.textContent;
+    function done() {
+      btn.textContent = 'Скопировано';
+      btn.classList.add('done');
+      setTimeout(function () { btn.textContent = 'Копировать'; btn.classList.remove('done'); }, 1600);
+    }
+    function fallback() {
+      var range = document.createRange();
+      range.selectNodeContents(code);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      btn.textContent = 'Нажмите Ctrl+C';
+    }
+    try {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+});
+</script>
+
+</body>
+</html>
