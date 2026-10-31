@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="img/embryo.png">
+<link rel="alternate" hreflang="ru" href="index.html">
+<link rel="alternate" hreflang="en" href="en.html">
+<link rel="alternate" hreflang="zh-Hans" href="zh.html">
+<link rel="alternate" hreflang="es" href="es.html">
 <title>Biopunk for Barotrauma</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Биопанк-мод для Barotrauma: живой Биокостюм на инопланетной крови и оружие симбионта.">
@@ -98,7 +102,14 @@ p { margin: 0; }
 }
 .tabs a.on { background: var(--water); color: var(--sonar); }
 .tabs a.ext { color: var(--flesh-soft); }
-.tabbar { display: flex; justify-content: flex-start; margin-top: -1px; }
+.tabbar { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px; margin-top: -1px; }
+.langs { display: flex; gap: 2px; padding-bottom: 6px; position: relative; z-index: 1; }
+.langs a {
+  font: 600 12px/1 var(--mono); padding: 5px 8px; border-radius: 3px; color: var(--muted);
+  border: 1px solid transparent;
+}
+.langs a:hover { color: var(--bone); text-decoration: none; border-color: var(--line); }
+.langs a[aria-current="page"] { color: var(--abyss); background: var(--sonar); }
 
 /* ---------- page shell ---------- */
 .shell {
@@ -337,6 +348,12 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <a href="#commands">Команды</a>
       <a class="ext" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3830730588" target="_blank" rel="noopener">Steam</a>
     </div>
+    <nav class="langs" aria-label="Language">
+      <a href="index.html" hreflang="ru" aria-current="page" lang="ru">RU</a>
+      <a href="en.html" hreflang="en" lang="en">EN</a>
+      <a href="zh.html" hreflang="zh" lang="zh">中文</a>
+      <a href="es.html" hreflang="es" lang="es">ES</a>
+    </nav>
   </div>
 </header>
 
@@ -422,7 +439,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         <div class="bar-title"><h2>Выращивание</h2></div>
         <div class="icons chain">
           <a class="ico" href="#recipes"><span class="pic"><img src="img/gene_raw.png" alt="" width="55" height="56"></span><b>Мозг таламуса</b><small>выпадает генматериал</small></a>
-          <a class="ico" href="#recipes"><span class="pic"><img src="img/gene.png" alt="" width="55" height="56"></span><b>Очистка</b><small>+ стабилозин</small></a>
+          <a class="ico" href="#recipes"><span class="pic"><img src="img/gene.png" alt="" width="55" height="56"></span><b>Очистка</b><small>+ стабилоцин</small></a>
           <a class="ico" href="#recipes"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>Основа</b><small>+ странное яйцо</small></a>
           <a class="ico" href="#recipes"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>Зародыш</b><small>+ останки водолаза</small></a>
           <a class="ico" href="#recipes"><span class="pic"><img src="img/suit.png" alt="" width="126" height="118"></span><b>Биокостюм</b><small>выкормить кровью</small></a>
@@ -457,7 +474,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <div class="bar-sub"><h3>Исследовательский терминал</h3></div>
           <div class="recipes">
             <div class="recipe"><i>1</i><span><span class="at">Обломок</span>Уничтожьте мозг таламуса → <em>неочищенный генматериал</em></span></div>
-            <div class="recipe"><i>2</i><span>Генматериал + стабилозин → <em>генматериал таламуса</em></span></div>
+            <div class="recipe"><i>2</i><span>Генматериал + стабилоцин → <em>генматериал таламуса</em></span></div>
             <div class="recipe"><i>3</i><span>Генматериал + странное яйцо → <em>основа биокостюма</em></span></div>
             <div class="recipe"><i>4</i><span><span class="at">45 с</span>Основа + останки водолаза → <em>зародыш</em></span></div>
             <div class="recipe"><i>5</i><span><span class="at">Слот скафандра</span>Зародыш + инопланетная кровь (~3 флакона) → <em>Биокостюм</em></span></div>
@@ -469,7 +486,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <div class="bar-sub"><h3>Где брать</h3></div>
           <ul class="dots">
             <li><b>Генматериал</b>: мозг таламуса в заражённом обломке, всегда</li>
-            <li><b>Стабилозин</b>: медфабрикатор, магазины</li>
+            <li><b>Стабилоцин</b>: медфабрикатор, магазины</li>
             <li><b>Странное яйцо</b>: Peanut, Psilotoad, Orangeboy, Balloon; шкафы и магазины</li>
             <li><b>Останки водолаза</b>: шкафы для хранения и минералов</li>
             <li><b>Инопланетная кровь</b>: монстры, органы таламуса</li>
@@ -521,7 +538,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <div>
             <div class="bar-sub"><h3>Ингредиенты и тесты</h3></div>
             <div class="cmd"><div><code>spawnitem alienblood inventory</code><small>Инопланетная кровь</small></div><button class="copy" type="button">Копировать</button></div>
-            <div class="cmd"><div><code>spawnitem stabilozine inventory</code><small>Стабилозин</small></div><button class="copy" type="button">Копировать</button></div>
+            <div class="cmd"><div><code>spawnitem stabilozine inventory</code><small>Стабилоцин</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem diversremains inventory</code><small>Останки водолаза</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem op_researchterminal cursor</code><small>Исследовательский терминал (нужно питание)</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnsub Dugong_Wrecked true</code><small>Заражённый обломок с таламусом</small></div><button class="copy" type="button">Копировать</button></div>
@@ -537,7 +554,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         <h3 class="panel-title">О моде</h3>
         <div class="lead-pic"><img src="img/suit.png" alt="Шлем и торс Биокостюма: багровая органическая броня" width="126" height="118"></div>
         <p class="txt"><i>Biopunk for Barotrauma</i> развивает биопанк-ветку в мире Европы: снаряжение не собирается на фабрикаторе, а выращивается из генетического материала и кормится кровью монстров.</p>
-        <p class="txt">Мод использует только ванильные ресурсы: инопланетную кровь, стабилозин, яйца питомцев и останки водолазов.</p>
+        <p class="txt">Мод использует только ванильные ресурсы: инопланетную кровь, стабилоцин, яйца питомцев и останки водолазов.</p>
         <a class="btn" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3830730588" target="_blank" rel="noopener">Подписаться в Steam Workshop</a>
         <a class="more" href="#grow">Как начать</a>
       </section>

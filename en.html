@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="img/embryo.png">
+<link rel="alternate" hreflang="ru" href="index.html">
+<link rel="alternate" hreflang="en" href="en.html">
+<link rel="alternate" hreflang="zh-Hans" href="zh.html">
+<link rel="alternate" hreflang="es" href="es.html">
+<title>Biopunk for Barotrauma</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="A biopunk mod for Barotrauma: a living Biosuit that runs on alien blood, and symbiote weapons.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tektur:wght@500;700;800&family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: wiki-style portal — banner header, left nav with labelled bars, centre column of titled panels (icon grids + link strips), right info column. Single dark look by choice. */
+:root {
+  --abyss: #060b0f;
+  --water: #0b151b;
+  --panel: #080e12;
+  --strip: #101c23;
+  --line: #1c3039;
+  --bone: #e7dccb;
+  --muted: #8fa3a8;
+  --flesh: #d9435a;
+  --flesh-soft: #f08a95;
+  --flesh-deep: #7a1e2c;
+  --sonar: #5fc7b4;
+  --display: "Tektur", "Arial Narrow", system-ui, sans-serif;
+  --body: "Onest", "Segoe UI", Arial, system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--abyss); scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--water);
+  color: var(--bone);
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.55;
+}
+a { color: var(--sonar); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--sonar); outline-offset: 2px; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--display); text-wrap: balance; line-height: 1.15; }
+p { margin: 0; }
+.gutter {
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- banner ---------- */
+.banner {
+  position: relative;
+  overflow: hidden;
+  min-height: 132px;
+  background:
+    radial-gradient(ellipse 30% 90% at 78% 30%, rgba(217, 67, 90, .28), transparent 70%),
+    radial-gradient(ellipse 40% 120% at 55% 10%, rgba(95, 199, 180, .16), transparent 70%),
+    radial-gradient(circle at 20% 120%, rgba(95, 199, 180, .12), transparent 40%),
+    linear-gradient(180deg, #0f2630 0%, #091319 100%);
+  border-bottom: 1px solid var(--line);
+}
+.banner::after {
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 12% 40%, rgba(231, 220, 203, .05) 0 2px, transparent 3px),
+    radial-gradient(circle at 64% 70%, rgba(231, 220, 203, .05) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 20%, rgba(231, 220, 203, .06) 0 1.5px, transparent 2.5px);
+  background-size: 140px 90px, 210px 130px, 90px 70px;
+  pointer-events: none;
+}
+.banner .gutter {
+  position: relative; z-index: 1;
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+  min-height: 132px; padding-block: 14px 0;
+}
+.logo { display: grid; gap: 2px; padding-bottom: 12px; color: var(--bone); }
+.logo:hover { text-decoration: none; }
+.logo b {
+  font-family: var(--display); font-weight: 800; font-size: clamp(34px, 6vw, 52px);
+  letter-spacing: .04em; line-height: .9; color: var(--bone);
+  text-shadow: 0 0 18px rgba(217, 67, 90, .45);
+}
+.logo b span { color: var(--flesh); }
+.logo small {
+  font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: .32em;
+  text-transform: uppercase; color: var(--sonar);
+}
+.banner-art { display: flex; align-items: flex-end; gap: 18px; opacity: .9; }
+.banner-art img { height: auto; filter: drop-shadow(0 10px 18px rgba(0,0,0,.7)); }
+.banner-art .b-suit { width: 104px; }
+.banner-art .b-needler { width: 120px; transform: rotate(-8deg); margin-bottom: 18px; }
+.tabs { display: flex; gap: 2px; position: relative; z-index: 1; }
+.tabs a {
+  font-size: 13px; padding: 6px 12px; background: rgba(8, 14, 18, .85);
+  border: 1px solid var(--line); border-bottom: 0; border-radius: 3px 3px 0 0; color: var(--bone);
+}
+.tabs a.on { background: var(--water); color: var(--sonar); }
+.tabs a.ext { color: var(--flesh-soft); }
+.tabbar { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px; margin-top: -1px; }
+.langs { display: flex; gap: 2px; padding-bottom: 6px; position: relative; z-index: 1; }
+.langs a {
+  font: 600 12px/1 var(--mono); padding: 5px 8px; border-radius: 3px; color: var(--muted);
+  border: 1px solid transparent;
+}
+.langs a:hover { color: var(--bone); text-decoration: none; border-color: var(--line); }
+.langs a[aria-current="page"] { color: var(--abyss); background: var(--sonar); }
+
+/* ---------- page shell ---------- */
+.shell {
+  display: grid;
+  grid-template-columns: 188px minmax(0, 1fr);
+  gap: 0;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.side {
+  background: linear-gradient(180deg, rgba(6, 11, 15, .6), transparent 70%);
+  border-right: 1px solid var(--line);
+  padding: 18px 0 32px;
+  display: grid; align-content: start; gap: 14px;
+}
+.side nav { display: grid; gap: 4px; }
+.side h4 {
+  font-family: var(--body); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(90deg, var(--flesh-deep), var(--flesh) 70%, rgba(217, 67, 90, 0));
+  padding: 4px 10px 4px 12px; margin: 0 0 2px 0;
+}
+.side a { display: block; padding: 1px 12px 1px 22px; color: var(--bone); font-size: 13.5px; }
+.side a:hover { color: var(--sonar); }
+
+.content {
+  padding-block: 18px 40px;
+  padding-left: 18px;
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 18px;
+  align-items: start;
+}
+.col { display: grid; gap: 18px; min-width: 0; }
+
+/* ---------- panels ---------- */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 14px 16px 16px;
+  min-width: 0;
+  scroll-margin-top: 12px;
+}
+.bar-title {
+  display: grid; grid-template-columns: minmax(12px, 1fr) auto minmax(12px, 1fr);
+  gap: 12px; align-items: center; margin-bottom: 14px;
+}
+.bar-title::before, .bar-title::after { content: ""; height: 14px; background: var(--strip); border-radius: 1px; }
+.bar-title h2 { font-size: 22px; font-weight: 700; color: var(--sonar); letter-spacing: .02em; }
+.bar-sub {
+  display: grid; grid-template-columns: minmax(8px, 1fr) auto minmax(8px, 1fr);
+  gap: 10px; align-items: center; margin: 12px 0 8px;
+}
+.bar-sub::before, .bar-sub::after { content: ""; height: 10px; background: var(--strip); }
+.bar-sub h3 { font-family: var(--body); font-size: 13px; font-weight: 700; color: var(--bone); }
+.panel-title { font-size: 20px; font-weight: 700; color: var(--bone); text-align: center; margin-bottom: 10px; }
+
+.welcome { text-align: center; padding: 22px 20px; display: grid; gap: 10px; }
+.welcome h1 { font-size: 22px; font-weight: 700; color: var(--bone); }
+.welcome h1 span { color: var(--flesh-soft); }
+.welcome p { color: var(--muted); max-width: 52em; margin: 0 auto; }
+.welcome .ver { color: var(--bone); }
+.welcome .ver b { color: var(--flesh-soft); font-family: var(--mono); font-weight: 600; }
+
+/* icon grid */
+.icons { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px 4px; }
+.ico {
+  display: grid; justify-items: center; align-content: end; gap: 6px;
+  padding: 8px 4px; border-radius: 4px; color: var(--bone); text-align: center;
+}
+.ico:hover { background: rgba(95, 199, 180, .06); text-decoration: none; }
+.ico .pic { height: 72px; display: grid; place-items: center; }
+.ico img { max-height: 72px; max-width: 120px; width: auto; height: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,.6)); }
+.ico b { font-size: 14px; font-weight: 700; line-height: 1.2; }
+.ico:hover b { color: var(--sonar); }
+.ico .arrow { color: var(--flesh); }
+
+.chain { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.chain .ico { position: relative; }
+.chain .ico:not(:last-child)::after {
+  content: "›"; position: absolute; right: -6px; top: 34px;
+  font: 700 22px/1 var(--display); color: var(--flesh);
+}
+.chain .ico small { font-size: 11.5px; color: var(--muted); font-weight: 500; line-height: 1.3; }
+
+.strip {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  margin: 12px -16px -16px; background: var(--strip); border-top: 1px solid var(--line);
+  border-radius: 0 0 4px 4px;
+}
+.strip a {
+  font-size: 12.5px; font-weight: 700; color: var(--bone); text-align: center;
+  padding: 7px 6px; border-right: 1px solid var(--line);
+}
+.strip a:last-child { border-right: 0; }
+.strip a:hover { color: var(--sonar); text-decoration: none; background: rgba(95, 199, 180, .05); }
+
+/* info boxes */
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+ul.dots { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; }
+ul.dots li { position: relative; padding-left: 16px; font-size: 14px; color: var(--muted); }
+ul.dots li::before { content: ""; position: absolute; left: 3px; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: var(--flesh); }
+ul.dots b, .bone { color: var(--bone); font-weight: 600; }
+.kv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; font-size: 14px; }
+.kv dt { font-family: var(--display); font-weight: 700; color: var(--flesh-soft); font-variant-numeric: tabular-nums; }
+.kv dd { margin: 0; color: var(--muted); }
+.kv dd b { color: var(--bone); font-weight: 600; }
+.panel p.txt { font-size: 14px; color: var(--muted); }
+.panel p.txt + p.txt { margin-top: 8px; }
+.panel p.txt b { color: var(--bone); font-weight: 600; }
+
+/* recipes */
+.recipes { display: grid; gap: 6px; }
+.recipe {
+  display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; align-items: center;
+  font-size: 14px; color: var(--muted); padding: 6px 0; border-bottom: 1px dashed var(--line);
+}
+.recipe:last-child { border-bottom: 0; }
+.recipe i {
+  font: 700 13px/1 var(--mono); font-style: normal; color: var(--sonar);
+  border: 1px solid var(--sonar); border-radius: 50%; width: 26px; height: 26px; display: grid; place-items: center;
+}
+.recipe em { font-style: normal; color: var(--bone); font-weight: 600; }
+.recipe .at { display: block; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--sonar); font-family: var(--mono); }
+
+/* weapons table */
+.wtab { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; background: var(--strip); }
+td b { color: var(--bone); }
+td { color: var(--muted); }
+td .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+td .tags span {
+  font-family: var(--mono); font-size: 11.5px; padding: 1px 6px; border-radius: 3px; white-space: nowrap;
+  background: rgba(217, 67, 90, .12); color: var(--flesh-soft); border: 1px solid rgba(217, 67, 90, .3);
+}
+
+/* commands */
+.cmds { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 24px; }
+.cmd { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.cmd code { font-family: var(--mono); font-size: 13px; color: var(--bone); display: block; overflow-x: auto; white-space: nowrap; }
+.cmd small { display: block; font-size: 12.5px; color: var(--muted); }
+.copy {
+  font: 600 11.5px/1 var(--mono); color: var(--muted); background: transparent;
+  border: 1px solid var(--line); border-radius: 3px; padding: 6px 9px; cursor: pointer;
+}
+.copy:hover { color: var(--bone); border-color: var(--muted); }
+.copy.done { color: var(--sonar); border-color: var(--sonar); }
+kbd { font-family: var(--mono); font-size: 12px; padding: 0 5px; border: 1px solid var(--line); border-radius: 3px; background: var(--strip); color: var(--bone); }
+code.inline { font-family: var(--mono); font-size: 12.5px; color: var(--bone); }
+
+/* right column */
+.about .lead-pic { display: grid; place-items: center; padding: 6px 0 12px; }
+.about .lead-pic img { width: 130px; height: auto; filter: drop-shadow(0 8px 16px rgba(0,0,0,.6)); }
+.about p.txt i { color: var(--bone); font-style: italic; }
+.btn {
+  display: block; text-align: center; margin-top: 12px;
+  font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: .02em;
+  padding: 10px 14px; border-radius: 3px; background: var(--flesh); color: #fff;
+}
+.btn:hover { background: #e85a70; text-decoration: none; }
+.more { display: block; text-align: center; margin-top: 10px; font-weight: 700; color: var(--sonar); }
+.log { display: grid; gap: 10px; }
+.log .entry b { display: block; color: var(--sonar); font-size: 14px; }
+.log .entry p { font-size: 13.5px; color: var(--muted); }
+.log .entry time { font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
+
+footer { border-top: 1px solid var(--line); background: #03070a; }
+.social-band { padding-block: 34px 28px; display: grid; justify-items: center; gap: 16px; text-align: center; }
+.social-band h2 {
+  font-size: 13px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--muted);
+}
+.social-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.social {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 11px 18px 11px 14px; border-radius: 4px;
+  background: var(--panel); border: 1px solid var(--line); color: var(--bone);
+  font-family: var(--display); font-weight: 700; font-size: 15px;
+  transition: border-color .15s, background .15s, color .15s;
+}
+.social svg { width: 22px; height: 22px; fill: currentColor; flex: none; }
+.social:hover { text-decoration: none; border-color: var(--flesh); background: rgba(217, 67, 90, .1); color: #fff; }
+.social:hover svg { color: var(--flesh-soft); }
+.credit { color: var(--muted); font-size: 13px; }
+.credit b { color: var(--bone); font-weight: 600; }
+.foot-line { border-top: 1px solid var(--line); }
+.foot-line .gutter { padding-block: 14px; display: flex; flex-wrap: wrap; gap: 6px 24px; justify-content: space-between; color: var(--muted); font-size: 12.5px; }
+@media (prefers-reduced-motion: reduce) { .social { transition: none; } }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1180px) {
+  .content { grid-template-columns: minmax(0, 1fr); }
+  .right { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+}
+@media (max-width: 900px) {
+  .trio { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  .shell { grid-template-columns: minmax(0, 1fr); }
+  .side {
+    border-right: 0; border-bottom: 1px solid var(--line);
+    padding: 12px max(16px, env(safe-area-inset-right, 0px)) 12px max(16px, env(safe-area-inset-left, 0px));
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px 14px;
+  }
+  .side a { padding-left: 12px; }
+  .content { padding-left: max(16px, env(safe-area-inset-left, 0px)); }
+  .banner-art .b-needler { display: none; }
+  .banner-art .b-suit { width: 76px; }
+  .chain { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .chain .ico::after { display: none; }
+  .cmds { grid-template-columns: minmax(0, 1fr); }
+  .tabs a { padding: 6px 9px; }
+}
+</style>
+</head>
+<body>
+
+
+<header class="banner">
+  <div class="gutter">
+    <a class="logo" href="#top" id="top">
+      <b>BIO<span>PUNK</span></b>
+      <small>for Barotrauma</small>
+    </a>
+    <div class="banner-art" aria-hidden="true">
+      <img class="b-needler" src="img/needler.png" alt="" width="166" height="109">
+      <img class="b-suit" src="img/suit.png" alt="" width="126" height="118">
+    </div>
+  </div>
+  <div class="gutter tabbar">
+    <div class="tabs">
+      <a class="on" href="#top">Main page</a>
+      <a href="#commands">Commands</a>
+      <a class="ext" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3830730588" target="_blank" rel="noopener">Steam</a>
+    </div>
+    <nav class="langs" aria-label="Language">
+      <a href="index.html" hreflang="ru" lang="ru">RU</a>
+      <a href="en.html" hreflang="en" aria-current="page" lang="en">EN</a>
+      <a href="zh.html" hreflang="zh" lang="zh">中文</a>
+      <a href="es.html" hreflang="es" lang="es">ES</a>
+    </nav>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="side">
+    <nav aria-label="Mod">
+      <h4>Mod</h4>
+      <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3830730588" target="_blank" rel="noopener">Steam Workshop</a>
+      <a href="#about">About</a>
+      <a href="#alpha">Alpha status</a>
+      <a href="#author">Author</a>
+    </nav>
+    <nav aria-label="Gear">
+      <h4>Gear</h4>
+      <a href="#suit">Biosuit</a>
+      <a href="#breath">Breathing and blood</a>
+      <a href="#grow">Embryo</a>
+    </nav>
+    <nav aria-label="Weapons">
+      <h4>Weapons</h4>
+      <a href="#weapons">Symbiote Stinger</a>
+      <a href="#weapons">Needler</a>
+      <a href="#weapons">Needle Gland</a>
+    </nav>
+    <nav aria-label="Crafting">
+      <h4>Crafting</h4>
+      <a href="#grow">Growth chain</a>
+      <a href="#materials">Where to get materials</a>
+    </nav>
+    <nav aria-label="Tools">
+      <h4>Tools</h4>
+      <a href="#commands">Console commands</a>
+      <a href="#alpha">Compatibility</a>
+    </nav>
+    <nav aria-label="Author">
+      <h4>Author</h4>
+      <a href="https://t.me/markizio49" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://www.youtube.com/@Markizio49" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/markizio49" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://x.com/markizio49" target="_blank" rel="noopener">X (Twitter)</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div class="col">
+      <section class="panel welcome">
+        <h1>Welcome to <span>Biopunk for Barotrauma</span></h1>
+        <p>The mod adds a living suit grown from Thalamus genes and fed on alien blood, plus symbiote weapons that only awaken in the hands of a well-fed host. Everything is built on vanilla items and mechanics.</p>
+        <p class="ver">Current mod version: <b>0.0.1 alpha</b> · game <b>1.13.5.0</b></p>
+      </section>
+
+      <section class="panel" id="suit">
+        <div class="bar-title"><h2>Gear</h2></div>
+        <div class="icons">
+          <a class="ico" href="#suit-stats"><span class="pic"><img src="img/suit.png" alt="" width="126" height="118"></span><b>Biosuit</b></a>
+          <a class="ico" href="#grow"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>Embryo</b></a>
+          <a class="ico" href="#grow"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>Suit base</b></a>
+          <a class="ico" href="#grow"><span class="pic"><img src="img/gene.png" alt="" width="55" height="56"></span><b>Genetic material</b></a>
+        </div>
+        <div class="strip">
+          <a href="#suit-stats">Stats</a>
+          <a href="#breath">Breathing</a>
+          <a href="#breath">Blood feeding</a>
+          <a href="#grow">Growing</a>
+        </div>
+      </section>
+
+      <section class="panel" id="weapons">
+        <div class="bar-title"><h2>Symbiote weapons</h2></div>
+        <div class="icons">
+          <a class="ico" href="#weapons-table"><span class="pic"><img src="img/stinger.png" alt="" width="198" height="46"></span><b>Symbiote Stinger</b></a>
+          <a class="ico" href="#weapons-table"><span class="pic"><img src="img/needler.png" alt="" width="166" height="109"></span><b>Needler</b></a>
+          <a class="ico" href="#weapons-table"><span class="pic"><img src="img/gland.png" alt="" width="50" height="59"></span><b>Needle Gland</b></a>
+        </div>
+        <div class="strip">
+          <a href="#weapons-table">Damage</a>
+          <a href="#weapons-table">Symbiosis</a>
+          <a href="#materials">Getting a gland</a>
+        </div>
+      </section>
+
+      <section class="panel" id="grow">
+        <div class="bar-title"><h2>Growing</h2></div>
+        <div class="icons chain">
+          <a class="ico" href="#recipes"><span class="pic"><img src="img/gene_raw.png" alt="" width="55" height="56"></span><b>Thalamus Brain</b><small>drops genetic material</small></a>
+          <a class="ico" href="#recipes"><span class="pic"><img src="img/gene.png" alt="" width="55" height="56"></span><b>Refining</b><small>+ stabilozine</small></a>
+          <a class="ico" href="#recipes"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>Base</b><small>+ strange egg</small></a>
+          <a class="ico" href="#recipes"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>Embryo</b><small>+ diver's remains</small></a>
+          <a class="ico" href="#recipes"><span class="pic"><img src="img/suit.png" alt="" width="126" height="118"></span><b>Biosuit</b><small>feed it blood</small></a>
+        </div>
+        <div class="strip">
+          <a href="#recipes">Recipes</a>
+          <a href="#materials">Materials</a>
+          <a href="#commands">Test via console</a>
+        </div>
+      </section>
+
+      <div class="trio">
+        <section class="panel" id="suit-stats">
+          <h3 class="panel-title">Biosuit</h3>
+          <div class="bar-sub"><h3>Stats</h3></div>
+          <dl class="kv">
+            <dt>+8%</dt><dd>movement speed while the suit is fed</dd>
+            <dt>−30%</dt><dd>damage taken: wounds, bleeding, burns, poison, radiation</dd>
+            <dt>7000</dt><dd>pressure protection, same as the <b>PUCS</b></dd>
+            <dt>~5 min</dt><dd>per blood vial under water</dd>
+          </dl>
+          <div class="bar-sub" id="breath"><h3>Breathing</h3></div>
+          <ul class="dots">
+            <li>While there is air around, the suit <b>uses no blood</b></li>
+            <li>Under water or below 50% oxygen it breathes on blood</li>
+            <li>Without blood it <b>slows you down heavily</b></li>
+          </ul>
+        </section>
+
+        <section class="panel" id="recipes">
+          <h3 class="panel-title">Recipes</h3>
+          <div class="bar-sub"><h3>Research Station</h3></div>
+          <div class="recipes">
+            <div class="recipe"><i>1</i><span><span class="at">Wreck</span>Destroy a Thalamus Brain → <em>unrefined genetic material</em></span></div>
+            <div class="recipe"><i>2</i><span>Genetic material + stabilozine → <em>Thalamus genetic material</em></span></div>
+            <div class="recipe"><i>3</i><span>Genetic material + strange egg → <em>biosuit base</em></span></div>
+            <div class="recipe"><i>4</i><span><span class="at">45 s</span>Base + diver's remains → <em>embryo</em></span></div>
+            <div class="recipe"><i>5</i><span><span class="at">Diving suit slot</span>Embryo + alien blood (~3 vials) → <em>Biosuit</em></span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="materials">
+          <h3 class="panel-title">Materials</h3>
+          <div class="bar-sub"><h3>Where to find</h3></div>
+          <ul class="dots">
+            <li><b>Genetic material</b>: Thalamus Brain in an infested wreck, always</li>
+            <li><b>Stabilozine</b>: Medical Fabricator, shops</li>
+            <li><b>Strange Egg</b>: Peanut, Psilotoad, Orangeboy, Balloon; cabinets and shops</li>
+            <li><b>Diver's Remains</b>: storage and mineral cabinets</li>
+            <li><b>Alien Blood</b>: monsters, Thalamus organs</li>
+            <li><b>Needle Gland</b>: in a dead spineling's inventory</li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="panel" id="weapons-table">
+        <div class="bar-title"><h2>Damage and properties</h2></div>
+        <div class="wtab">
+          <table>
+            <thead><tr><th>Weapons</th><th>Damage</th><th>With a fed host</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><b>Symbiote Stinger</b><br>melee</td>
+                <td><div class="tags"><span>lacerations 10</span><span>bleeding 6</span><span>stun 0.2</span></div></td>
+                <td>Damage ×1.5. Every hit pumps the victim's blood into the suit's vial</td>
+              </tr>
+              <tr>
+                <td><b>Needler</b><br>ranged</td>
+                <td><div class="tags"><span>lacerations 7</span><span>bleeding 7</span><span>acid burn 3</span></div></td>
+                <td>Fires from a needle gland. Will not fire with an empty gland</td>
+              </tr>
+              <tr>
+                <td><b>Needle Gland</b><br>magazine</td>
+                <td><div class="tags"><span>20 needles</span></div></td>
+                <td>Regrows 1 needle every 6 s. An empty one can be regrown in a fabricator with alien blood</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" id="commands">
+        <div class="bar-title"><h2>Console commands</h2></div>
+        <p class="txt">Open the console with <kbd>F3</kbd>. Replace <code class="inline">inventory</code> with <code class="inline">cursor</code>to spawn the item under your cursor.</p>
+        <div class="cmds">
+          <div>
+            <div class="bar-sub"><h3>Mod items</h3></div>
+            <div class="cmd"><div><code>spawnitem bioexo inventory</code><small>Biosuit</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_embryo inventory</code><small>Biosuit Embryo</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_suitbase inventory</code><small>Biosuit Base</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_thalamusgene inventory</code><small>Thalamus Genetic Material</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>Symbiote Stinger</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_needler inventory</code><small>Needler</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_needlegland inventory</code><small>Needle Gland</small></div><button class="copy" type="button">Copy</button></div>
+          </div>
+          <div>
+            <div class="bar-sub"><h3>Ingredients and tests</h3></div>
+            <div class="cmd"><div><code>spawnitem alienblood inventory</code><small>Alien Blood</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem stabilozine inventory</code><small>Stabilozine</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem diversremains inventory</code><small>Diver's Remains</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem op_researchterminal cursor</code><small>Research Station (needs power)</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnsub Dugong_Wrecked true</code><small>Infested wreck with a Thalamus</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawn spineling outside</code><small>Spineling outside the sub</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>giveaffliction bioexosymbiosis 2</code><small>Symbiosis without the suit, for weapon tests</small></div><button class="copy" type="button">Copy</button></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <aside class="col right">
+      <section class="panel about" id="about">
+        <h3 class="panel-title">About</h3>
+        <div class="lead-pic"><img src="img/suit.png" alt="Biosuit helmet and torso: crimson organic armour" width="126" height="118"></div>
+        <p class="txt"><i>Biopunk for Barotrauma</i> brings biopunk to Europa: gear is not built at a fabricator, it is grown from genetic material and fed on monster blood.</p>
+        <p class="txt">The mod only uses vanilla resources: alien blood, stabilozine, pet eggs and diver's remains.</p>
+        <a class="btn" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3830730588" target="_blank" rel="noopener">Subscribe on Steam Workshop</a>
+        <a class="more" href="#grow">How to start</a>
+      </section>
+
+      <section class="panel" id="author">
+        <h3 class="panel-title">Author</h3>
+        <p class="txt">The mod is made by <b>Markizio</b>. Send ideas, bugs and suggestions in the mod comments or on <a href="#socials">social media</a>.</p>
+        <div class="bar-sub"><h3>Development help</h3></div>
+        <p class="txt">Code, sprites and this site were made together with <b>Claude</b>, an AI assistant by Anthropic.</p>
+      </section>
+
+      <section class="panel" id="alpha">
+        <h3 class="panel-title">Alpha status</h3>
+        <ul class="dots">
+          <li><b>Early alpha.</b> Expect bugs and balance changes; report them in the mod comments</li>
+          <li><b>Changes the Thalamus Brain and spinelings</b> (adds loot). May conflict with mods that change them too</li>
+          <li><b>Gland drop chance is 100% for now</b> for testing, it will be lowered later</li>
+          <li><b>Stinger and Needler have no recipes yet</b>, console only</li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h3 class="panel-title">Changelog</h3>
+        <div class="log">
+          <div class="entry">
+            <b>0.0.1 alpha</b>
+            <time datetime="2026-10-31">31.10.2026</time>
+            <p>First release: Biosuit, growth chain, Symbiote Stinger, Needler and Needle Gland.</p>
+          </div>
+        </div>
+      </section>
+    </aside>
+  </main>
+</div>
+
+<footer>
+  <div class="gutter social-band" id="socials">
+    <h2>Social media</h2>
+    <div class="social-row">
+      <a class="social" href="https://t.me/markizio49" target="_blank" rel="noopener" aria-label="Telegram @markizio49">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        Telegram
+      </a>
+      <a class="social" href="https://www.youtube.com/@Markizio49" target="_blank" rel="noopener" aria-label="YouTube @Markizio49">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.930 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        YouTube
+      </a>
+      <a class="social" href="https://github.com/markizio49" target="_blank" rel="noopener" aria-label="GitHub markizio49">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.230.96-.267 1.98-.399 3-.405 1.02.006 2.040.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        GitHub
+      </a>
+      <a class="social" href="https://x.com/markizio49" target="_blank" rel="noopener" aria-label="X (Twitter) @markizio49">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.680l-8.040 9.190L24 22.846h-7.406l-5.800-7.584-6.638 7.584H.474l8.600-9.830L0 1.154h7.594l5.243 6.932ZM17.610 20.644h2.039L6.486 3.240H4.298Z"/></svg>
+        X (Twitter)
+      </a>
+    </div>
+    <p class="credit">Mod author <b>Markizio</b>. Developed together with <b>Claude</b>, an AI assistant by Anthropic.</p>
+  </div>
+  <div class="foot-line">
+    <div class="gutter">
+      <span>Biopunk for Barotrauma · alpha 0.0.1</span>
+      <span>Fan-made mod. Barotrauma belongs to FakeFish and Undertow Games.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var code = btn.parentElement.querySelector('code');
+    var text = code.textContent;
+    function done() {
+      btn.textContent = 'Copied';
+      btn.classList.add('done');
+      setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+    }
+    function fallback() {
+      var range = document.createRange();
+      range.selectNodeContents(code);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      btn.textContent = 'Ctrl+C';
+    }
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+});
+</script>
+
+</body>
+</html>
