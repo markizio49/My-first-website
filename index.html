@@ -269,17 +269,27 @@ code.inline { font-family: var(--mono); font-size: 12.5px; color: var(--bone); }
 .log .entry p { font-size: 13.5px; color: var(--muted); }
 .log .entry time { font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
 
-.socials { display: grid; gap: 6px; margin-top: 12px; }
-.socials a {
-  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: baseline;
-  padding: 8px 12px; border: 1px solid var(--line); border-radius: 3px; background: var(--strip); color: var(--bone);
+footer { border-top: 1px solid var(--line); background: #03070a; }
+.social-band { padding-block: 34px 28px; display: grid; justify-items: center; gap: 16px; text-align: center; }
+.social-band h2 {
+  font-size: 13px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--muted);
 }
-.socials a:hover { border-color: var(--sonar); text-decoration: none; }
-.socials a b { font-family: var(--display); font-weight: 700; font-size: 14px; color: var(--sonar); }
-.socials a span { font-family: var(--mono); font-size: 12.5px; color: var(--muted); text-align: right; overflow-wrap: anywhere; }
-
-footer { border-top: 1px solid var(--line); background: var(--abyss); }
-footer .gutter { padding-block: 18px; display: flex; flex-wrap: wrap; gap: 6px 24px; justify-content: space-between; color: var(--muted); font-size: 13px; }
+.social-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.social {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 11px 18px 11px 14px; border-radius: 4px;
+  background: var(--panel); border: 1px solid var(--line); color: var(--bone);
+  font-family: var(--display); font-weight: 700; font-size: 15px;
+  transition: border-color .15s, background .15s, color .15s;
+}
+.social svg { width: 22px; height: 22px; fill: currentColor; flex: none; }
+.social:hover { text-decoration: none; border-color: var(--flesh); background: rgba(217, 67, 90, .1); color: #fff; }
+.social:hover svg { color: var(--flesh-soft); }
+.credit { color: var(--muted); font-size: 13px; }
+.credit b { color: var(--bone); font-weight: 600; }
+.foot-line { border-top: 1px solid var(--line); }
+.foot-line .gutter { padding-block: 14px; display: flex; flex-wrap: wrap; gap: 6px 24px; justify-content: space-between; color: var(--muted); font-size: 12.5px; }
+@media (prefers-reduced-motion: reduce) { .social { transition: none; } }
 
 /* ---------- responsive ---------- */
 @media (max-width: 1180px) {
@@ -366,6 +376,7 @@ footer .gutter { padding-block: 18px; display: flex; flex-wrap: wrap; gap: 6px 2
       <a href="https://t.me/markizio49" target="_blank" rel="noopener">Telegram</a>
       <a href="https://www.youtube.com/@Markizio49" target="_blank" rel="noopener">YouTube</a>
       <a href="https://github.com/markizio49" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://x.com/markizio49" target="_blank" rel="noopener">X (Twitter)</a>
     </nav>
   </aside>
 
@@ -533,12 +544,7 @@ footer .gutter { padding-block: 18px; display: flex; flex-wrap: wrap; gap: 6px 2
 
       <section class="panel" id="author">
         <h3 class="panel-title">Автор</h3>
-        <p class="txt">Мод делает <b>Markizio</b>. Идеи, баги и предложения пишите в комментариях к моду или в соцсети.</p>
-        <div class="socials">
-          <a href="https://t.me/markizio49" target="_blank" rel="noopener"><b>Telegram</b><span>@markizio49</span></a>
-          <a href="https://www.youtube.com/@Markizio49" target="_blank" rel="noopener"><b>YouTube</b><span>@Markizio49</span></a>
-          <a href="https://github.com/markizio49" target="_blank" rel="noopener"><b>GitHub</b><span>markizio49</span></a>
-        </div>
+        <p class="txt">Мод делает <b>Markizio</b>. Идеи, баги и предложения пишите в комментариях к моду или в <a href="#socials">соцсети</a>.</p>
         <div class="bar-sub"><h3>Помощь в разработке</h3></div>
         <p class="txt">Код, спрайты и этот сайт сделаны вместе с <b>Claude</b>, ИИ-ассистентом от Anthropic.</p>
       </section>
@@ -568,9 +574,33 @@ footer .gutter { padding-block: 18px; display: flex; flex-wrap: wrap; gap: 6px 2
 </div>
 
 <footer>
-  <div class="gutter">
-    <span>Biopunk for Barotrauma · альфа 0.0.1 · автор <a href="https://t.me/markizio49" target="_blank" rel="noopener">Markizio</a>, разработано вместе с Claude (Anthropic)</span>
-    <span>Фанатский мод. Barotrauma принадлежит FakeFish и Undertow Games.</span>
+  <div class="gutter social-band" id="socials">
+    <h2>Соцсети</h2>
+    <div class="social-row">
+      <a class="social" href="https://t.me/markizio49" target="_blank" rel="noopener" aria-label="Telegram @markizio49">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        Telegram
+      </a>
+      <a class="social" href="https://www.youtube.com/@Markizio49" target="_blank" rel="noopener" aria-label="YouTube @Markizio49">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.930 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        YouTube
+      </a>
+      <a class="social" href="https://github.com/markizio49" target="_blank" rel="noopener" aria-label="GitHub markizio49">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.230.96-.267 1.98-.399 3-.405 1.02.006 2.040.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        GitHub
+      </a>
+      <a class="social" href="https://x.com/markizio49" target="_blank" rel="noopener" aria-label="X (Twitter) @markizio49">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.680l-8.040 9.190L24 22.846h-7.406l-5.800-7.584-6.638 7.584H.474l8.600-9.830L0 1.154h7.594l5.243 6.932ZM17.610 20.644h2.039L6.486 3.240H4.298Z"/></svg>
+        X (Twitter)
+      </a>
+    </div>
+    <p class="credit">Автор мода <b>Markizio</b>. Разработано вместе с <b>Claude</b>, ИИ-ассистентом от Anthropic.</p>
+  </div>
+  <div class="foot-line">
+    <div class="gutter">
+      <span>Biopunk for Barotrauma · альфа 0.0.1</span>
+      <span>Фанатский мод. Barotrauma принадлежит FakeFish и Undertow Games.</span>
+    </div>
   </div>
 </footer>
 
