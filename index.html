@@ -326,6 +326,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
   .cmds { grid-template-columns: minmax(0, 1fr); }
   .tabs a { padding: 6px 9px; }
 }
+.gebira-art img { display: block; width: 100%; height: auto; }
 </style>
 </head>
 <body>
@@ -339,7 +340,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
     </a>
     <div class="banner-art" aria-hidden="true">
       <img class="b-needler" src="img/needler.png" alt="" width="166" height="109">
-      <img class="b-suit" src="img/suit.png" alt="" width="126" height="118">
+      <img class="b-suit" src="img/suit.png" alt="" width="128" height="128">
     </div>
   </div>
   <div class="gutter tabbar">
@@ -371,12 +372,15 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <a href="#suit">Биокостюм</a>
       <a href="#breath">Дыхание и кровь</a>
       <a href="#grow">Зародыш</a>
+      <a href="#thalamus-gene">Ген Таламуса</a>
     </nav>
     <nav aria-label="Оружие">
       <h4>Оружие</h4>
       <a href="#weapons">Жало симбионта</a>
       <a href="#weapons">Иглострел</a>
       <a href="#weapons">Игольная железа</a>
+      <a href="#bonespike">Костошип</a>
+      <a href="#gebira">Гебира</a>
     </nav>
     <nav aria-label="Крафт">
       <h4>Крафт</h4>
@@ -387,6 +391,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <h4>Инструменты</h4>
       <a href="#commands">Консольные команды</a>
       <a href="#alpha">Совместимость</a>
+      <a href="#changelog">Журнал версий</a>
     </nav>
     <nav aria-label="Автор">
       <h4>Автор</h4>
@@ -401,17 +406,17 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
     <div class="col">
       <section class="panel welcome">
         <h1>Добро пожаловать в <span>Biopunk for Barotrauma</span></h1>
-        <p>Мод добавляет живой костюм, выращенный из генов таламуса и питающийся инопланетной кровью, и оружие симбионта, которое раскрывается только в руках сытого носителя. Всё построено на ванильных предметах и механиках.</p>
-        <p class="ver">Текущая версия мода: <b>0.0.1 alpha</b> · игра <b>1.13.5.0</b></p>
+        <p>Живой биокостюм на инопланетной крови, оружие симбионта, ген Таламуса и Гебира — морской змей бездны.</p>
+        <p class="ver">Текущая версия мода: <b>0.0.5 alpha</b> · игра <b>1.13.5.0</b></p>
       </section>
 
       <section class="panel" id="suit">
         <div class="bar-title"><h2>Снаряжение</h2></div>
         <div class="icons">
-          <a class="ico" href="#suit-stats"><span class="pic"><img src="img/suit.png" alt="" width="126" height="118"></span><b>Биокостюм</b></a>
+          <a class="ico" href="#suit-stats"><span class="pic"><img src="img/suit.png" alt="" width="128" height="128"></span><b>Биокостюм</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>Зародыш</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>Основа костюма</b></a>
-          <a class="ico" href="#grow"><span class="pic"><img src="img/gene.png" alt="" width="55" height="56"></span><b>Генматериал</b></a>
+          <a class="ico" href="#thalamus-gene"><span class="pic"><img src="img/gene.png" alt="" width="64" height="64"></span><b>Ген Таламуса</b></a>
         </div>
         <div class="strip">
           <a href="#suit-stats">Характеристики</a>
@@ -427,6 +432,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/stinger.png" alt="" width="198" height="46"></span><b>Жало симбионта</b></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/needler.png" alt="" width="166" height="109"></span><b>Иглострел</b></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/gland.png" alt="" width="50" height="59"></span><b>Игольная железа</b></a>
+          <a class="ico" href="#bonespike"><span class="pic"><img src="img/bonespike.png" alt="" width="244" height="54"></span><b>Костошип</b></a>
         </div>
         <div class="strip">
           <a href="#weapons-table">Урон</a>
@@ -439,10 +445,10 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         <div class="bar-title"><h2>Выращивание</h2></div>
         <div class="icons chain">
           <a class="ico" href="#recipes"><span class="pic"><img src="img/gene_raw.png" alt="" width="55" height="56"></span><b>Мозг таламуса</b><small>выпадает генматериал</small></a>
-          <a class="ico" href="#recipes"><span class="pic"><img src="img/gene.png" alt="" width="55" height="56"></span><b>Очистка</b><small>+ стабилоцин</small></a>
+          <a class="ico" href="#recipes"><span class="pic"><img src="img/gene.png" alt="" width="64" height="64"></span><b>Очистка</b><small>+ стабилоцин</small></a>
           <a class="ico" href="#recipes"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>Основа</b><small>+ странное яйцо</small></a>
           <a class="ico" href="#recipes"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>Зародыш</b><small>+ останки водолаза</small></a>
-          <a class="ico" href="#recipes"><span class="pic"><img src="img/suit.png" alt="" width="126" height="118"></span><b>Биокостюм</b><small>выкормить кровью</small></a>
+          <a class="ico" href="#recipes"><span class="pic"><img src="img/suit.png" alt="" width="128" height="128"></span><b>Биокостюм</b><small>выкормить кровью</small></a>
         </div>
         <div class="strip">
           <a href="#recipes">Рецепты</a>
@@ -465,7 +471,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <ul class="dots">
             <li>Пока вокруг есть воздух, костюм <b>не тратит кровь</b></li>
             <li>Под водой или при кислороде ниже 50% дышит за счёт крови</li>
-            <li>Без крови <b>сильно сковывает движения</b></li>
+            <li>Без крови костюм сильно сковывает движения и наносит <b>2 ед. внутреннего урона в корпус каждые 2 секунды</b>. Чтобы остановить урон, вставьте флакон с кровью или снимите костюм.</li>
           </ul>
         </section>
 
@@ -499,8 +505,13 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         <div class="bar-title"><h2>Урон и свойства</h2></div>
         <div class="wtab">
           <table>
-            <thead><tr><th>Оружие</th><th>Урон</th><th>У сытого носителя</th></tr></thead>
+            <thead><tr><th>Оружие</th><th>Урон</th><th>Особенности</th></tr></thead>
             <tbody>
+              <tr>
+                <td><a href="#bonespike"><b>Костошип</b></a><br>ближний бой</td>
+                <td><div class="tags"><span>рваные раны 16</span><span>кровотечение 10</span><span>пробивание брони 22%</span></div></td>
+                <td>Живой клинок для ближнего боя. Частично пробивает броню и ненадолго замедляет цель. Работает без биокостюма.</td>
+              </tr>
               <tr>
                 <td><b>Жало симбионта</b><br>ближний бой</td>
                 <td><div class="tags"><span>рваные раны 10</span><span>кровотечение 6</span><span>оглушение 0.2</span></div></td>
@@ -521,6 +532,26 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         </div>
       </section>
 
+      <section class="panel" id="bonespike">
+        <div class="bar-title"><h2>Костошип</h2></div>
+        <p class="txt">Живой клинок для ближнего боя. Частично пробивает броню и ненадолго замедляет цель. Работает без биокостюма.</p>
+        <div class="bar-sub"><h3>Обычный фабрикатор</h3></div>
+        <p class="txt">2 кальция + 1 органическое волокно + 1 инопланетная кровь → <em>Костошип</em><br><small>30 с · Оружие 35 (рекомендуемый навык)</small></p>
+      </section>
+
+      <section class="panel" id="thalamus-gene">
+        <div class="bar-title"><h2>Ген Таламуса</h2></div>
+        <p class="txt">Уничтожьте мозг таламуса в заражённом обломке и очистите выпавший материал стабилоцином на исследовательском терминале. Вставьте очищенный ген в спайщик генов и наденьте спайщик через окно здоровья.</p>
+        <p class="txt">Вражеский NPC, которого убил носитель активного гена, восстаёт через <b>8 секунд</b> и сражается на его стороне. Через <b>5 минут</b> союзник умирает. Одну и ту же цель можно поднять один раз за раунд.</p>
+        <p class="txt">Для воскрешения нужен <a href="https://github.com/Luatrauma/Luatrauma.Docs/blob/master/manual/docs/installation.md">LuaCs for Barotrauma</a>: на сервере в мультиплеере или в клиенте в одиночной игре.</p>
+      </section>
+
+      <section class="panel" id="gebira">
+        <div class="bar-title"><h2>Гебира</h2></div>
+        <div class="gebira-art"><img src="img/gebira.webp" alt="Гебира" width="1200" height="359" loading="lazy"></div>
+        <p class="txt">Длинный морской змей бездны с плавниками-лентами. Кружит вокруг подлодок на глубине и утаскивает водолазов за бортом.</p>
+      </section>
+
       <section class="panel" id="commands">
         <div class="bar-title"><h2>Консольные команды</h2></div>
         <p class="txt">Консоль открывается клавишей <kbd>F3</kbd>. Вместо <code class="inline">inventory</code> можно писать <code class="inline">cursor</code>, тогда предмет появится под курсором.</p>
@@ -530,7 +561,8 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
             <div class="cmd"><div><code>spawnitem bioexo inventory</code><small>Биокостюм</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_embryo inventory</code><small>Зародыш биокостюма</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_suitbase inventory</code><small>Основа биокостюма</small></div><button class="copy" type="button">Копировать</button></div>
-            <div class="cmd"><div><code>spawnitem bioexo_thalamusgene inventory</code><small>Генматериал таламуса</small></div><button class="copy" type="button">Копировать</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_thalamusgene inventory</code><small>Ген Таламуса</small></div><button class="copy" type="button">Копировать</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_bonespike inventory</code><small>Костошип</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>Жало симбионта</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needler inventory</code><small>Иглострел</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needlegland inventory</code><small>Игольная железа</small></div><button class="copy" type="button">Копировать</button></div>
@@ -538,6 +570,9 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <div>
             <div class="bar-sub"><h3>Ингредиенты и тесты</h3></div>
             <div class="cmd"><div><code>spawnitem alienblood inventory</code><small>Инопланетная кровь</small></div><button class="copy" type="button">Копировать</button></div>
+            <div class="cmd"><div><code>spawnitem genesplicer inventory</code><small>Спайщик генов</small></div><button class="copy" type="button">Копировать</button></div>
+            <div class="cmd"><div><code>spawn gebira cursor</code><small>Гебира</small></div><button class="copy" type="button">Копировать</button></div>
+            <div class="cmd"><div><code>spawn crawler outside</code><small>Ползун за бортом</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem stabilozine inventory</code><small>Стабилоцин</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem diversremains inventory</code><small>Останки водолаза</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem op_researchterminal cursor</code><small>Исследовательский терминал (нужно питание)</small></div><button class="copy" type="button">Копировать</button></div>
@@ -552,9 +587,9 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
     <aside class="col right">
       <section class="panel about" id="about">
         <h3 class="panel-title">О моде</h3>
-        <div class="lead-pic"><img src="img/suit.png" alt="Шлем и торс Биокостюма: багровая органическая броня" width="126" height="118"></div>
-        <p class="txt"><i>Biopunk for Barotrauma</i> развивает биопанк-ветку в мире Европы: снаряжение не собирается на фабрикаторе, а выращивается из генетического материала и кормится кровью монстров.</p>
-        <p class="txt">Мод использует только ванильные ресурсы: инопланетную кровь, стабилоцин, яйца питомцев и останки водолазов.</p>
+        <div class="lead-pic"><img src="img/suit.png" alt="Шлем и торс Биокостюма: багровая органическая броня" width="128" height="128"></div>
+        <p class="txt">На Европе из генетического материала выращивают живую броню, а из кальция, органического волокна и инопланетной крови изготавливают Костошип.</p>
+        <p class="txt"><a href="#thalamus-gene">Ген Таламуса</a> · Эффект гена Таламуса требует LuaCs. Подробности установки и активации есть в разделе о гене.</p>
         <a class="btn" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3830730588" target="_blank" rel="noopener">Подписаться в Steam Workshop</a>
         <a class="more" href="#grow">Как начать</a>
       </section>
@@ -576,9 +611,15 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         </ul>
       </section>
 
-      <section class="panel">
+      <section class="panel" id="changelog">
         <h3 class="panel-title">Журнал версий</h3>
         <div class="log">
+          <div class="entry">
+            <b>0.0.5 alpha</b>
+            <p><strong>Добавлено</strong> — Костошип и воскрешение врагов геном Таламуса.</p>
+            <p><strong>Изменено</strong> — Новые спрайты биокостюма, Гебиры и флакона гена. Голодный биокостюм наносит урон носителю.</p>
+            <p><strong>Исправлено</strong> — Союзные NPC перестают атаковать восставших ползунов. Исправлены ошибки LuaCs при воскрешении и выборе целей.</p>
+          </div>
           <div class="entry">
             <b>0.0.1 alpha</b>
             <time datetime="2026-10-31">31.10.2026</time>
@@ -615,7 +656,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
   </div>
   <div class="foot-line">
     <div class="gutter">
-      <span>Biopunk for Barotrauma · альфа 0.0.1</span>
+      <span>Biopunk for Barotrauma · альфа 0.0.5</span>
       <span>Фанатский мод. Barotrauma принадлежит FakeFish и Undertow Games.</span>
     </div>
   </div>

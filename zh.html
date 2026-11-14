@@ -326,6 +326,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
   .cmds { grid-template-columns: minmax(0, 1fr); }
   .tabs a { padding: 6px 9px; }
 }
+.gebira-art img { display: block; width: 100%; height: auto; }
 </style>
 </head>
 <body>
@@ -342,7 +343,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
     </a>
     <div class="banner-art" aria-hidden="true">
       <img class="b-needler" src="img/needler.png" alt="" width="166" height="109">
-      <img class="b-suit" src="img/suit.png" alt="" width="126" height="118">
+      <img class="b-suit" src="img/suit.png" alt="" width="128" height="128">
     </div>
   </div>
   <div class="gutter tabbar">
@@ -374,12 +375,15 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <a href="#suit">生物服</a>
       <a href="#breath">呼吸与血液</a>
       <a href="#grow">胚胎</a>
+      <a href="#thalamus-gene">丘脑基因</a>
     </nav>
     <nav aria-label="武器">
       <h4>武器</h4>
       <a href="#weapons">共生毒刺</a>
       <a href="#weapons">针刺枪</a>
       <a href="#weapons">针腺</a>
+      <a href="#bonespike">骨棘刃</a>
+      <a href="#gebira">格比拉</a>
     </nav>
     <nav aria-label="制作">
       <h4>制作</h4>
@@ -390,6 +394,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <h4>工具</h4>
       <a href="#commands">控制台指令</a>
       <a href="#alpha">兼容性</a>
+      <a href="#changelog">更新日志</a>
     </nav>
     <nav aria-label="作者">
       <h4>作者</h4>
@@ -404,17 +409,17 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
     <div class="col">
       <section class="panel welcome">
         <h1>欢迎来到 <span>Biopunk for Barotrauma</span></h1>
-        <p>本模组加入了一套由丘脑基因培育、以异星血浆为食的活体防护服，以及只有在吃饱的宿主手中才会觉醒的共生武器。所有内容都基于原版物品和机制。</p>
-        <p class="ver">当前模组版本： <b>0.0.1 alpha</b> · 游戏 <b>1.13.5.0</b></p>
+        <p>模组加入了以异星血浆为食的活体生物服、共生武器、丘脑基因，以及来自深渊的海蛇格比拉。</p>
+        <p class="ver">当前模组版本： <b>0.0.5 alpha</b> · 游戏 <b>1.13.5.0</b></p>
       </section>
 
       <section class="panel" id="suit">
         <div class="bar-title"><h2>装备</h2></div>
         <div class="icons">
-          <a class="ico" href="#suit-stats"><span class="pic"><img src="img/suit.png" alt="" width="126" height="118"></span><b>生物服</b></a>
+          <a class="ico" href="#suit-stats"><span class="pic"><img src="img/suit.png" alt="" width="128" height="128"></span><b>生物服</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>胚胎</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>生物服基底</b></a>
-          <a class="ico" href="#grow"><span class="pic"><img src="img/gene.png" alt="" width="55" height="56"></span><b>遗传物质</b></a>
+          <a class="ico" href="#thalamus-gene"><span class="pic"><img src="img/gene.png" alt="" width="64" height="64"></span><b>丘脑基因</b></a>
         </div>
         <div class="strip">
           <a href="#suit-stats">属性</a>
@@ -430,6 +435,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/stinger.png" alt="" width="198" height="46"></span><b>共生毒刺</b></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/needler.png" alt="" width="166" height="109"></span><b>针刺枪</b></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/gland.png" alt="" width="50" height="59"></span><b>针腺</b></a>
+          <a class="ico" href="#bonespike"><span class="pic"><img src="img/bonespike.png" alt="" width="244" height="54"></span><b>骨棘刃</b></a>
         </div>
         <div class="strip">
           <a href="#weapons-table">伤害</a>
@@ -442,10 +448,10 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         <div class="bar-title"><h2>培育</h2></div>
         <div class="icons chain">
           <a class="ico" href="#recipes"><span class="pic"><img src="img/gene_raw.png" alt="" width="55" height="56"></span><b>丘脑核心</b><small>掉落遗传物质</small></a>
-          <a class="ico" href="#recipes"><span class="pic"><img src="img/gene.png" alt="" width="55" height="56"></span><b>提纯</b><small>+ 疗素</small></a>
+          <a class="ico" href="#recipes"><span class="pic"><img src="img/gene.png" alt="" width="64" height="64"></span><b>提纯</b><small>+ 疗素</small></a>
           <a class="ico" href="#recipes"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>基底</b><small>+ 奇怪的蛋</small></a>
           <a class="ico" href="#recipes"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>胚胎</b><small>+ 潜水员的遗骸</small></a>
-          <a class="ico" href="#recipes"><span class="pic"><img src="img/suit.png" alt="" width="126" height="118"></span><b>生物服</b><small>用血液喂养</small></a>
+          <a class="ico" href="#recipes"><span class="pic"><img src="img/suit.png" alt="" width="128" height="128"></span><b>生物服</b><small>用血液喂养</small></a>
         </div>
         <div class="strip">
           <a href="#recipes">配方</a>
@@ -468,7 +474,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <ul class="dots">
             <li>周围有空气时，生物服 <b>不消耗血浆</b></li>
             <li>在水下或氧气低于50%时，消耗血浆供氧</li>
-            <li>没有血浆时 <b>会严重拖慢行动</b></li>
+            <li>缺少异星血浆时，生物服会大幅减慢行动，每 <b>2 秒</b>对躯干造成 <b>2 点内部伤害</b>。装入有血浆的容器或脱下生物服即可停止伤害。</li>
           </ul>
         </section>
 
@@ -502,8 +508,13 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         <div class="bar-title"><h2>伤害与特性</h2></div>
         <div class="wtab">
           <table>
-            <thead><tr><th>武器</th><th>伤害</th><th>宿主吃饱时</th></tr></thead>
+            <thead><tr><th>武器</th><th>伤害</th><th>特殊效果</th></tr></thead>
             <tbody>
+              <tr>
+                <td><a href="#bonespike"><b>骨棘刃</b></a><br>近战</td>
+                <td><div class="tags"><span>撕裂伤 16</span><span>流血 10</span><span>护甲穿透 22%</span></div></td>
+                <td>活体近战刀刃，可部分穿透护甲并短暂减缓目标。不需要装备生物服。</td>
+              </tr>
               <tr>
                 <td><b>共生毒刺</b><br>近战</td>
                 <td><div class="tags"><span>撕裂伤 10</span><span>出血 6</span><span>眩晕 0.2</span></div></td>
@@ -524,6 +535,26 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         </div>
       </section>
 
+      <section class="panel" id="bonespike">
+        <div class="bar-title"><h2>骨棘刃</h2></div>
+        <p class="txt">活体近战刀刃，可部分穿透护甲并短暂减缓目标。不需要装备生物服。</p>
+        <div class="bar-sub"><h3>加工台</h3></div>
+        <p class="txt">2 份钙 + 1 份有机纤维 + 1 份异星血浆 → <em>骨棘刃</em><br><small>30 秒 · 建议武器技能 35</small></p>
+      </section>
+
+      <section class="panel" id="thalamus-gene">
+        <div class="bar-title"><h2>丘脑基因</h2></div>
+        <p class="txt">在受感染的沉船中摧毁丘脑核心，在研究台上用疗素提纯掉落的遗传物质。把提纯后的基因放入基因拼接器，然后在健康界面装备拼接器。</p>
+        <p class="txt">携带者激活基因后，亲手击杀的敌方 NPC 会在 <b>8 秒</b>后复活并为其作战，<b>5 分钟</b>后死亡。同一目标每回合只能复活一次。</p>
+        <p class="txt">复活能力需要 <a href="https://github.com/Luatrauma/Luatrauma.Docs/blob/master/manual/docs/installation.md">LuaCs for Barotrauma</a>。多人模式由服务器运行，单人模式由客户端运行。</p>
+      </section>
+
+      <section class="panel" id="gebira">
+        <div class="bar-title"><h2>格比拉</h2></div>
+        <div class="gebira-art"><img src="img/gebira.webp" alt="格比拉" width="1200" height="359" loading="lazy"></div>
+        <p class="txt">栖息在深渊里的巨型海蛇，长着飘带状鳍。它在深处绕着潜艇游动，并叼走艇外的潜水员。</p>
+      </section>
+
       <section class="panel" id="commands">
         <div class="bar-title"><h2>控制台指令</h2></div>
         <p class="txt">按 <kbd>F3</kbd>打开控制台。把 <code class="inline">inventory</code> 换成 <code class="inline">cursor</code>，物品就会出现在光标处。</p>
@@ -533,7 +564,8 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
             <div class="cmd"><div><code>spawnitem bioexo inventory</code><small>生物服</small></div><button class="copy" type="button">复制</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_embryo inventory</code><small>生物服胚胎</small></div><button class="copy" type="button">复制</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_suitbase inventory</code><small>生物服基底</small></div><button class="copy" type="button">复制</button></div>
-            <div class="cmd"><div><code>spawnitem bioexo_thalamusgene inventory</code><small>丘脑遗传物质</small></div><button class="copy" type="button">复制</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_thalamusgene inventory</code><small>丘脑基因</small></div><button class="copy" type="button">复制</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_bonespike inventory</code><small>骨棘刃</small></div><button class="copy" type="button">复制</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>共生毒刺</small></div><button class="copy" type="button">复制</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needler inventory</code><small>针刺枪</small></div><button class="copy" type="button">复制</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needlegland inventory</code><small>针腺</small></div><button class="copy" type="button">复制</button></div>
@@ -541,6 +573,9 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <div>
             <div class="bar-sub"><h3>材料与测试</h3></div>
             <div class="cmd"><div><code>spawnitem alienblood inventory</code><small>异星血浆</small></div><button class="copy" type="button">复制</button></div>
+            <div class="cmd"><div><code>spawnitem genesplicer inventory</code><small>基因拼接器</small></div><button class="copy" type="button">复制</button></div>
+            <div class="cmd"><div><code>spawn gebira cursor</code><small>格比拉</small></div><button class="copy" type="button">复制</button></div>
+            <div class="cmd"><div><code>spawn crawler outside</code><small>艇外爬行者</small></div><button class="copy" type="button">复制</button></div>
             <div class="cmd"><div><code>spawnitem stabilozine inventory</code><small>疗素</small></div><button class="copy" type="button">复制</button></div>
             <div class="cmd"><div><code>spawnitem diversremains inventory</code><small>潜水员的遗骸</small></div><button class="copy" type="button">复制</button></div>
             <div class="cmd"><div><code>spawnitem op_researchterminal cursor</code><small>研究台（需要供电）</small></div><button class="copy" type="button">复制</button></div>
@@ -555,9 +590,9 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
     <aside class="col right">
       <section class="panel about" id="about">
         <h3 class="panel-title">关于模组</h3>
-        <div class="lead-pic"><img src="img/suit.png" alt="生物服头盔和躯干：深红色的有机装甲" width="126" height="118"></div>
-        <p class="txt"><i>Biopunk for Barotrauma</i> 为木卫二带来生物朋克风格：装备不在加工台上制造，而是由遗传物质培育，并以怪物的血液为食。</p>
-        <p class="txt">本模组只使用原版资源：异星血浆、疗素、宠物蛋和潜水员的遗骸。</p>
+        <div class="lead-pic"><img src="img/suit.png" alt="生物服头盔和躯干：深红色的有机装甲" width="128" height="128"></div>
+        <p class="txt">在木卫二，活体护甲由遗传物质培育，骨棘刃则由钙、有机纤维和异星血浆制成。</p>
+        <p class="txt"><a href="#thalamus-gene">丘脑基因</a> · 丘脑基因的能力需要 LuaCs。激活方法见基因章节。</p>
         <a class="btn" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3830730588" target="_blank" rel="noopener">在 Steam 创意工坊订阅</a>
         <a class="more" href="#grow">如何开始</a>
       </section>
@@ -579,9 +614,15 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         </ul>
       </section>
 
-      <section class="panel">
+      <section class="panel" id="changelog">
         <h3 class="panel-title">更新日志</h3>
         <div class="log">
+          <div class="entry">
+            <b>0.0.5 alpha</b>
+            <p><strong>新增</strong> — 骨棘刃和丘脑基因的复活能力。</p>
+            <p><strong>改动</strong> — 更新了生物服、格比拉和基因样本瓶的贴图。缺血的生物服会伤害穿戴者。</p>
+            <p><strong>修复</strong> — 友方 NPC 会停止攻击复活的爬行者。修复了复活和选择目标时的 LuaCs 错误。</p>
+          </div>
           <div class="entry">
             <b>0.0.1 alpha</b>
             <time datetime="2026-10-31">31.10.2026</time>
@@ -618,7 +659,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
   </div>
   <div class="foot-line">
     <div class="gutter">
-      <span>Biopunk for Barotrauma · alpha 0.0.1</span>
+      <span>Biopunk for Barotrauma · alpha 0.0.5</span>
       <span>粉丝自制模组。Barotrauma 归 FakeFish 和 Undertow Games 所有。</span>
     </div>
   </div>

@@ -326,6 +326,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
   .cmds { grid-template-columns: minmax(0, 1fr); }
   .tabs a { padding: 6px 9px; }
 }
+.gebira-art img { display: block; width: 100%; height: auto; }
 </style>
 </head>
 <body>
@@ -339,7 +340,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
     </a>
     <div class="banner-art" aria-hidden="true">
       <img class="b-needler" src="img/needler.png" alt="" width="166" height="109">
-      <img class="b-suit" src="img/suit.png" alt="" width="126" height="118">
+      <img class="b-suit" src="img/suit.png" alt="" width="128" height="128">
     </div>
   </div>
   <div class="gutter tabbar">
@@ -371,12 +372,15 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <a href="#suit">Biosuit</a>
       <a href="#breath">Breathing and blood</a>
       <a href="#grow">Embryo</a>
+      <a href="#thalamus-gene">Thalamus Gene</a>
     </nav>
     <nav aria-label="Weapons">
       <h4>Weapons</h4>
       <a href="#weapons">Symbiote Stinger</a>
       <a href="#weapons">Needler</a>
       <a href="#weapons">Needle Gland</a>
+      <a href="#bonespike">Bonespike</a>
+      <a href="#gebira">Gebira</a>
     </nav>
     <nav aria-label="Crafting">
       <h4>Crafting</h4>
@@ -387,6 +391,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <h4>Tools</h4>
       <a href="#commands">Console commands</a>
       <a href="#alpha">Compatibility</a>
+      <a href="#changelog">Changelog</a>
     </nav>
     <nav aria-label="Author">
       <h4>Author</h4>
@@ -401,17 +406,17 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
     <div class="col">
       <section class="panel welcome">
         <h1>Welcome to <span>Biopunk for Barotrauma</span></h1>
-        <p>The mod adds a living suit grown from Thalamus genes and fed on alien blood, plus symbiote weapons that only awaken in the hands of a well-fed host. Everything is built on vanilla items and mechanics.</p>
-        <p class="ver">Current mod version: <b>0.0.1 alpha</b> · game <b>1.13.5.0</b></p>
+        <p>A living Biosuit fed on alien blood, symbiote weapons, the Thalamus Gene, and Gebira, a sea serpent from the Abyss.</p>
+        <p class="ver">Current mod version: <b>0.0.5 alpha</b> · game <b>1.13.5.0</b></p>
       </section>
 
       <section class="panel" id="suit">
         <div class="bar-title"><h2>Gear</h2></div>
         <div class="icons">
-          <a class="ico" href="#suit-stats"><span class="pic"><img src="img/suit.png" alt="" width="126" height="118"></span><b>Biosuit</b></a>
+          <a class="ico" href="#suit-stats"><span class="pic"><img src="img/suit.png" alt="" width="128" height="128"></span><b>Biosuit</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>Embryo</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>Suit base</b></a>
-          <a class="ico" href="#grow"><span class="pic"><img src="img/gene.png" alt="" width="55" height="56"></span><b>Genetic material</b></a>
+          <a class="ico" href="#thalamus-gene"><span class="pic"><img src="img/gene.png" alt="" width="64" height="64"></span><b>Thalamus Gene</b></a>
         </div>
         <div class="strip">
           <a href="#suit-stats">Stats</a>
@@ -427,6 +432,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/stinger.png" alt="" width="198" height="46"></span><b>Symbiote Stinger</b></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/needler.png" alt="" width="166" height="109"></span><b>Needler</b></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/gland.png" alt="" width="50" height="59"></span><b>Needle Gland</b></a>
+          <a class="ico" href="#bonespike"><span class="pic"><img src="img/bonespike.png" alt="" width="244" height="54"></span><b>Bonespike</b></a>
         </div>
         <div class="strip">
           <a href="#weapons-table">Damage</a>
@@ -439,10 +445,10 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         <div class="bar-title"><h2>Growing</h2></div>
         <div class="icons chain">
           <a class="ico" href="#recipes"><span class="pic"><img src="img/gene_raw.png" alt="" width="55" height="56"></span><b>Thalamus Brain</b><small>drops genetic material</small></a>
-          <a class="ico" href="#recipes"><span class="pic"><img src="img/gene.png" alt="" width="55" height="56"></span><b>Refining</b><small>+ stabilozine</small></a>
+          <a class="ico" href="#recipes"><span class="pic"><img src="img/gene.png" alt="" width="64" height="64"></span><b>Refining</b><small>+ stabilozine</small></a>
           <a class="ico" href="#recipes"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>Base</b><small>+ strange egg</small></a>
           <a class="ico" href="#recipes"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>Embryo</b><small>+ diver's remains</small></a>
-          <a class="ico" href="#recipes"><span class="pic"><img src="img/suit.png" alt="" width="126" height="118"></span><b>Biosuit</b><small>feed it blood</small></a>
+          <a class="ico" href="#recipes"><span class="pic"><img src="img/suit.png" alt="" width="128" height="128"></span><b>Biosuit</b><small>feed it blood</small></a>
         </div>
         <div class="strip">
           <a href="#recipes">Recipes</a>
@@ -465,7 +471,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <ul class="dots">
             <li>While there is air around, the suit <b>uses no blood</b></li>
             <li>Under water or below 50% oxygen it breathes on blood</li>
-            <li>Without blood it <b>slows you down heavily</b></li>
+            <li>Without blood, the suit severely slows movement and deals <b>2 internal damage to the torso every 2 seconds</b>. Insert a vial containing blood or remove the suit to stop the damage.</li>
           </ul>
         </section>
 
@@ -499,8 +505,13 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         <div class="bar-title"><h2>Damage and properties</h2></div>
         <div class="wtab">
           <table>
-            <thead><tr><th>Weapons</th><th>Damage</th><th>With a fed host</th></tr></thead>
+            <thead><tr><th>Weapons</th><th>Damage</th><th>Special properties</th></tr></thead>
             <tbody>
+              <tr>
+                <td><a href="#bonespike"><b>Bonespike</b></a><br>melee</td>
+                <td><div class="tags"><span>lacerations 16</span><span>bleeding 10</span><span>armor penetration 22%</span></div></td>
+                <td>A living melee blade that partially penetrates armor and briefly slows the target. It works without a Biosuit.</td>
+              </tr>
               <tr>
                 <td><b>Symbiote Stinger</b><br>melee</td>
                 <td><div class="tags"><span>lacerations 10</span><span>bleeding 6</span><span>stun 0.2</span></div></td>
@@ -521,6 +532,26 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         </div>
       </section>
 
+      <section class="panel" id="bonespike">
+        <div class="bar-title"><h2>Bonespike</h2></div>
+        <p class="txt">A living melee blade that partially penetrates armor and briefly slows the target. It works without a Biosuit.</p>
+        <div class="bar-sub"><h3>Fabricator</h3></div>
+        <p class="txt">2 Calcium + 1 Organic Fiber + 1 Alien Blood → <em>Bonespike</em><br><small>30 s · Weapons 35 recommended</small></p>
+      </section>
+
+      <section class="panel" id="thalamus-gene">
+        <div class="bar-title"><h2>Thalamus Gene</h2></div>
+        <p class="txt">Destroy a Thalamus Brain in an infested wreck and refine the material it drops with stabilozine at a Research Station. Insert the refined gene into a Gene Splicer and equip the splicer in the health interface.</p>
+        <p class="txt">An enemy NPC killed by a carrier with the gene active rises after <b>8 seconds</b> and fights on the carrier’s side. The ally dies <b>5 minutes</b> later. Each target can be raised once per round.</p>
+        <p class="txt">Reanimation requires <a href="https://github.com/Luatrauma/Luatrauma.Docs/blob/master/manual/docs/installation.md">LuaCs for Barotrauma</a> on the multiplayer server or in the single-player client.</p>
+      </section>
+
+      <section class="panel" id="gebira">
+        <div class="bar-title"><h2>Gebira</h2></div>
+        <div class="gebira-art"><img src="img/gebira.webp" alt="Gebira" width="1200" height="359" loading="lazy"></div>
+        <p class="txt">A long abyssal sea serpent with ribbon fins. It circles submarines in the depths and snatches divers outside the hull.</p>
+      </section>
+
       <section class="panel" id="commands">
         <div class="bar-title"><h2>Console commands</h2></div>
         <p class="txt">Open the console with <kbd>F3</kbd>. Replace <code class="inline">inventory</code> with <code class="inline">cursor</code>to spawn the item under your cursor.</p>
@@ -530,7 +561,8 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
             <div class="cmd"><div><code>spawnitem bioexo inventory</code><small>Biosuit</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_embryo inventory</code><small>Biosuit Embryo</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_suitbase inventory</code><small>Biosuit Base</small></div><button class="copy" type="button">Copy</button></div>
-            <div class="cmd"><div><code>spawnitem bioexo_thalamusgene inventory</code><small>Thalamus Genetic Material</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_thalamusgene inventory</code><small>Thalamus Gene</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_bonespike inventory</code><small>Bonespike</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>Symbiote Stinger</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needler inventory</code><small>Needler</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needlegland inventory</code><small>Needle Gland</small></div><button class="copy" type="button">Copy</button></div>
@@ -538,6 +570,9 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <div>
             <div class="bar-sub"><h3>Ingredients and tests</h3></div>
             <div class="cmd"><div><code>spawnitem alienblood inventory</code><small>Alien Blood</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem genesplicer inventory</code><small>Gene Splicer</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawn gebira cursor</code><small>Gebira</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawn crawler outside</code><small>Crawler outside the sub</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem stabilozine inventory</code><small>Stabilozine</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem diversremains inventory</code><small>Diver's Remains</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem op_researchterminal cursor</code><small>Research Station (needs power)</small></div><button class="copy" type="button">Copy</button></div>
@@ -552,9 +587,9 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
     <aside class="col right">
       <section class="panel about" id="about">
         <h3 class="panel-title">About</h3>
-        <div class="lead-pic"><img src="img/suit.png" alt="Biosuit helmet and torso: crimson organic armour" width="126" height="118"></div>
-        <p class="txt"><i>Biopunk for Barotrauma</i> brings biopunk to Europa: gear is not built at a fabricator, it is grown from genetic material and fed on monster blood.</p>
-        <p class="txt">The mod only uses vanilla resources: alien blood, stabilozine, pet eggs and diver's remains.</p>
+        <div class="lead-pic"><img src="img/suit.png" alt="Biosuit helmet and torso: crimson organic armour" width="128" height="128"></div>
+        <p class="txt">On Europa, living armor grows from genetic material, and Bonespike is fabricated from calcium, organic fiber, and alien blood.</p>
+        <p class="txt"><a href="#thalamus-gene">Thalamus Gene</a> · The Thalamus Gene’s ability requires LuaCs. The gene section explains how to activate it.</p>
         <a class="btn" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3830730588" target="_blank" rel="noopener">Subscribe on Steam Workshop</a>
         <a class="more" href="#grow">How to start</a>
       </section>
@@ -576,9 +611,15 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         </ul>
       </section>
 
-      <section class="panel">
+      <section class="panel" id="changelog">
         <h3 class="panel-title">Changelog</h3>
         <div class="log">
+          <div class="entry">
+            <b>0.0.5 alpha</b>
+            <p><strong>Added</strong> — Bonespike and Thalamus Gene reanimation.</p>
+            <p><strong>Changed</strong> — New Biosuit, Gebira, and gene vial sprites. The Biosuit now damages its wearer when starved of blood.</p>
+            <p><strong>Fixed</strong> — Allied NPCs stop attacking raised crawlers. Fixed LuaCs errors during reanimation and target selection.</p>
+          </div>
           <div class="entry">
             <b>0.0.1 alpha</b>
             <time datetime="2026-10-31">31.10.2026</time>
@@ -615,7 +656,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
   </div>
   <div class="foot-line">
     <div class="gutter">
-      <span>Biopunk for Barotrauma · alpha 0.0.1</span>
+      <span>Biopunk for Barotrauma · alpha 0.0.5</span>
       <span>Fan-made mod. Barotrauma belongs to FakeFish and Undertow Games.</span>
     </div>
   </div>

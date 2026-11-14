@@ -326,6 +326,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
   .cmds { grid-template-columns: minmax(0, 1fr); }
   .tabs a { padding: 6px 9px; }
 }
+.gebira-art img { display: block; width: 100%; height: auto; }
 </style>
 </head>
 <body>
@@ -339,7 +340,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
     </a>
     <div class="banner-art" aria-hidden="true">
       <img class="b-needler" src="img/needler.png" alt="" width="166" height="109">
-      <img class="b-suit" src="img/suit.png" alt="" width="126" height="118">
+      <img class="b-suit" src="img/suit.png" alt="" width="128" height="128">
     </div>
   </div>
   <div class="gutter tabbar">
@@ -371,12 +372,15 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <a href="#suit">Biotraje</a>
       <a href="#breath">Respiración y sangre</a>
       <a href="#grow">Embrión</a>
+      <a href="#thalamus-gene">Gen de Tálamo</a>
     </nav>
     <nav aria-label="Armas">
       <h4>Armas</h4>
       <a href="#weapons">Aguijón simbionte</a>
       <a href="#weapons">Lanzaagujas</a>
       <a href="#weapons">Glándula de agujas</a>
+      <a href="#bonespike">Espina Ósea</a>
+      <a href="#gebira">Gebira</a>
     </nav>
     <nav aria-label="Fabricación">
       <h4>Fabricación</h4>
@@ -387,6 +391,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <h4>Herramientas</h4>
       <a href="#commands">Comandos de consola</a>
       <a href="#alpha">Compatibilidad</a>
+      <a href="#changelog">Registro de versiones</a>
     </nav>
     <nav aria-label="Autor">
       <h4>Autor</h4>
@@ -401,17 +406,17 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
     <div class="col">
       <section class="panel welcome">
         <h1>Bienvenido a <span>Biopunk for Barotrauma</span></h1>
-        <p>El mod añade un traje vivo cultivado a partir de genes de Tálamo que se alimenta de sangre alienígena, y armas simbiontes que solo despiertan en manos de un portador bien alimentado. Todo se basa en objetos y mecánicas del juego base.</p>
-        <p class="ver">Versión actual del mod: <b>0.0.1 alpha</b> · juego <b>1.13.5.0</b></p>
+        <p>Un Biotraje vivo que se alimenta de sangre alienígena, armas simbiontes, el Gen de Tálamo y Gebira, una serpiente marina del abismo.</p>
+        <p class="ver">Versión actual del mod: <b>0.0.5 alpha</b> · juego <b>1.13.5.0</b></p>
       </section>
 
       <section class="panel" id="suit">
         <div class="bar-title"><h2>Equipo</h2></div>
         <div class="icons">
-          <a class="ico" href="#suit-stats"><span class="pic"><img src="img/suit.png" alt="" width="126" height="118"></span><b>Biotraje</b></a>
+          <a class="ico" href="#suit-stats"><span class="pic"><img src="img/suit.png" alt="" width="128" height="128"></span><b>Biotraje</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>Embrión</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>Base del traje</b></a>
-          <a class="ico" href="#grow"><span class="pic"><img src="img/gene.png" alt="" width="55" height="56"></span><b>Material genético</b></a>
+          <a class="ico" href="#thalamus-gene"><span class="pic"><img src="img/gene.png" alt="" width="64" height="64"></span><b>Gen de Tálamo</b></a>
         </div>
         <div class="strip">
           <a href="#suit-stats">Características</a>
@@ -427,6 +432,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/stinger.png" alt="" width="198" height="46"></span><b>Aguijón simbionte</b></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/needler.png" alt="" width="166" height="109"></span><b>Lanzaagujas</b></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/gland.png" alt="" width="50" height="59"></span><b>Glándula de agujas</b></a>
+          <a class="ico" href="#bonespike"><span class="pic"><img src="img/bonespike.png" alt="" width="244" height="54"></span><b>Espina Ósea</b></a>
         </div>
         <div class="strip">
           <a href="#weapons-table">Daño</a>
@@ -439,10 +445,10 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         <div class="bar-title"><h2>Cultivo</h2></div>
         <div class="icons chain">
           <a class="ico" href="#recipes"><span class="pic"><img src="img/gene_raw.png" alt="" width="55" height="56"></span><b>Cerebro de Tálamo</b><small>suelta material genético</small></a>
-          <a class="ico" href="#recipes"><span class="pic"><img src="img/gene.png" alt="" width="55" height="56"></span><b>Refinado</b><small>+ estabilocina</small></a>
+          <a class="ico" href="#recipes"><span class="pic"><img src="img/gene.png" alt="" width="64" height="64"></span><b>Refinado</b><small>+ estabilocina</small></a>
           <a class="ico" href="#recipes"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>Base</b><small>+ huevo extraño</small></a>
           <a class="ico" href="#recipes"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>Embrión</b><small>+ restos de buceador</small></a>
-          <a class="ico" href="#recipes"><span class="pic"><img src="img/suit.png" alt="" width="126" height="118"></span><b>Biotraje</b><small>aliméntalo con sangre</small></a>
+          <a class="ico" href="#recipes"><span class="pic"><img src="img/suit.png" alt="" width="128" height="128"></span><b>Biotraje</b><small>aliméntalo con sangre</small></a>
         </div>
         <div class="strip">
           <a href="#recipes">Recetas</a>
@@ -465,7 +471,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <ul class="dots">
             <li>Mientras haya aire alrededor, el traje <b>no gasta sangre</b></li>
             <li>Bajo el agua o con menos del 50% de oxígeno respira gracias a la sangre</li>
-            <li>Sin sangre <b>te ralentiza mucho</b></li>
+            <li>Sin sangre, el traje ralentiza mucho al portador y causa <b>2 de daño interno al torso cada 2 segundos</b>. Inserta un vial con sangre o quítate el traje para detener el daño.</li>
           </ul>
         </section>
 
@@ -499,8 +505,13 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         <div class="bar-title"><h2>Daño y propiedades</h2></div>
         <div class="wtab">
           <table>
-            <thead><tr><th>Armas</th><th>Daño</th><th>Con portador alimentado</th></tr></thead>
+            <thead><tr><th>Armas</th><th>Daño</th><th>Propiedades especiales</th></tr></thead>
             <tbody>
+              <tr>
+                <td><a href="#bonespike"><b>Espina Ósea</b></a><br>cuerpo a cuerpo</td>
+                <td><div class="tags"><span>laceraciones 16</span><span>hemorragia 10</span><span>penetración de armadura 22%</span></div></td>
+                <td>Hoja viva de combate cuerpo a cuerpo. Penetra parcialmente la armadura y ralentiza brevemente al objetivo. Funciona sin Biotraje.</td>
+              </tr>
               <tr>
                 <td><b>Aguijón simbionte</b><br>cuerpo a cuerpo</td>
                 <td><div class="tags"><span>laceraciones 10</span><span>hemorragia 6</span><span>aturdimiento 0.2</span></div></td>
@@ -521,6 +532,26 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         </div>
       </section>
 
+      <section class="panel" id="bonespike">
+        <div class="bar-title"><h2>Espina Ósea</h2></div>
+        <p class="txt">Hoja viva de combate cuerpo a cuerpo. Penetra parcialmente la armadura y ralentiza brevemente al objetivo. Funciona sin Biotraje.</p>
+        <div class="bar-sub"><h3>Fabricador</h3></div>
+        <p class="txt">2 de calcio + 1 de fibra orgánica + 1 de sangre alienígena → <em>Espina Ósea</em><br><small>30 s · habilidad Armas 35 recomendada</small></p>
+      </section>
+
+      <section class="panel" id="thalamus-gene">
+        <div class="bar-title"><h2>Gen de Tálamo</h2></div>
+        <p class="txt">Destruye un cerebro de Tálamo en un pecio infestado y refina el material que suelta con estabilocina en una estación de investigación. Inserta el gen refinado en un empalmador genético y equípalo desde la interfaz de salud.</p>
+        <p class="txt">Si el portador con el gen activo mata a un PNJ enemigo, este se levanta a los <b>8 segundos</b> y combate de su lado. El aliado muere <b>5 minutos</b> después. Cada objetivo solo puede revivir una vez por ronda.</p>
+        <p class="txt">La reanimación requiere <a href="https://github.com/Luatrauma/Luatrauma.Docs/blob/master/manual/docs/installation.md">LuaCs for Barotrauma</a> en el servidor multijugador o en el cliente para partidas de un jugador.</p>
+      </section>
+
+      <section class="panel" id="gebira">
+        <div class="bar-title"><h2>Gebira</h2></div>
+        <div class="gebira-art"><img src="img/gebira.webp" alt="Gebira" width="1200" height="359" loading="lazy"></div>
+        <p class="txt">Una larga serpiente marina del abismo con aletas en forma de cinta. Rodea los submarinos en las profundidades y atrapa a los buceadores que salen al exterior.</p>
+      </section>
+
       <section class="panel" id="commands">
         <div class="bar-title"><h2>Comandos de consola</h2></div>
         <p class="txt">La consola se abre con <kbd>F3</kbd>. Cambia <code class="inline">inventory</code> por <code class="inline">cursor</code>para que el objeto aparezca bajo el cursor.</p>
@@ -530,7 +561,8 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
             <div class="cmd"><div><code>spawnitem bioexo inventory</code><small>Biotraje</small></div><button class="copy" type="button">Copiar</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_embryo inventory</code><small>Embrión de biotraje</small></div><button class="copy" type="button">Copiar</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_suitbase inventory</code><small>Base de biotraje</small></div><button class="copy" type="button">Copiar</button></div>
-            <div class="cmd"><div><code>spawnitem bioexo_thalamusgene inventory</code><small>Material genético de Tálamo</small></div><button class="copy" type="button">Copiar</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_thalamusgene inventory</code><small>Gen de Tálamo</small></div><button class="copy" type="button">Copiar</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_bonespike inventory</code><small>Espina Ósea</small></div><button class="copy" type="button">Copiar</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>Aguijón simbionte</small></div><button class="copy" type="button">Copiar</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needler inventory</code><small>Lanzaagujas</small></div><button class="copy" type="button">Copiar</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needlegland inventory</code><small>Glándula de agujas</small></div><button class="copy" type="button">Copiar</button></div>
@@ -538,6 +570,9 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <div>
             <div class="bar-sub"><h3>Ingredientes y pruebas</h3></div>
             <div class="cmd"><div><code>spawnitem alienblood inventory</code><small>Sangre alienígena</small></div><button class="copy" type="button">Copiar</button></div>
+            <div class="cmd"><div><code>spawnitem genesplicer inventory</code><small>Empalmador genético</small></div><button class="copy" type="button">Copiar</button></div>
+            <div class="cmd"><div><code>spawn gebira cursor</code><small>Gebira</small></div><button class="copy" type="button">Copiar</button></div>
+            <div class="cmd"><div><code>spawn crawler outside</code><small>Reptador fuera del submarino</small></div><button class="copy" type="button">Copiar</button></div>
             <div class="cmd"><div><code>spawnitem stabilozine inventory</code><small>Estabilocina</small></div><button class="copy" type="button">Copiar</button></div>
             <div class="cmd"><div><code>spawnitem diversremains inventory</code><small>Restos de buceador</small></div><button class="copy" type="button">Copiar</button></div>
             <div class="cmd"><div><code>spawnitem op_researchterminal cursor</code><small>Estación de investigación (necesita energía)</small></div><button class="copy" type="button">Copiar</button></div>
@@ -552,9 +587,9 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
     <aside class="col right">
       <section class="panel about" id="about">
         <h3 class="panel-title">Sobre el mod</h3>
-        <div class="lead-pic"><img src="img/suit.png" alt="Casco y torso del Biotraje: armadura orgánica carmesí" width="126" height="118"></div>
-        <p class="txt"><i>Biopunk for Barotrauma</i> lleva el biopunk a Europa: el equipo no se fabrica en un fabricador, sino que se cultiva a partir de material genético y se alimenta con sangre de monstruos.</p>
-        <p class="txt">El mod solo usa recursos del juego base: sangre alienígena, estabilocina, huevos de mascota y restos de buceador.</p>
+        <div class="lead-pic"><img src="img/suit.png" alt="Casco y torso del Biotraje: armadura orgánica carmesí" width="128" height="128"></div>
+        <p class="txt">En Europa, las armaduras vivas se cultivan a partir de material genético, y la Espina Ósea se fabrica con calcio, fibra orgánica y sangre alienígena.</p>
+        <p class="txt"><a href="#thalamus-gene">Gen de Tálamo</a> · La habilidad del Gen de Tálamo requiere LuaCs. Consulta la sección del gen para saber cómo activarlo.</p>
         <a class="btn" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3830730588" target="_blank" rel="noopener">Suscribirse en Steam Workshop</a>
         <a class="more" href="#grow">Cómo empezar</a>
       </section>
@@ -576,9 +611,15 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         </ul>
       </section>
 
-      <section class="panel">
+      <section class="panel" id="changelog">
         <h3 class="panel-title">Registro de versiones</h3>
         <div class="log">
+          <div class="entry">
+            <b>0.0.5 alpha</b>
+            <p><strong>Añadido</strong> — Espina Ósea y reanimación con el Gen de Tálamo.</p>
+            <p><strong>Modificado</strong> — Nuevos sprites del Biotraje, Gebira y el vial del gen. El Biotraje hambriento daña al portador.</p>
+            <p><strong>Corregido</strong> — Los PNJ aliados dejan de atacar a los reptadores reanimados. Se corrigieron errores de LuaCs al reanimar y elegir objetivos.</p>
+          </div>
           <div class="entry">
             <b>0.0.1 alpha</b>
             <time datetime="2026-10-31">31.10.2026</time>
@@ -615,7 +656,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
   </div>
   <div class="foot-line">
     <div class="gutter">
-      <span>Biopunk for Barotrauma · alfa 0.0.1</span>
+      <span>Biopunk for Barotrauma · alfa 0.0.5</span>
       <span>Mod hecho por fans. Barotrauma pertenece a FakeFish y Undertow Games.</span>
     </div>
   </div>
