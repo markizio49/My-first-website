@@ -326,6 +326,25 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
   .cmds { grid-template-columns: minmax(0, 1fr); }
   .tabs a { padding: 6px 9px; }
 }
+/* timeline */
+.timeline { list-style: none; margin: 0; padding: 0 0 0 22px; position: relative; display: grid; gap: 18px; }
+.timeline::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+.timeline > li { position: relative; }
+.timeline > li::before {
+  content: ""; position: absolute; left: -22px; top: 5px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--panel); border: 2px solid var(--muted);
+}
+.timeline > li.now::before { background: var(--flesh); border-color: var(--flesh-soft); box-shadow: 0 0 0 4px rgba(217, 67, 90, .16); }
+.tl-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 6px; }
+.tl-head h3 { font-size: 17px; font-weight: 700; color: var(--bone); }
+.tl-head time { font-family: var(--mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tl-head .ver-tag { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--flesh-soft); }
+.tl-head .cur { font: 600 11px/1 var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--abyss); background: var(--sonar); padding: 3px 6px; border-radius: 3px; }
+.tl-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.tl-list li { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 10px; font-size: 14px; color: var(--muted); align-items: baseline; }
+.tl-list .k { font: 600 11px/1.6 var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.tl-list .k.add { color: var(--sonar); } .tl-list .k.chg { color: var(--bone); } .tl-list .k.fix { color: var(--flesh-soft); }
+@media (max-width: 560px) { .tl-list li { grid-template-columns: minmax(0, 1fr); gap: 0; } }
 .gebira-art img { display: block; width: 100%; height: auto; }
 </style>
 </head>
@@ -373,6 +392,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <a href="#breath">Breathing and blood</a>
       <a href="#grow">Embryo</a>
       <a href="#thalamus-gene">Thalamus Gene</a>
+      <a href="#latcher-gene">Latcher Gene</a>
     </nav>
     <nav aria-label="Weapons">
       <h4>Weapons</h4>
@@ -515,7 +535,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
               <tr>
                 <td><b>Symbiote Stinger</b><br>melee</td>
                 <td><div class="tags"><span>lacerations 10</span><span>bleeding 6</span><span>stun 0.2</span></div></td>
-                <td>Damage ×1.5. Every hit pumps the victim's blood into the suit's vial</td>
+                <td>Wielded by the wearer of a fed Biosuit it hits <b>2.5 times</b> harder (25 / 15), and every strike pumps the victim's blood into the suit's vial.</td>
               </tr>
               <tr>
                 <td><b>Needler</b><br>ranged</td>
@@ -546,10 +566,48 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         <p class="txt">Reanimation requires <a href="https://github.com/Luatrauma/Luatrauma.Docs/blob/master/manual/docs/installation.md">LuaCs for Barotrauma</a> on the multiplayer server or in the single-player client.</p>
       </section>
 
+      <section class="panel" id="latcher-gene">
+        <div class="bar-title"><h2>Latcher Gene</h2></div>
+        <p class="txt">Found when researching unidentified genetic material at a research station, like the regular genes. Load it into a gene splicer and the carrier grows a long, barbed tongue.</p>
+        <p class="txt">The attack key (<kbd>R</kbd> by default) lashes the tongue forward: it hooks the target, drags it towards the carrier and briefly stuns it. Cooldown: <b>8 seconds</b>. This gene does not need LuaCs.</p>
+      </section>
+
       <section class="panel" id="gebira">
         <div class="bar-title"><h2>Gebira</h2></div>
         <div class="gebira-art"><img src="img/gebira.webp" alt="Gebira" width="1200" height="359" loading="lazy"></div>
         <p class="txt">A long abyssal sea serpent with ribbon fins. It circles submarines in the depths and snatches divers outside the hull.</p>
+      </section>
+
+      <section class="panel" id="changelog">
+        <div class="bar-title"><h2>Update timeline</h2></div>
+        <ol class="timeline">
+          <li class="now">
+            <div class="tl-head"><span class="ver-tag">0.0.5 alpha</span><h3>Bonespike, genes and Gebira</h3><time datetime="2026-11-14">14 Nov 2026</time> <span class="cur">current</span></div>
+            <ul class="tl-list">
+              <li><span class="k add">Added</span><span>Bonespike: a bone blade with a fabricator recipe.</span></li>
+              <li><span class="k add">Added</span><span>Thalamus Gene: enemies killed by the carrier rise after 8 seconds and fight on their side for 5 minutes.</span></li>
+              <li><span class="k add">Added</span><span>Gebira, the abyssal serpent, and the Latcher gene with its grappling tongue.</span></li>
+              <li><span class="k add">Added</span><span>Chinese and Spanish localisations.</span></li>
+              <li><span class="k chg">Changed</span><span>New Biosuit and gene vial sprites.</span></li>
+              <li><span class="k chg">Changed</span><span>A starved Biosuit now hurts its wearer: 2 internal damage every 2 seconds.</span></li>
+              <li><span class="k fix">Fixed</span><span>Allied NPCs no longer attack raised creatures.</span></li>
+              <li><span class="k fix">Fixed</span><span>LuaCs errors during reanimation and target selection.</span></li>
+            </ul>
+          </li>
+          <li>
+            <div class="tl-head"><span class="ver-tag">0.0.2 – 0.0.4</span><h3>Maintenance uploads</h3><time datetime="2026-10-31">31 Oct 2026</time></div>
+            <ul class="tl-list">
+              <li><span class="k chg">Changed</span><span>Three technical Workshop re-uploads: mod manifest fixes and a wiki link in the description. No new content.</span></li>
+            </ul>
+          </li>
+          <li>
+            <div class="tl-head"><span class="ver-tag">0.0.1 alpha</span><h3>First release</h3><time datetime="2026-10-31">31 Oct 2026</time></div>
+            <ul class="tl-list">
+              <li><span class="k add">Added</span><span>The Biosuit and its growth chain from Thalamus genetic material.</span></li>
+              <li><span class="k add">Added</span><span>Symbiote Stinger, Needler and Needle Gland.</span></li>
+            </ul>
+          </li>
+        </ol>
       </section>
 
       <section class="panel" id="commands">
@@ -611,21 +669,16 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         </ul>
       </section>
 
-      <section class="panel" id="changelog">
-        <h3 class="panel-title">Changelog</h3>
+      <section class="panel" id="latest">
+        <h3 class="panel-title">Latest version</h3>
         <div class="log">
           <div class="entry">
             <b>0.0.5 alpha</b>
-            <p><strong>Added</strong> — Bonespike and Thalamus Gene reanimation.</p>
-            <p><strong>Changed</strong> — New Biosuit, Gebira, and gene vial sprites. The Biosuit now damages its wearer when starved of blood.</p>
-            <p><strong>Fixed</strong> — Allied NPCs stop attacking raised crawlers. Fixed LuaCs errors during reanimation and target selection.</p>
-          </div>
-          <div class="entry">
-            <b>0.0.1 alpha</b>
-            <time datetime="2026-10-31">31.10.2026</time>
-            <p>First release: Biosuit, growth chain, Symbiote Stinger, Needler and Needle Gland.</p>
+            <time datetime="2026-11-14">14 Nov 2026</time>
+            <p>Bonespike, Thalamus Gene, Gebira and the Latcher gene.</p>
           </div>
         </div>
+        <a class="more" href="#changelog">Full timeline</a>
       </section>
     </aside>
   </main>

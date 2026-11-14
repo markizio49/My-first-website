@@ -326,6 +326,25 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
   .cmds { grid-template-columns: minmax(0, 1fr); }
   .tabs a { padding: 6px 9px; }
 }
+/* timeline */
+.timeline { list-style: none; margin: 0; padding: 0 0 0 22px; position: relative; display: grid; gap: 18px; }
+.timeline::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+.timeline > li { position: relative; }
+.timeline > li::before {
+  content: ""; position: absolute; left: -22px; top: 5px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--panel); border: 2px solid var(--muted);
+}
+.timeline > li.now::before { background: var(--flesh); border-color: var(--flesh-soft); box-shadow: 0 0 0 4px rgba(217, 67, 90, .16); }
+.tl-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 6px; }
+.tl-head h3 { font-size: 17px; font-weight: 700; color: var(--bone); }
+.tl-head time { font-family: var(--mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tl-head .ver-tag { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--flesh-soft); }
+.tl-head .cur { font: 600 11px/1 var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--abyss); background: var(--sonar); padding: 3px 6px; border-radius: 3px; }
+.tl-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.tl-list li { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 10px; font-size: 14px; color: var(--muted); align-items: baseline; }
+.tl-list .k { font: 600 11px/1.6 var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.tl-list .k.add { color: var(--sonar); } .tl-list .k.chg { color: var(--bone); } .tl-list .k.fix { color: var(--flesh-soft); }
+@media (max-width: 560px) { .tl-list li { grid-template-columns: minmax(0, 1fr); gap: 0; } }
 .gebira-art img { display: block; width: 100%; height: auto; }
 </style>
 </head>
@@ -373,6 +392,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <a href="#breath">Дыхание и кровь</a>
       <a href="#grow">Зародыш</a>
       <a href="#thalamus-gene">Ген Таламуса</a>
+      <a href="#latcher-gene">Ген блокиратора</a>
     </nav>
     <nav aria-label="Оружие">
       <h4>Оружие</h4>
@@ -380,6 +400,9 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <a href="#weapons">Иглострел</a>
       <a href="#weapons">Игольная железа</a>
       <a href="#bonespike">Костошип</a>
+    </nav>
+    <nav aria-label="Существа">
+      <h4>Существа</h4>
       <a href="#gebira">Гебира</a>
     </nav>
     <nav aria-label="Крафт">
@@ -406,7 +429,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
     <div class="col">
       <section class="panel welcome">
         <h1>Добро пожаловать в <span>Biopunk for Barotrauma</span></h1>
-        <p>Живой биокостюм на инопланетной крови, оружие симбионта, ген Таламуса и Гебира — морской змей бездны.</p>
+        <p>Биопанк на дне Европы: живой костюм, который питается инопланетной кровью, оружие из плоти и кости, гены таламуса и блокиратора и Гебира, змей из бездны.</p>
         <p class="ver">Текущая версия мода: <b>0.0.5 alpha</b> · игра <b>1.13.5.0</b></p>
       </section>
 
@@ -509,23 +532,23 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
             <tbody>
               <tr>
                 <td><a href="#bonespike"><b>Костошип</b></a><br>ближний бой</td>
-                <td><div class="tags"><span>рваные раны 16</span><span>кровотечение 10</span><span>пробивание брони 22%</span></div></td>
-                <td>Живой клинок для ближнего боя. Частично пробивает броню и ненадолго замедляет цель. Работает без биокостюма.</td>
+                <td><div class="tags"><span>рваные раны 16</span><span>кровотечение 10</span><span>пробивание брони 22%</span><span>замедление 10</span></div></td>
+                <td>Пробивает часть брони и ненадолго замедляет цель. Биокостюм ему не нужен.</td>
               </tr>
               <tr>
                 <td><b>Жало симбионта</b><br>ближний бой</td>
                 <td><div class="tags"><span>рваные раны 10</span><span>кровотечение 6</span><span>оглушение 0.2</span></div></td>
-                <td>Урон ×1,5. Каждый удар перекачивает кровь жертвы во флакон костюма</td>
+                <td>В руках носителя сытого биокостюма бьёт в <b>2,5 раза</b> сильнее (25 / 15) и с каждым ударом перекачивает кровь жертвы во флакон костюма.</td>
               </tr>
               <tr>
                 <td><b>Иглострел</b><br>дальний бой</td>
                 <td><div class="tags"><span>рваные раны 7</span><span>кровотечение 7</span><span>кислотный ожог 3</span></div></td>
-                <td>Стреляет из игольной железы. На пустой железе не стреляет</td>
+                <td>Стреляет костяными иглами из игольной железы. С пустой железой молчит.</td>
               </tr>
               <tr>
                 <td><b>Игольная железа</b><br>магазин</td>
                 <td><div class="tags"><span>20 игл</span></div></td>
-                <td>Отращивает 1 иглу каждые 6 с. Пустую можно перерастить в фабрикаторе с инопланетной кровью</td>
+                <td>В иглостреле у носителя сытого биокостюма отращивает по игле каждые 6 с. Пустую можно перерастить в фабрикаторе с инопланетной кровью.</td>
               </tr>
             </tbody>
           </table>
@@ -534,7 +557,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
 
       <section class="panel" id="bonespike">
         <div class="bar-title"><h2>Костошип</h2></div>
-        <p class="txt">Живой клинок для ближнего боя. Частично пробивает броню и ненадолго замедляет цель. Работает без биокостюма.</p>
+        <p class="txt">Изогнутый костяной клинок на волокнистой рукояти. Пробивает часть брони, а вязкий секрет на лезвии ненадолго замедляет цель. Симбиоз ему не нужен: костошип одинаково бьёт в любых руках.</p>
         <div class="bar-sub"><h3>Обычный фабрикатор</h3></div>
         <p class="txt">2 кальция + 1 органическое волокно + 1 инопланетная кровь → <em>Костошип</em><br><small>30 с · Оружие 35 (рекомендуемый навык)</small></p>
       </section>
@@ -542,14 +565,52 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <section class="panel" id="thalamus-gene">
         <div class="bar-title"><h2>Ген Таламуса</h2></div>
         <p class="txt">Уничтожьте мозг таламуса в заражённом обломке и очистите выпавший материал стабилоцином на исследовательском терминале. Вставьте очищенный ген в спайщик генов и наденьте спайщик через окно здоровья.</p>
-        <p class="txt">Вражеский NPC, которого убил носитель активного гена, восстаёт через <b>8 секунд</b> и сражается на его стороне. Через <b>5 минут</b> союзник умирает. Одну и ту же цель можно поднять один раз за раунд.</p>
+        <p class="txt">Враг, которого убил носитель гена, через <b>8 секунд</b> восстаёт и сражается на его стороне. Через <b>5 минут</b> такой союзник умирает окончательно: одно и то же существо можно поднять только раз за раунд.</p>
         <p class="txt">Для воскрешения нужен <a href="https://github.com/Luatrauma/Luatrauma.Docs/blob/master/manual/docs/installation.md">LuaCs for Barotrauma</a>: на сервере в мультиплеере или в клиенте в одиночной игре.</p>
+      </section>
+
+      <section class="panel" id="latcher-gene">
+        <div class="bar-title"><h2>Ген блокиратора</h2></div>
+        <p class="txt">Попадается при исследовании неопознанного генетического материала на исследовательском терминале, как и обычные гены. Вставьте его в спайщик генов, и во рту носителя вырастет длинный язык с крючьями.</p>
+        <p class="txt">Клавиша атаки (<kbd>R</kbd> по умолчанию) выстреливает языком вперёд: он цепляет цель, подтягивает её к носителю и ненадолго оглушает. Перезарядка <b>8 секунд</b>. LuaCs для этого гена не нужен.</p>
       </section>
 
       <section class="panel" id="gebira">
         <div class="bar-title"><h2>Гебира</h2></div>
         <div class="gebira-art"><img src="img/gebira.webp" alt="Гебира" width="1200" height="359" loading="lazy"></div>
-        <p class="txt">Длинный морской змей бездны с плавниками-лентами. Кружит вокруг подлодок на глубине и утаскивает водолазов за бортом.</p>
+        <p class="txt">Длинный змей бездны с плавниками-лентами. Кружит вокруг подлодки, раз за разом бьёт в корпус и утаскивает водолазов, оказавшихся за бортом. Встречается только в бездне, на маршрутах со сложностью от 20.</p>
+      </section>
+
+      <section class="panel" id="changelog">
+        <div class="bar-title"><h2>Хронология обновлений</h2></div>
+        <ol class="timeline">
+          <li class="now">
+            <div class="tl-head"><span class="ver-tag">0.0.5 alpha</span><h3>Костошип, гены и Гебира</h3><time datetime="2026-11-14">14.11.2026</time> <span class="cur">текущая</span></div>
+            <ul class="tl-list">
+              <li><span class="k add">Добавлено</span><span>Костошип: костяной клинок с рецептом в фабрикаторе.</span></li>
+              <li><span class="k add">Добавлено</span><span>Ген Таламуса: убитые носителем враги восстают через 8 секунд и 5 минут сражаются на его стороне.</span></li>
+              <li><span class="k add">Добавлено</span><span>Гебира, змей бездны, и ген блокиратора с цепким языком.</span></li>
+              <li><span class="k add">Добавлено</span><span>Китайская и испанская локализации.</span></li>
+              <li><span class="k chg">Изменено</span><span>Новые спрайты биокостюма и флакона гена.</span></li>
+              <li><span class="k chg">Изменено</span><span>Голодный биокостюм теперь ранит носителя: 2 ед. внутреннего урона каждые 2 секунды.</span></li>
+              <li><span class="k fix">Исправлено</span><span>Союзные NPC больше не атакуют восставших существ.</span></li>
+              <li><span class="k fix">Исправлено</span><span>Ошибки LuaCs при воскрешении и выборе целей.</span></li>
+            </ul>
+          </li>
+          <li>
+            <div class="tl-head"><span class="ver-tag">0.0.2 – 0.0.4</span><h3>Служебные обновления</h3><time datetime="2026-10-31">31.10.2026</time></div>
+            <ul class="tl-list">
+              <li><span class="k chg">Изменено</span><span>Три технические перезаливки в Workshop: правки манифеста мода и ссылка на вики в описании. Нового контента нет.</span></li>
+            </ul>
+          </li>
+          <li>
+            <div class="tl-head"><span class="ver-tag">0.0.1 alpha</span><h3>Первая публикация</h3><time datetime="2026-10-31">31.10.2026</time></div>
+            <ul class="tl-list">
+              <li><span class="k add">Добавлено</span><span>Биокостюм и цепочка его выращивания из генетического материала таламуса.</span></li>
+              <li><span class="k add">Добавлено</span><span>Жало симбионта, Иглострел и игольная железа.</span></li>
+            </ul>
+          </li>
+        </ol>
       </section>
 
       <section class="panel" id="commands">
@@ -588,8 +649,8 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <section class="panel about" id="about">
         <h3 class="panel-title">О моде</h3>
         <div class="lead-pic"><img src="img/suit.png" alt="Шлем и торс Биокостюма: багровая органическая броня" width="128" height="128"></div>
-        <p class="txt">На Европе из генетического материала выращивают живую броню, а из кальция, органического волокна и инопланетной крови изготавливают Костошип.</p>
-        <p class="txt"><a href="#thalamus-gene">Ген Таламуса</a> · Эффект гена Таламуса требует LuaCs. Подробности установки и активации есть в разделе о гене.</p>
+        <p class="txt">Мод добавляет в Barotrauma живое снаряжение. Биокостюм выращивают из генетического материала таламуса и кормят инопланетной кровью, а он взамен даёт кислород, скорость и защиту. Оружие симбионта раскрывается только в руках носителя сытого костюма.</p>
+        <p class="txt">Для воскрешения врагов <a href="#thalamus-gene">геном Таламуса</a> нужен LuaCs. Всё остальное работает без него.</p>
         <a class="btn" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3830730588" target="_blank" rel="noopener">Подписаться в Steam Workshop</a>
         <a class="more" href="#grow">Как начать</a>
       </section>
@@ -607,25 +668,20 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
           <li><b>Ранняя альфа.</b> Возможны баги и правки баланса, пишите о них в комментариях к моду</li>
           <li><b>Меняет мозг таламуса и шипостаев</b> (добавляет добычу). Может конфликтовать с модами, которые меняют их же</li>
           <li><b>Шанс железы сейчас 100%</b> для тестов, позже снизится</li>
-          <li><b>Жало и Иглострел пока без рецептов</b>, только через консоль</li>
+          <li><b>У Жала и Иглострела пока нет рецептов</b>, их можно получить только через консоль</li>
         </ul>
       </section>
 
-      <section class="panel" id="changelog">
-        <h3 class="panel-title">Журнал версий</h3>
+      <section class="panel" id="latest">
+        <h3 class="panel-title">Последняя версия</h3>
         <div class="log">
           <div class="entry">
             <b>0.0.5 alpha</b>
-            <p><strong>Добавлено</strong> — Костошип и воскрешение врагов геном Таламуса.</p>
-            <p><strong>Изменено</strong> — Новые спрайты биокостюма, Гебиры и флакона гена. Голодный биокостюм наносит урон носителю.</p>
-            <p><strong>Исправлено</strong> — Союзные NPC перестают атаковать восставших ползунов. Исправлены ошибки LuaCs при воскрешении и выборе целей.</p>
-          </div>
-          <div class="entry">
-            <b>0.0.1 alpha</b>
-            <time datetime="2026-10-31">31.10.2026</time>
-            <p>Первая публикация: Биокостюм, цепочка выращивания, Жало симбионта, Иглострел и игольная железа.</p>
+            <time datetime="2026-11-14">14.11.2026</time>
+            <p>Костошип, ген Таламуса, Гебира и ген блокиратора.</p>
           </div>
         </div>
+        <a class="more" href="#changelog">Вся хронология</a>
       </section>
     </aside>
   </main>

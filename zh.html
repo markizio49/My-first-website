@@ -326,6 +326,25 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
   .cmds { grid-template-columns: minmax(0, 1fr); }
   .tabs a { padding: 6px 9px; }
 }
+/* timeline */
+.timeline { list-style: none; margin: 0; padding: 0 0 0 22px; position: relative; display: grid; gap: 18px; }
+.timeline::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+.timeline > li { position: relative; }
+.timeline > li::before {
+  content: ""; position: absolute; left: -22px; top: 5px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--panel); border: 2px solid var(--muted);
+}
+.timeline > li.now::before { background: var(--flesh); border-color: var(--flesh-soft); box-shadow: 0 0 0 4px rgba(217, 67, 90, .16); }
+.tl-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 6px; }
+.tl-head h3 { font-size: 17px; font-weight: 700; color: var(--bone); }
+.tl-head time { font-family: var(--mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tl-head .ver-tag { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--flesh-soft); }
+.tl-head .cur { font: 600 11px/1 var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--abyss); background: var(--sonar); padding: 3px 6px; border-radius: 3px; }
+.tl-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.tl-list li { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 10px; font-size: 14px; color: var(--muted); align-items: baseline; }
+.tl-list .k { font: 600 11px/1.6 var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.tl-list .k.add { color: var(--sonar); } .tl-list .k.chg { color: var(--bone); } .tl-list .k.fix { color: var(--flesh-soft); }
+@media (max-width: 560px) { .tl-list li { grid-template-columns: minmax(0, 1fr); gap: 0; } }
 .gebira-art img { display: block; width: 100%; height: auto; }
 </style>
 </head>
@@ -376,6 +395,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <a href="#breath">呼吸与血液</a>
       <a href="#grow">胚胎</a>
       <a href="#thalamus-gene">丘脑基因</a>
+      <a href="#latcher-gene">Latcher 基因</a>
     </nav>
     <nav aria-label="武器">
       <h4>武器</h4>
@@ -518,7 +538,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
               <tr>
                 <td><b>共生毒刺</b><br>近战</td>
                 <td><div class="tags"><span>撕裂伤 10</span><span>出血 6</span><span>眩晕 0.2</span></div></td>
-                <td>伤害 ×1.5。每次命中都会把目标的血液抽进生物服的血浆瓶</td>
+                <td>在穿着已喂饱生物服的人手中，伤害提高到 <b>2.5 倍</b>（25 / 15），每次命中都会把受害者的血液抽入生物服的血瓶。</td>
               </tr>
               <tr>
                 <td><b>针刺枪</b><br>远程</td>
@@ -549,10 +569,48 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         <p class="txt">复活能力需要 <a href="https://github.com/Luatrauma/Luatrauma.Docs/blob/master/manual/docs/installation.md">LuaCs for Barotrauma</a>。多人模式由服务器运行，单人模式由客户端运行。</p>
       </section>
 
+      <section class="panel" id="latcher-gene">
+        <div class="bar-title"><h2>Latcher 基因</h2></div>
+        <p class="txt">与普通基因一样，在研究站研究未鉴定的遗传物质时有机会获得。将它装入基因拼接器后，携带者口中会长出一条带钩的长舌。</p>
+        <p class="txt">按攻击键（默认 <kbd>R</kbd>）向前射出舌头：钩住目标，把它拉向携带者并短暂击晕。冷却时间 <b>8 秒</b>。该基因不需要 LuaCs。</p>
+      </section>
+
       <section class="panel" id="gebira">
         <div class="bar-title"><h2>格比拉</h2></div>
         <div class="gebira-art"><img src="img/gebira.webp" alt="格比拉" width="1200" height="359" loading="lazy"></div>
         <p class="txt">栖息在深渊里的巨型海蛇，长着飘带状鳍。它在深处绕着潜艇游动，并叼走艇外的潜水员。</p>
+      </section>
+
+      <section class="panel" id="changelog">
+        <div class="bar-title"><h2>更新时间线</h2></div>
+        <ol class="timeline">
+          <li class="now">
+            <div class="tl-head"><span class="ver-tag">0.0.5 alpha</span><h3>骨棘刃、基因与格比拉</h3><time datetime="2026-11-14">2026-11-14</time> <span class="cur">当前版本</span></div>
+            <ul class="tl-list">
+              <li><span class="k add">新增</span><span>骨棘刃：可在制造机中制作的骨质利刃。</span></li>
+              <li><span class="k add">新增</span><span>丘脑基因：被携带者击杀的敌人会在 8 秒后复活，并为其作战 5 分钟。</span></li>
+              <li><span class="k add">新增</span><span>深渊海蛇格比拉，以及带有钩舌的 Latcher 基因。</span></li>
+              <li><span class="k add">新增</span><span>中文和西班牙语本地化。</span></li>
+              <li><span class="k chg">改动</span><span>生物服和基因瓶的新贴图。</span></li>
+              <li><span class="k chg">改动</span><span>缺血的生物服现在会伤害穿戴者：每 2 秒造成 2 点内伤。</span></li>
+              <li><span class="k fix">修复</span><span>友方 NPC 不再攻击被复活的生物。</span></li>
+              <li><span class="k fix">修复</span><span>修复复活和目标选择时的 LuaCs 错误。</span></li>
+            </ul>
+          </li>
+          <li>
+            <div class="tl-head"><span class="ver-tag">0.0.2 – 0.0.4</span><h3>维护更新</h3><time datetime="2026-10-31">2026-10-31</time></div>
+            <ul class="tl-list">
+              <li><span class="k chg">改动</span><span>三次创意工坊技术性重新上传：修正模组清单，并在简介中加入维基链接。没有新内容。</span></li>
+            </ul>
+          </li>
+          <li>
+            <div class="tl-head"><span class="ver-tag">0.0.1 alpha</span><h3>首次发布</h3><time datetime="2026-10-31">2026-10-31</time></div>
+            <ul class="tl-list">
+              <li><span class="k add">新增</span><span>生物服及其以丘脑遗传物质为起点的培育链。</span></li>
+              <li><span class="k add">新增</span><span>共生毒刺、针刺枪和针腺。</span></li>
+            </ul>
+          </li>
+        </ol>
       </section>
 
       <section class="panel" id="commands">
@@ -614,21 +672,16 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         </ul>
       </section>
 
-      <section class="panel" id="changelog">
-        <h3 class="panel-title">更新日志</h3>
+      <section class="panel" id="latest">
+        <h3 class="panel-title">最新版本</h3>
         <div class="log">
           <div class="entry">
             <b>0.0.5 alpha</b>
-            <p><strong>新增</strong> — 骨棘刃和丘脑基因的复活能力。</p>
-            <p><strong>改动</strong> — 更新了生物服、格比拉和基因样本瓶的贴图。缺血的生物服会伤害穿戴者。</p>
-            <p><strong>修复</strong> — 友方 NPC 会停止攻击复活的爬行者。修复了复活和选择目标时的 LuaCs 错误。</p>
-          </div>
-          <div class="entry">
-            <b>0.0.1 alpha</b>
-            <time datetime="2026-10-31">31.10.2026</time>
-            <p>首次发布：生物服、培育流程、共生毒刺、针刺枪和针腺。</p>
+            <time datetime="2026-11-14">2026-11-14</time>
+            <p>骨棘刃、丘脑基因、格比拉和 Latcher 基因。</p>
           </div>
         </div>
+        <a class="more" href="#changelog">完整时间线</a>
       </section>
     </aside>
   </main>

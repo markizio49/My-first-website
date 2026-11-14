@@ -326,6 +326,25 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
   .cmds { grid-template-columns: minmax(0, 1fr); }
   .tabs a { padding: 6px 9px; }
 }
+/* timeline */
+.timeline { list-style: none; margin: 0; padding: 0 0 0 22px; position: relative; display: grid; gap: 18px; }
+.timeline::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+.timeline > li { position: relative; }
+.timeline > li::before {
+  content: ""; position: absolute; left: -22px; top: 5px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--panel); border: 2px solid var(--muted);
+}
+.timeline > li.now::before { background: var(--flesh); border-color: var(--flesh-soft); box-shadow: 0 0 0 4px rgba(217, 67, 90, .16); }
+.tl-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 6px; }
+.tl-head h3 { font-size: 17px; font-weight: 700; color: var(--bone); }
+.tl-head time { font-family: var(--mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tl-head .ver-tag { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--flesh-soft); }
+.tl-head .cur { font: 600 11px/1 var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--abyss); background: var(--sonar); padding: 3px 6px; border-radius: 3px; }
+.tl-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.tl-list li { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 10px; font-size: 14px; color: var(--muted); align-items: baseline; }
+.tl-list .k { font: 600 11px/1.6 var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.tl-list .k.add { color: var(--sonar); } .tl-list .k.chg { color: var(--bone); } .tl-list .k.fix { color: var(--flesh-soft); }
+@media (max-width: 560px) { .tl-list li { grid-template-columns: minmax(0, 1fr); gap: 0; } }
 .gebira-art img { display: block; width: 100%; height: auto; }
 </style>
 </head>
@@ -373,6 +392,7 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
       <a href="#breath">Respiración y sangre</a>
       <a href="#grow">Embrión</a>
       <a href="#thalamus-gene">Gen de Tálamo</a>
+      <a href="#latcher-gene">Gen del latcher</a>
     </nav>
     <nav aria-label="Armas">
       <h4>Armas</h4>
@@ -515,12 +535,12 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
               <tr>
                 <td><b>Aguijón simbionte</b><br>cuerpo a cuerpo</td>
                 <td><div class="tags"><span>laceraciones 10</span><span>hemorragia 6</span><span>aturdimiento 0.2</span></div></td>
-                <td>Daño ×1,5. Cada golpe bombea la sangre de la víctima al vial del traje</td>
+                <td>En manos del portador de un biotraje alimentado golpea <b>2,5 veces</b> más fuerte (25 / 15) y cada golpe bombea la sangre de la víctima al frasco del traje.</td>
               </tr>
               <tr>
                 <td><b>Lanzaagujas</b><br>a distancia</td>
                 <td><div class="tags"><span>laceraciones 7</span><span>hemorragia 7</span><span>quemadura por ácido 3</span></div></td>
-                <td>Dispara desde la glándula de agujas. Con la glándula vacía no dispara</td>
+                <td>Dispara desde la Glándula de agujas. Con la glándula vacía no dispara</td>
               </tr>
               <tr>
                 <td><b>Glándula de agujas</b><br>cargador</td>
@@ -546,10 +566,48 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         <p class="txt">La reanimación requiere <a href="https://github.com/Luatrauma/Luatrauma.Docs/blob/master/manual/docs/installation.md">LuaCs for Barotrauma</a> en el servidor multijugador o en el cliente para partidas de un jugador.</p>
       </section>
 
+      <section class="panel" id="latcher-gene">
+        <div class="bar-title"><h2>Gen del latcher</h2></div>
+        <p class="txt">Aparece al investigar material genético sin identificar en la estación de investigación, igual que los genes normales. Colócalo en un empalmador genético y al portador le crecerá una lengua larga con ganchos.</p>
+        <p class="txt">La tecla de ataque (<kbd>R</kbd> por defecto) dispara la lengua hacia delante: engancha al objetivo, lo arrastra hacia el portador y lo aturde un instante. Recarga: <b>8 segundos</b>. Este gen no necesita LuaCs.</p>
+      </section>
+
       <section class="panel" id="gebira">
         <div class="bar-title"><h2>Gebira</h2></div>
         <div class="gebira-art"><img src="img/gebira.webp" alt="Gebira" width="1200" height="359" loading="lazy"></div>
         <p class="txt">Una larga serpiente marina del abismo con aletas en forma de cinta. Rodea los submarinos en las profundidades y atrapa a los buceadores que salen al exterior.</p>
+      </section>
+
+      <section class="panel" id="changelog">
+        <div class="bar-title"><h2>Cronología de actualizaciones</h2></div>
+        <ol class="timeline">
+          <li class="now">
+            <div class="tl-head"><span class="ver-tag">0.0.5 alpha</span><h3>Espina Ósea, genes y Gebira</h3><time datetime="2026-11-14">14.11.2026</time> <span class="cur">actual</span></div>
+            <ul class="tl-list">
+              <li><span class="k add">Añadido</span><span>Espina Ósea: una hoja de hueso con receta en el fabricador.</span></li>
+              <li><span class="k add">Añadido</span><span>Gen de Tálamo: los enemigos que mata el portador se levantan a los 8 segundos y luchan de su lado durante 5 minutos.</span></li>
+              <li><span class="k add">Añadido</span><span>Gebira, la serpiente del abismo, y el gen del latcher con su lengua de agarre.</span></li>
+              <li><span class="k add">Añadido</span><span>Localizaciones al chino y al español.</span></li>
+              <li><span class="k chg">Cambiado</span><span>Nuevos sprites del biotraje y del frasco del gen.</span></li>
+              <li><span class="k chg">Cambiado</span><span>El biotraje hambriento ahora hiere a su portador: 2 de daño interno cada 2 segundos.</span></li>
+              <li><span class="k fix">Corregido</span><span>Los NPC aliados ya no atacan a las criaturas reanimadas.</span></li>
+              <li><span class="k fix">Corregido</span><span>Errores de LuaCs durante la reanimación y la selección de objetivos.</span></li>
+            </ul>
+          </li>
+          <li>
+            <div class="tl-head"><span class="ver-tag">0.0.2 – 0.0.4</span><h3>Actualizaciones de mantenimiento</h3><time datetime="2026-10-31">31.10.2026</time></div>
+            <ul class="tl-list">
+              <li><span class="k chg">Cambiado</span><span>Tres resubidas técnicas al Workshop: correcciones del manifiesto del mod y enlace a la wiki en la descripción. Sin contenido nuevo.</span></li>
+            </ul>
+          </li>
+          <li>
+            <div class="tl-head"><span class="ver-tag">0.0.1 alpha</span><h3>Primera publicación</h3><time datetime="2026-10-31">31.10.2026</time></div>
+            <ul class="tl-list">
+              <li><span class="k add">Añadido</span><span>El biotraje y su cadena de cultivo a partir del material genético del Tálamo.</span></li>
+              <li><span class="k add">Añadido</span><span>Aguijón simbionte, Lanzaagujas y Glándula de agujas.</span></li>
+            </ul>
+          </li>
+        </ol>
       </section>
 
       <section class="panel" id="commands">
@@ -611,21 +669,16 @@ footer { border-top: 1px solid var(--line); background: #03070a; }
         </ul>
       </section>
 
-      <section class="panel" id="changelog">
-        <h3 class="panel-title">Registro de versiones</h3>
+      <section class="panel" id="latest">
+        <h3 class="panel-title">Última versión</h3>
         <div class="log">
           <div class="entry">
             <b>0.0.5 alpha</b>
-            <p><strong>Añadido</strong> — Espina Ósea y reanimación con el Gen de Tálamo.</p>
-            <p><strong>Modificado</strong> — Nuevos sprites del Biotraje, Gebira y el vial del gen. El Biotraje hambriento daña al portador.</p>
-            <p><strong>Corregido</strong> — Los PNJ aliados dejan de atacar a los reptadores reanimados. Se corrigieron errores de LuaCs al reanimar y elegir objetivos.</p>
-          </div>
-          <div class="entry">
-            <b>0.0.1 alpha</b>
-            <time datetime="2026-10-31">31.10.2026</time>
-            <p>Primera publicación: Biotraje, cadena de cultivo, Aguijón simbionte, Lanzaagujas y Glándula de agujas.</p>
+            <time datetime="2026-11-14">14.11.2026</time>
+            <p>Espina Ósea, Gen de Tálamo, Gebira y gen del latcher.</p>
           </div>
         </div>
+        <a class="more" href="#changelog">Cronología completa</a>
       </section>
     </aside>
   </main>
