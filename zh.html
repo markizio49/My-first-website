@@ -393,6 +393,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <h4>装备</h4>
       <a href="#suit">生物服</a>
       <a href="#breath">呼吸与血液</a>
+      <a href="#slipsuit">生物潜水服</a>
       <a href="#grow">胚胎</a>
       <a href="#thalamus-gene">丘脑基因</a>
       <a href="#latcher-gene">Latcher 基因</a>
@@ -430,13 +431,14 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <section class="panel welcome">
         <h1>欢迎来到 <span>Biopunk for Barotrauma</span></h1>
         <p>模组加入了以异星血浆为食的活体生物服、共生武器、丘脑基因，以及来自深渊的海蛇格比拉。</p>
-        <p class="ver">当前模组版本： <b>0.0.6 alpha</b> · 游戏 <b>1.13.5.0</b></p>
+        <p class="ver">当前模组版本： <b>0.0.7 alpha</b> · 游戏 <b>1.13.5.0</b></p>
       </section>
 
       <section class="panel" id="suit">
         <div class="bar-title"><h2>装备</h2></div>
         <div class="icons">
           <a class="ico" href="#suit-stats"><span class="pic"><img src="img/suit.png" alt="" width="128" height="128"></span><b>生物服</b></a>
+          <a class="ico" href="#slipsuit"><span class="pic"><img src="img/slipsuit.png" alt="" width="120" height="118"></span><b>生物潜水服</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>胚胎</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>生物服基底</b></a>
           <a class="ico" href="#thalamus-gene"><span class="pic"><img src="img/gene.png" alt="" width="64" height="64"></span><b>丘脑基因</b></a>
@@ -519,7 +521,8 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <li><b>奇怪的蛋</b>：任意宠物蛋；储物柜和商店</li>
             <li><b>潜水员的遗骸</b>：储物柜和矿物柜</li>
             <li><b>异星血浆</b>：怪物、丘脑器官</li>
-            <li><b>针腺</b>：脊刺尸体的物品栏</li>
+            <li><b>针腺</b>：脊刺尸体的物品栏，约每五只一个</li>
+            <li><b>戈比拉</b>：异星血浆、鱼鳔、未研究的遗传物质</li>
           </ul>
         </section>
       </div>
@@ -548,11 +551,14 @@ footer { border-top: 1px solid var(--line); background: #060304; }
               <tr>
                 <td><b>针腺</b><br>弹匣</td>
                 <td><div class="tags"><span>20 根针</span></div></td>
-                <td>每6秒长出1根针。空的针腺可在加工台用异星血浆重新培育</td>
+                <td>装在已喂饱潜水服的穿戴者手中的针刺枪里时，每 6 秒长出 1 根针，每根针消耗血瓶中的 <b>2 点血液</b>。空的针腺可在加工台用异星血浆重新培育。</td>
               </tr>
             </tbody>
           </table>
         </div>
+        <div class="bar-sub"><h3>加工台</h3></div>
+        <p class="txt">尸壳毒刺 + 有机纤维 + 异星血浆 → <em>共生毒刺</em><br><small>40 秒 · 武器 40</small></p>
+        <p class="txt">2 脊刺之刺 + 2 有机纤维 + 异星血浆 → <em>针刺枪</em><br><small>50 秒 · 武器 50</small></p>
       </section>
 
       <section class="panel" id="bonespike">
@@ -565,27 +571,57 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <section class="panel" id="thalamus-gene">
         <div class="bar-title"><h2>丘脑基因</h2></div>
         <p class="txt">在受感染的沉船中摧毁丘脑核心，在研究台上用疗素提纯掉落的遗传物质。把提纯后的基因放入基因拼接器，然后在健康界面装备拼接器。</p>
-        <p class="txt">携带者激活基因后，亲手击杀的敌方 NPC 会在 <b>8 秒</b>后复活并为其作战，<b>5 分钟</b>后死亡。同一目标每回合只能复活一次。</p>
+        <p class="txt">携带者激活基因后，亲手击杀的敌方 NPC 会在 <b>8 秒</b>后复活并为其作战，<b>2–5 分钟</b>后死亡（基因品质越高，存活越久）。同一目标每回合只能复活一次。</p>
         <p class="txt">复活能力需要 <a href="https://github.com/Luatrauma/Luatrauma.Docs/blob/master/manual/docs/installation.md">LuaCs for Barotrauma</a>。多人模式由服务器运行，单人模式由客户端运行。</p>
       </section>
 
       <section class="panel" id="latcher-gene">
         <div class="bar-title"><h2>Latcher 基因</h2></div>
         <p class="txt">与普通基因一样，在研究站研究未鉴定的遗传物质时有机会获得。将它装入基因拼接器后，携带者口中会长出一条带钩的长舌。</p>
-        <p class="txt">按攻击键（默认 <kbd>R</kbd>）向前射出舌头：钩住目标，把它拉向携带者并短暂击晕。冷却时间 <b>8 秒</b>。该基因不需要 LuaCs。</p>
+        <p class="txt">按攻击键（默认 <kbd>R</kbd>）向前射出舌头，射程 10 米。舌头会贯穿目标（最多三个部位），造成撕裂伤、出血和脑震荡，击晕目标并拖住 2.5 秒、拉向携带者，然后收回。冷却时间 <b>8 秒</b>。携带者头上会长出一根小尸壳触须。该基因不需要 LuaCs。</p>
+      </section>
+
+      <section class="panel" id="slipsuit">
+        <div class="bar-title"><h2>生物潜水服</h2></div>
+        <p class="txt">与生物服活体组织融合的原版潜水服：脚蹼长成了带蹼的鳍。无需氧气瓶：潜水服自行供氧，只以外星血液为食。</p>
+        <dl class="kv">
+          <dt>+350%</dt><dd>喂饱时的游泳速度：与爬行者相当</dd>
+          <dt>+40%</dt><dd>喂饱时的水下推进器推力</dd>
+          <dt>6500</dt><dd>喂饱时的抗压深度（饥饿时 5000）</dd>
+          <dt>−15%</dt><dd>伤害：创伤、出血、烧伤、中毒、辐射</dd>
+          <dt>~2:45</dt><dd>水下每瓶血液的持续时间；在有空气的舱室不消耗血液</dd>
+          <dt>−20%</dt><dd>行走速度：鳍在陆地上碍事</dd>
+        </dl>
+        <p class="txt">没有血液时，潜水服会吞噬穿戴者：<b>每 2 秒造成 2 点内伤</b>。喂饱时，共生毒刺和针刺枪可与它配合使用。</p>
+        <div class="bar-sub"><h3>加工台</h3></div>
+        <p class="txt">潜水服 + 生物服基底 + 2 异星血浆 → <em>生物潜水服</em><br><small>60 秒 · 医疗 40</small></p>
       </section>
 
       <section class="panel" id="gebira">
         <div class="bar-title"><h2>格比拉</h2></div>
         <div class="gebira-art"><img src="img/gebira.webp" alt="格比拉" width="1200" height="359" loading="lazy"></div>
         <p class="txt">栖息在深渊里的巨型海蛇，长着飘带状鳍。它在深处绕着潜艇游动，并叼走艇外的潜水员。</p>
+        <p class="txt">它的尸体可以取得异星血浆、鱼鳔和未研究的遗传物质，研究后可能得到钩舌兽基因。</p>
       </section>
 
       <section class="panel" id="changelog">
         <div class="bar-title"><h2>更新时间线</h2></div>
         <ol class="timeline">
           <li class="now">
-            <div class="tl-head"><span class="ver-tag">0.0.6 alpha</span><h3>新的武器贴图</h3><time datetime="2026-11-14">2026-11-14</time> <span class="cur">当前版本</span></div>
+            <div class="tl-head"><span class="ver-tag">0.0.7 alpha</span><h3>生物潜水服与武器配方</h3><time datetime="2026-11-22">2026-11-22</time> <span class="cur">当前版本</span></div>
+            <ul class="tl-list">
+              <li><span class="k add">新增</span><span>生物潜水服：由活体组织构成的深蓝色潜水服。以血液喂饱时，穿戴者游得和爬行者一样快。</span></li>
+              <li><span class="k add">新增</span><span>共生毒刺和针刺枪的加工台配方。</span></li>
+              <li><span class="k add">新增</span><span>戈比拉尸体掉落：异星血浆、鱼鳔和未研究的遗传物质。</span></li>
+              <li><span class="k chg">调整</span><span>约每五只脊刺掉落一个针腺。每长出一根针消耗潜水服血瓶中的 2 点血液。</span></li>
+              <li><span class="k chg">调整</span><span>丘脑基因的盟友存活 2–5 分钟，取决于基因品质。</span></li>
+              <li><span class="k chg">调整</span><span>钩舌兽之舌会贯穿目标，造成撕裂伤、出血和脑震荡；携带者头上会长出一根尸壳触须。</span></li>
+              <li><span class="k chg">调整</span><span>生物服胚胎不会受到外部伤害，成熟时会掉落剩余的血液。</span></li>
+              <li><span class="k fix">修复</span><span>钩舌兽基因：舌头不再在控制台刷错误，会完整收回并消失。</span></li>
+            </ul>
+          </li>
+          <li>
+            <div class="tl-head"><span class="ver-tag">0.0.6 alpha</span><h3>新的武器贴图</h3><time datetime="2026-11-14">2026-11-14</time></div>
             <ul class="tl-list">
               <li><span class="k chg">改动</span><span>针刺枪、共生毒刺和骨棘刃换上了原版风格的新贴图。</span></li>
               <li><span class="k chg">改动</span><span>丘脑基因瓶改为与原版基因一致的样式。</span></li>
@@ -635,6 +671,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>共生毒刺</small></div><button class="copy" type="button">复制</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needler inventory</code><small>针刺枪</small></div><button class="copy" type="button">复制</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needlegland inventory</code><small>针腺</small></div><button class="copy" type="button">复制</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_slip inventory</code><small>生物潜水服</small></div><button class="copy" type="button">复制</button></div>
           </div>
           <div>
             <div class="bar-sub"><h3>材料与测试</h3></div>
@@ -675,8 +712,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
         <ul class="dots">
           <li><b>早期 Alpha。</b> 可能存在漏洞和平衡调整，请在模组评论区反馈</li>
           <li><b>修改了丘脑核心和脊刺</b> （增加掉落物）。可能与修改同样内容的模组冲突</li>
-          <li><b>针腺掉落率目前为100%</b> 用于测试，之后会降低</li>
-          <li><b>毒刺和针刺枪暂无配方</b>，只能通过控制台获取</li>
+          <li><b>生物潜水服和钩舌兽之舌</b>为新内容，平衡仍可能调整</li>
         </ul>
       </section>
 
@@ -684,9 +720,9 @@ footer { border-top: 1px solid var(--line); background: #060304; }
         <h3 class="panel-title">最新版本</h3>
         <div class="log">
           <div class="entry">
-            <b>0.0.6 alpha</b>
-            <time datetime="2026-11-14">2026-11-14</time>
-            <p>新的武器和基因瓶贴图。</p>
+            <b>0.0.7 alpha</b>
+            <time datetime="2026-11-22">2026-11-22</time>
+            <p>生物潜水服、武器配方和改进的钩舌兽基因。</p>
           </div>
         </div>
         <a class="more" href="#changelog">完整时间线</a>
@@ -720,7 +756,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
   </div>
   <div class="foot-line">
     <div class="gutter">
-      <span>Biopunk for Barotrauma · alpha 0.0.6</span>
+      <span>Biopunk for Barotrauma · alpha 0.0.7</span>
       <span>粉丝自制模组。Barotrauma 归 FakeFish 和 Undertow Games 所有。</span>
     </div>
   </div>

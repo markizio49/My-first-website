@@ -390,6 +390,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <h4>Снаряжение</h4>
       <a href="#suit">Биокостюм</a>
       <a href="#breath">Дыхание и кровь</a>
+      <a href="#slipsuit">Биогидрокостюм</a>
       <a href="#grow">Зародыш</a>
       <a href="#thalamus-gene">Ген Таламуса</a>
       <a href="#latcher-gene">Ген блокиратора</a>
@@ -430,13 +431,14 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <section class="panel welcome">
         <h1>Добро пожаловать в <span>Biopunk for Barotrauma</span></h1>
         <p>Биопанк на дне Европы: живой костюм, который питается инопланетной кровью, оружие из плоти и кости, гены таламуса и блокиратора и Гебира, змей из бездны.</p>
-        <p class="ver">Текущая версия мода: <b>0.0.6 alpha</b> · игра <b>1.13.5.0</b></p>
+        <p class="ver">Текущая версия мода: <b>0.0.7 alpha</b> · игра <b>1.13.5.0</b></p>
       </section>
 
       <section class="panel" id="suit">
         <div class="bar-title"><h2>Снаряжение</h2></div>
         <div class="icons">
           <a class="ico" href="#suit-stats"><span class="pic"><img src="img/suit.png" alt="" width="128" height="128"></span><b>Биокостюм</b></a>
+          <a class="ico" href="#slipsuit"><span class="pic"><img src="img/slipsuit.png" alt="" width="120" height="118"></span><b>Биогидрокостюм</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>Зародыш</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>Основа костюма</b></a>
           <a class="ico" href="#thalamus-gene"><span class="pic"><img src="img/gene.png" alt="" width="64" height="64"></span><b>Ген Таламуса</b></a>
@@ -519,7 +521,8 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <li><b>Странное яйцо</b>: Peanut, Psilotoad, Orangeboy, Balloon; шкафы и магазины</li>
             <li><b>Останки водолаза</b>: шкафы для хранения и минералов</li>
             <li><b>Инопланетная кровь</b>: монстры, органы таламуса</li>
-            <li><b>Игольная железа</b>: инвентарь трупа шипостая</li>
+            <li><b>Игольная железа</b>: инвентарь трупа шипостая, примерно каждый пятый</li>
+            <li><b>Гебира</b>: кровь, плавательный пузырь, неизвестный генматериал</li>
           </ul>
         </section>
       </div>
@@ -548,11 +551,14 @@ footer { border-top: 1px solid var(--line); background: #060304; }
               <tr>
                 <td><b>Игольная железа</b><br>магазин</td>
                 <td><div class="tags"><span>20 игл</span></div></td>
-                <td>В иглостреле у носителя сытого биокостюма отращивает по игле каждые 6 с. Пустую можно перерастить в фабрикаторе с инопланетной кровью.</td>
+                <td>В иглостреле у носителя сытого костюма отращивает по игле каждые 6 с, каждая игла стоит <b>2 ед. крови</b> из флакона. Пустую можно перерастить в фабрикаторе с инопланетной кровью.</td>
               </tr>
             </tbody>
           </table>
         </div>
+        <div class="bar-sub"><h3>Обычный фабрикатор</h3></div>
+        <p class="txt">Жало хаска + органическое волокно + инопланетная кровь → <em>Жало симбионта</em><br><small>40 с · Оружие 40</small></p>
+        <p class="txt">2 шипа шипостая + 2 органических волокна + инопланетная кровь → <em>Иглострел</em><br><small>50 с · Оружие 50</small></p>
       </section>
 
       <section class="panel" id="bonespike">
@@ -565,27 +571,57 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <section class="panel" id="thalamus-gene">
         <div class="bar-title"><h2>Ген Таламуса</h2></div>
         <p class="txt">Уничтожьте мозг таламуса в заражённом обломке и очистите выпавший материал стабилоцином на исследовательском терминале. Вставьте очищенный ген в спайщик генов и наденьте спайщик через окно здоровья.</p>
-        <p class="txt">Враг, которого убил носитель гена, через <b>8 секунд</b> восстаёт и сражается на его стороне. Через <b>5 минут</b> такой союзник умирает окончательно: одно и то же существо можно поднять только раз за раунд.</p>
+        <p class="txt">Враг, которого убил носитель гена, через <b>8 секунд</b> восстаёт и сражается на его стороне. Через <b>2–5 минут</b> (чем выше качество гена, тем дольше) такой союзник умирает окончательно: одно и то же существо можно поднять только раз за раунд.</p>
         <p class="txt">Для воскрешения нужен <a href="https://github.com/Luatrauma/Luatrauma.Docs/blob/master/manual/docs/installation.md">LuaCs for Barotrauma</a>: на сервере в мультиплеере или в клиенте в одиночной игре.</p>
       </section>
 
       <section class="panel" id="latcher-gene">
         <div class="bar-title"><h2>Ген блокиратора</h2></div>
         <p class="txt">Попадается при исследовании неопознанного генетического материала на исследовательском терминале, как и обычные гены. Вставьте его в спайщик генов, и во рту носителя вырастет длинный язык с крючьями.</p>
-        <p class="txt">Клавиша атаки (<kbd>R</kbd> по умолчанию) выстреливает языком вперёд: он цепляет цель, подтягивает её к носителю и ненадолго оглушает. Перезарядка <b>8 секунд</b>. LuaCs для этого гена не нужен.</p>
+        <p class="txt">Клавиша атаки (<kbd>R</kbd> по умолчанию) выстреливает языком на 10 м. Он пробивает цель насквозь (до трёх частей тела), наносит рваные раны, кровотечение и контузию, оглушает и 2,5 секунды держит её, подтягивая к носителю. Потом язык сматывается обратно. Перезарядка <b>8 секунд</b>. На голове носителя растёт маленький отросток хаска. LuaCs для этого гена не нужен.</p>
+      </section>
+
+      <section class="panel" id="slipsuit">
+        <div class="bar-title"><h2>Биогидрокостюм</h2></div>
+        <p class="txt">Ванильный гидрокостюм, сросшийся с живой тканью биокостюма: ласты превратились в перепончатые плавники. Баллон не нужен: костюм сам даёт кислород и питается только инопланетной кровью.</p>
+        <dl class="kv">
+          <dt>+350%</dt><dd>к скорости плавания, пока костюм сыт: наравне с ползуном</dd>
+          <dt>+40%</dt><dd>к тяге скутера, пока костюм сыт</dd>
+          <dt>6500</dt><dd>защита от давления сытого костюма (голодного — 5000)</dd>
+          <dt>−15%</dt><dd>урона: раны, кровотечение, ожоги, яд, радиация</dd>
+          <dt>~2:45</dt><dd>на флакон крови под водой; в отсеке с воздухом кровь не тратится</dd>
+          <dt>−20%</dt><dd>к ходьбе: плавники мешают на суше</dd>
+        </dl>
+        <p class="txt">Без крови костюм питается носителем: <b>2 ед. внутреннего урона каждые 2 секунды</b>. Пока костюм сыт, с ним работают Жало симбионта и Иглострел.</p>
+        <div class="bar-sub"><h3>Обычный фабрикатор</h3></div>
+        <p class="txt">Гидрокостюм + основа биокостюма + 2 инопланетной крови → <em>Биогидрокостюм</em><br><small>60 с · Медицина 40</small></p>
       </section>
 
       <section class="panel" id="gebira">
         <div class="bar-title"><h2>Гебира</h2></div>
         <div class="gebira-art"><img src="img/gebira.webp" alt="Гебира" width="1200" height="359" loading="lazy"></div>
         <p class="txt">Длинный змей бездны с плавниками-лентами. Кружит вокруг подлодки, раз за разом бьёт в корпус и утаскивает водолазов, оказавшихся за бортом. Встречается только в бездне, на маршрутах со сложностью от 20.</p>
+        <p class="txt">С туши можно забрать инопланетную кровь, плавательный пузырь и неизвестный генматериал, из которого исследованием можно получить ген блокиратора.</p>
       </section>
 
       <section class="panel" id="changelog">
         <div class="bar-title"><h2>Хронология обновлений</h2></div>
         <ol class="timeline">
           <li class="now">
-            <div class="tl-head"><span class="ver-tag">0.0.6 alpha</span><h3>Новые спрайты оружия</h3><time datetime="2026-11-14">14.11.2026</time> <span class="cur">текущая</span></div>
+            <div class="tl-head"><span class="ver-tag">0.0.7 alpha</span><h3>Биогидрокостюм и рецепты оружия</h3><time datetime="2026-11-22">22.11.2026</time> <span class="cur">текущая</span></div>
+            <ul class="tl-list">
+              <li><span class="k add">Добавлено</span><span>Биогидрокостюм: тёмно-синий гидрокостюм из живой ткани. Пока сыт кровью, носитель плавает наравне с ползуном.</span></li>
+              <li><span class="k add">Добавлено</span><span>Рецепты Жала симбионта и Иглострела в фабрикаторе.</span></li>
+              <li><span class="k add">Добавлено</span><span>Добыча с туши Гебиры: кровь, плавательный пузырь и неизвестный генматериал.</span></li>
+              <li><span class="k chg">Изменено</span><span>Игольная железа выпадает примерно с каждого пятого шипостая. Каждая выращенная игла стоит 2 ед. крови из флакона костюма.</span></li>
+              <li><span class="k chg">Изменено</span><span>Союзник гена Таламуса живёт от 2 до 5 минут, в зависимости от качества гена.</span></li>
+              <li><span class="k chg">Изменено</span><span>Язык блокиратора пробивает цель, наносит раны, кровотечение и контузию, а на голове носителя растёт отросток хаска.</span></li>
+              <li><span class="k chg">Изменено</span><span>Зародыш биокостюма не повреждается извне, а при созревании роняет недопитую кровь.</span></li>
+              <li><span class="k fix">Исправлено</span><span>Ген блокиратора: язык больше не плодит ошибки в консоли, сматывается целиком и исчезает.</span></li>
+            </ul>
+          </li>
+          <li>
+            <div class="tl-head"><span class="ver-tag">0.0.6 alpha</span><h3>Новые спрайты оружия</h3><time datetime="2026-11-14">14.11.2026</time></div>
             <ul class="tl-list">
               <li><span class="k chg">Изменено</span><span>Новые спрайты иглострела, жала симбионта и костошипа в ванильном стиле.</span></li>
               <li><span class="k chg">Изменено</span><span>Новый флакон гена Таламуса, собранный по образцу ванильных генов.</span></li>
@@ -635,6 +671,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>Жало симбионта</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needler inventory</code><small>Иглострел</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needlegland inventory</code><small>Игольная железа</small></div><button class="copy" type="button">Копировать</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_slip inventory</code><small>Биогидрокостюм</small></div><button class="copy" type="button">Копировать</button></div>
           </div>
           <div>
             <div class="bar-sub"><h3>Ингредиенты и тесты</h3></div>
@@ -675,8 +712,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
         <ul class="dots">
           <li><b>Ранняя альфа.</b> Возможны баги и правки баланса, пишите о них в комментариях к моду</li>
           <li><b>Меняет мозг таламуса и шипостаев</b> (добавляет добычу). Может конфликтовать с модами, которые меняют их же</li>
-          <li><b>Шанс железы сейчас 100%</b> для тестов, позже снизится</li>
-          <li><b>У Жала и Иглострела пока нет рецептов</b>, их можно получить только через консоль</li>
+          <li><b>Биогидрокостюм и язык блокиратора</b> новые, их баланс ещё может меняться</li>
         </ul>
       </section>
 
@@ -684,9 +720,9 @@ footer { border-top: 1px solid var(--line); background: #060304; }
         <h3 class="panel-title">Последняя версия</h3>
         <div class="log">
           <div class="entry">
-            <b>0.0.6 alpha</b>
-            <time datetime="2026-11-14">14.11.2026</time>
-            <p>Новые спрайты оружия и флакона гена.</p>
+            <b>0.0.7 alpha</b>
+            <time datetime="2026-11-22">22.11.2026</time>
+            <p>Биогидрокостюм, рецепты оружия и доработанный ген блокиратора.</p>
           </div>
         </div>
         <a class="more" href="#changelog">Вся хронология</a>
@@ -720,7 +756,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
   </div>
   <div class="foot-line">
     <div class="gutter">
-      <span>Biopunk for Barotrauma · альфа 0.0.6</span>
+      <span>Biopunk for Barotrauma · альфа 0.0.7</span>
       <span>Фанатский мод. Barotrauma принадлежит FakeFish и Undertow Games.</span>
     </div>
   </div>
