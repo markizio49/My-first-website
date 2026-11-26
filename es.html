@@ -391,6 +391,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <a href="#suit">Biotraje</a>
       <a href="#breath">Respiración y sangre</a>
       <a href="#slipsuit">Biotraje de buceo</a>
+      <a href="#leviathan">Leviatán</a>
       <a href="#grow">Embrión</a>
       <a href="#thalamus-gene">Gen de Tálamo</a>
       <a href="#latcher-gene">Gen del latcher</a>
@@ -402,6 +403,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <a href="#weapons">Glándula de agujas</a>
       <a href="#bonespike">Espina Ósea</a>
       <a href="#gebira">Gebira</a>
+      <a href="#kramer">Kramer</a>
     </nav>
     <nav aria-label="Fabricación">
       <h4>Fabricación</h4>
@@ -436,6 +438,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
         <div class="icons">
           <a class="ico" href="#suit-stats"><span class="pic"><img src="img/suit.png" alt="" width="128" height="128"></span><b>Biotraje</b></a>
           <a class="ico" href="#slipsuit"><span class="pic"><img src="img/slipsuit.png" alt="" width="120" height="118"></span><b>Biotraje de buceo</b></a>
+          <a class="ico" href="#leviathan"><span class="pic"><img src="img/leviathan.png" alt="" width="127" height="100" style="width:76px;height:auto"></span><b>Leviatán</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>Embrión</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>Base del traje</b></a>
           <a class="ico" href="#thalamus-gene"><span class="pic"><img src="img/gene.png" alt="" width="64" height="64"></span><b>Gen de Tálamo</b></a>
@@ -594,11 +597,37 @@ footer { border-top: 1px solid var(--line); background: #060304; }
         <p class="txt">Traje de buceo con aletas + base de biotraje + 2 sangre alienígena → <em>Biotraje de buceo</em><br><small>60 s · Medicina 40</small></p>
       </section>
 
+      <section class="panel" id="leviathan">
+        <div class="bar-title"><h2>Leviatán</h2></div>
+        <p class="txt">Un exotraje vivo de aguas profundas cultivado sobre uno normal: caparazón oscuro, glándulas azules, aletas. Donde iría la barra de combustible late un <b>Corazón abisal</b> (unos 30 minutos cada uno), y la sangre alienígena da oxígeno y alimenta sus armas orgánicas.</p>
+        <dl class="kv">
+          <dt>7500</dt><dd>protección contra la presión</dd>
+          <dt>−70%</dt><dd>de daño físico</dd>
+          <dt>×1,3</dt><dd>de velocidad mientras late el corazón; +50% al nadar</dd>
+          <dt>10</dt><dd>bolsillos para objetos pequeños</dd>
+        </dl>
+        <p class="txt">Sin corazón el traje se detiene; sin sangre se alimenta de su portador: <b>2 de daño interno cada 2 segundos</b>.</p>
+        <div class="bar-sub"><h3>Armas orgánicas</h3></div>
+        <p class="txt"><img src="img/levi_volley.png" alt="" width="140" height="65" loading="lazy"><br><b>Andanada de agujas</b>: unas 10 agujas de hueso por segundo.</p>
+        <p class="txt"><img src="img/levi_blade.png" alt="" width="140" height="40" loading="lazy"><br><b>Hoja de hueso</b>: en el Leviatán golpea tres veces más fuerte y cercena extremidades.</p>
+        <p class="txt"><img src="img/levi_acid.png" alt="" width="130" height="65" loading="lazy"><br><b>Escupitajo ácido</b>: un chorro de ácido de ~3 m que corroe carne y blindaje.</p>
+        <p class="txt">La reserva de la andanada y del escupitajo se regenera sola mientras el portador lleva un Leviatán con sangre, por aproximadamente 1 de sangre por segundo.</p>
+        <div class="bar-sub"><h3>Recetas</h3></div>
+        <p class="txt">Exotraje + base de biotraje + 4 sangre alienígena → <em>Leviatán</em><br><small>Fabricador · Medicina 50, Mecánica 40</small></p>
+        <p class="txt">3 sangre alienígena + vejiga natatoria + material genético sin investigar → <em>Corazón abisal</em><br><small>Fabricador médico · Medicina 40</small></p>
+      </section>
+
       <section class="panel" id="gebira">
         <div class="bar-title"><h2>Gebira</h2></div>
         <div class="gebira-art"><img src="img/gebira.webp" alt="Gebira" width="1200" height="359" loading="lazy"></div>
         <p class="txt">Una larga serpiente marina del abismo con aletas en forma de cinta. Rodea los submarinos en las profundidades y atrapa a los buceadores que salen al exterior.</p>
         <p class="txt">De su cadáver se obtiene sangre alienígena, vejigas natatorias y material genético sin investigar, que al investigarse puede dar el gen del enganchador.</p>
+      </section>
+
+      <section class="panel" id="kramer">
+        <div class="bar-title"><h2>Prototipo de Kramer</h2></div>
+        <p class="txt">Un experimento fallido de cultivo de equipo vivo: cráneo y hombros pálidos y huesudos, cuerpo oscuro y estriado, largas patas como cuchillas y púas a lo largo de la columna. Más resistente que una quimera husk (<b>900 de vida</b>), pero no transmite la infección husk ni es amigo de los husks.</p>
+        <p class="txt">De su cadáver se obtiene sangre alienígena, material genético sin investigar y a veces un Corazón abisal. Aún no aparece en la campaña: <code>spawn KramerPrototype cursor</code>.</p>
       </section>
 
       <section class="panel" id="changelog">
@@ -615,6 +644,9 @@ footer { border-top: 1px solid var(--line); background: #060304; }
               <li><span class="k chg">Cambiado</span><span>La lengua del enganchador atraviesa al objetivo y causa laceraciones, sangrado y conmoción; al portador le crece un apéndice de husk en la cabeza.</span></li>
               <li><span class="k chg">Cambiado</span><span>El Embrión del biotraje no recibe daño externo y suelta la sangre sobrante al madurar.</span></li>
               <li><span class="k fix">Corregido</span><span>Gen del enganchador: la lengua ya no llena la consola de errores, se recoge entera y desaparece.</span></li>
+              <li><span class="k add">Añadido</span><span>Leviatán: un exotraje vivo de aguas profundas que funciona con un Corazón abisal y sangre, con sus propias armas orgánicas: Andanada de agujas, Hoja de hueso y Escupitajo ácido.</span></li>
+              <li><span class="k add">Añadido</span><span>Prototipo de Kramer: una criatura pálida sobre patas como cuchillas, con 900 de vida. Por ahora solo aparece mediante comando.</span></li>
+              <li><span class="k add">Añadido</span><span>Corazón abisal: el combustible del Leviatán, botín raro de la Gebira y de Kramer.</span></li>
             </ul>
           </li>
           <li>
@@ -668,7 +700,10 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>Aguijón simbionte</small></div><button class="copy" type="button">Copiar</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needler inventory</code><small>Lanzaagujas</small></div><button class="copy" type="button">Copiar</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needlegland inventory</code><small>Glándula de agujas</small></div><button class="copy" type="button">Copiar</button></div>
-            <div class="cmd"><div><code>spawnitem bioexo_slip inventory</code><small>Biotraje de buceo</small></div><button class="copy" type="button">Copiar</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_slip inventory</code><small>Biotraje de buceo</small></div>
+            <div class="cmd"><div><code>spawnitem bioexo_leviathan inventory</code><small>Leviatán</small></div>
+            <div class="cmd"><div><code>spawnitem bioexo_abyssheart inventory</code><small>Corazón abisal</small></div>
+            <div class="cmd"><div><code>spawn KramerPrototype cursor</code><small>Prototipo de Kramer</small></div><button class="copy" type="button">Copiar</button></div>
           </div>
           <div>
             <div class="bar-sub"><h3>Ingredientes y pruebas</h3></div>
