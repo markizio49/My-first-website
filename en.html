@@ -15,6 +15,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tektur:wght@500;700;800&family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
+.off{display:inline-block;margin-left:.35em;padding:.05em .45em;border:1px solid #8a6a2a;border-radius:3px;color:#d7b25a;font-size:.72em;font-weight:600;letter-spacing:.02em;vertical-align:middle;white-space:nowrap}
+.offnote{color:#d7b25a}
 /* Layout: wiki-style portal — banner header, left nav with labelled bars, centre column of titled panels (icon grids + link strips), right info column. Single dark look by choice. */
 :root {
   --abyss: #0a0607;
@@ -390,6 +392,8 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <h4>Gear</h4>
       <a href="#suit">Biosuit</a>
       <a href="#breath">Breathing and blood</a>
+      <a href="#slipsuit">Bio-Slipsuit</a>
+      <a href="#leviathan">Leviathan</a>
       <a href="#grow">Embryo</a>
       <a href="#thalamus-gene">Thalamus Gene</a>
       <a href="#latcher-gene">Latcher Gene</a>
@@ -401,6 +405,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <a href="#weapons">Needle Gland</a>
       <a href="#bonespike">Bonespike</a>
       <a href="#gebira">Gebira</a>
+      <a href="#kramer">Kramer</a>
     </nav>
     <nav aria-label="Crafting">
       <h4>Crafting</h4>
@@ -427,13 +432,15 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <section class="panel welcome">
         <h1>Welcome to <span>Biopunk for Barotrauma</span></h1>
         <p>A living Biosuit fed on alien blood, symbiote weapons, the Thalamus Gene, and Gebira, a sea serpent from the Abyss.</p>
-        <p class="ver">Current mod version: <b>0.0.6 alpha</b> · game <b>1.13.5.0</b></p>
+        <p class="ver">Current mod version: <b>0.0.7 alpha</b> · game <b>1.13.5.0</b></p>
       </section>
 
       <section class="panel" id="suit">
         <div class="bar-title"><h2>Gear</h2></div>
         <div class="icons">
           <a class="ico" href="#suit-stats"><span class="pic"><img src="img/suit.png" alt="" width="128" height="128"></span><b>Biosuit</b></a>
+          <a class="ico" href="#slipsuit"><span class="pic"><img src="img/slipsuit.png" alt="" width="120" height="118"></span><b>Bio-Slipsuit</b></a>
+          <a class="ico" href="#leviathan"><span class="pic"><img src="img/leviathan.png" alt="" width="127" height="100" style="width:76px;height:auto"></span><b>Leviathan</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>Embryo</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>Suit base</b></a>
           <a class="ico" href="#thalamus-gene"><span class="pic"><img src="img/gene.png" alt="" width="64" height="64"></span><b>Thalamus Gene</b></a>
@@ -449,10 +456,10 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <section class="panel" id="weapons">
         <div class="bar-title"><h2>Symbiote weapons</h2></div>
         <div class="icons">
-          <a class="ico" href="#weapons-table"><span class="pic"><img src="img/stinger.png" alt="" width="198" height="46"></span><b>Symbiote Stinger</b></a>
+          <a class="ico" href="#weapons-table"><span class="pic"><img src="img/stinger.png" alt="" width="198" height="46"></span><b>Symbiote Stinger</b> <span class="off">temporarily disabled</span></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/needler.png" alt="" width="166" height="109"></span><b>Needler</b></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/gland.png" alt="" width="50" height="59"></span><b>Needle Gland</b></a>
-          <a class="ico" href="#bonespike"><span class="pic"><img src="img/bonespike.png" alt="" width="248" height="53"></span><b>Bonespike</b></a>
+          <a class="ico" href="#bonespike"><span class="pic"><img src="img/bonespike.png" alt="" width="248" height="53"></span><b>Bonespike</b> <span class="off">temporarily disabled</span></a>
         </div>
         <div class="strip">
           <a href="#weapons-table">Damage</a>
@@ -516,7 +523,8 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <li><b>Strange Egg</b>: Peanut, Psilotoad, Orangeboy, Balloon; cabinets and shops</li>
             <li><b>Diver's Remains</b>: storage and mineral cabinets</li>
             <li><b>Alien Blood</b>: monsters, Thalamus organs</li>
-            <li><b>Needle Gland</b>: in a dead spineling's inventory</li>
+            <li><b>Needle Gland</b>: in a dead spineling’s inventory, about one in five</li>
+            <li><b>Gebira</b>: alien blood, swim bladders, unresearched genetic material</li>
           </ul>
         </section>
       </div>
@@ -528,12 +536,12 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <thead><tr><th>Weapons</th><th>Damage</th><th>Special properties</th></tr></thead>
             <tbody>
               <tr>
-                <td><a href="#bonespike"><b>Bonespike</b></a><br>melee</td>
+                <td><a href="#bonespike"><b>Bonespike</b></a> <span class="off">temporarily disabled</span><br>melee</td>
                 <td><div class="tags"><span>lacerations 16</span><span>bleeding 10</span><span>armor penetration 22%</span></div></td>
                 <td>A living melee blade that partially penetrates armor and briefly slows the target. It works without a Biosuit.</td>
               </tr>
               <tr>
-                <td><b>Symbiote Stinger</b><br>melee</td>
+                <td><b>Symbiote Stinger</b> <span class="off">temporarily disabled</span><br>melee</td>
                 <td><div class="tags"><span>lacerations 10</span><span>bleeding 6</span><span>stun 0.2</span></div></td>
                 <td>Wielded by the wearer of a fed Biosuit it hits <b>2.5 times</b> harder (25 / 15), and every strike pumps the victim's blood into the suit's vial.</td>
               </tr>
@@ -545,15 +553,19 @@ footer { border-top: 1px solid var(--line); background: #060304; }
               <tr>
                 <td><b>Needle Gland</b><br>magazine</td>
                 <td><div class="tags"><span>20 needles</span></div></td>
-                <td>Regrows 1 needle every 6 s. An empty one can be regrown in a fabricator with alien blood</td>
+                <td>In a Needler held by a fed suit’s wearer it grows a needle every 6 s; each needle costs <b>2 blood</b> from the vial. Regrow an empty gland in a fabricator with alien blood.</td>
               </tr>
             </tbody>
           </table>
         </div>
+        <div class="bar-sub"><h3>Fabricator</h3></div>
+        <p class="txt">Husk Stinger + Organic Fiber + Alien Blood → <em>Symbiont Stinger</em> <span class="off">temporarily disabled</span><br><small>40 s · Weapons 40</small></p>
+        <p class="txt">2 Spineling Spikes + 2 Organic Fiber + Alien Blood → <em>Needler</em><br><small>50 s · Weapons 50</small></p>
       </section>
 
       <section class="panel" id="bonespike">
         <div class="bar-title"><h2>Bonespike</h2></div>
+        <p class="txt offnote"><b>Temporarily disabled: the grip is being reworked, so this item is not in the game in 0.0.7.</b></p>
         <p class="txt">A living melee blade that partially penetrates armor and briefly slows the target. It works without a Biosuit.</p>
         <div class="bar-sub"><h3>Fabricator</h3></div>
         <p class="txt">2 Calcium + 1 Organic Fiber + 1 Alien Blood → <em>Bonespike</em><br><small>30 s · Weapons 35 recommended</small></p>
@@ -562,27 +574,86 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <section class="panel" id="thalamus-gene">
         <div class="bar-title"><h2>Thalamus Gene</h2></div>
         <p class="txt">Destroy a Thalamus Brain in an infested wreck and refine the material it drops with stabilozine at a Research Station. Insert the refined gene into a Gene Splicer and equip the splicer in the health interface.</p>
-        <p class="txt">An enemy NPC killed by a carrier with the gene active rises after <b>8 seconds</b> and fights on the carrier’s side. The ally dies <b>5 minutes</b> later. Each target can be raised once per round.</p>
+        <p class="txt">An enemy NPC killed by a carrier with the gene active rises after <b>8 seconds</b> and fights on the carrier’s side. The ally dies <b>2–5 minutes</b> later (longer with a higher-quality gene). Each target can be raised once per round.</p>
         <p class="txt">Reanimation requires <a href="https://github.com/Luatrauma/Luatrauma.Docs/blob/master/manual/docs/installation.md">LuaCs for Barotrauma</a> on the multiplayer server or in the single-player client.</p>
       </section>
 
       <section class="panel" id="latcher-gene">
         <div class="bar-title"><h2>Latcher Gene</h2></div>
         <p class="txt">Found when researching unidentified genetic material at a research station, like the regular genes. Load it into a gene splicer and the carrier grows a long, barbed tongue.</p>
-        <p class="txt">The attack key (<kbd>R</kbd> by default) lashes the tongue forward: it hooks the target, drags it towards the carrier and briefly stuns it. Cooldown: <b>8 seconds</b>. This gene does not need LuaCs.</p>
+        <p class="txt">The attack key (<kbd>R</kbd> by default) shoots the tongue up to 10 m. It pierces the target (up to three limbs), causes lacerations, bleeding and concussion, stuns it and holds it for 2.5 seconds, dragging it towards the carrier, then reels back. Cooldown: <b>8 seconds</b>. A small husk appendage grows on the carrier’s head. This gene does not need LuaCs.</p>
+      </section>
+
+      <section class="panel" id="slipsuit">
+        <div class="bar-title"><h2>Bio-Slipsuit</h2></div>
+        <p class="txt">A vanilla slipsuit fused with living biosuit tissue: its flippers have grown into webbed fins. No oxygen tank needed: the suit supplies oxygen itself and feeds only on alien blood.</p>
+        <dl class="kv">
+          <dt>+350%</dt><dd>swimming speed while fed: as fast as a crawler</dd>
+          <dt>+40%</dt><dd>scooter propulsion while fed</dd>
+          <dt>6500</dt><dd>pressure protection when fed (5000 when hungry)</dd>
+          <dt>−15%</dt><dd>damage: wounds, bleeding, burns, poison, radiation</dd>
+          <dt>~2:45</dt><dd>per blood vial underwater; no blood is used in a breathable room</dd>
+          <dt>−20%</dt><dd>walking speed: the fins get in the way on land</dd>
+        </dl>
+        <p class="txt">Without blood the suit feeds on its wearer: <b>2 internal damage every 2 seconds</b>. While it is fed, the Symbiont Stinger and the Needler work with it.</p>
+        <div class="bar-sub"><h3>Fabricator</h3></div>
+        <p class="txt">Slipsuit + Biosuit Base + 2 Alien Blood → <em>Bio-Slipsuit</em><br><small>60 s · Medical 40</small></p>
+      </section>
+
+      <section class="panel" id="leviathan">
+        <div class="bar-title"><h2>Leviathan</h2></div>
+        <p class="txt">A living deep-sea exosuit grown over a vanilla one: dark carapace, glowing blue glands, fins. An <b>Abyssal Heart</b> beats where the fuel rod would go (about 30 minutes each), and alien blood provides oxygen and feeds its organ weapons.</p>
+        <dl class="kv">
+          <dt>7500</dt><dd>pressure protection</dd>
+          <dt>−70%</dt><dd>physical damage</dd>
+          <dt>×1.3</dt><dd>speed while the heart beats; +50% swimming</dd>
+          <dt>10</dt><dd>pockets for small items</dd>
+        </dl>
+        <p class="txt">Without a heart the suit freezes; without blood it feeds on its wearer: <b>2 internal damage every 2 seconds</b>.</p>
+        <div class="bar-sub"><h3>Organ weapons</h3></div>
+        <p class="txt"><img src="img/levi_volley.png" alt="" width="140" height="65" loading="lazy"><br><b>Needle Volley</b> — about 10 bone needles per second.</p>
+        <p class="txt"><img src="img/levi_acid.png" alt="" width="130" height="65" loading="lazy"><br><b>Acid Spit</b> — a ~3 m stream of acid that eats through flesh and armor.</p>
+        <p class="txt">The Volley and Spit regrow their reserve on their own while the wearer has a Leviathan with blood on, costing about 1 blood per second.</p>
+        <div class="bar-sub"><h3>Recipes</h3></div>
+        <p class="txt">Exosuit + Biosuit Base + 4 Alien Blood → <em>Leviathan</em><br><small>Fabricator · Medical 50, Mechanical 40</small></p>
+        <p class="txt">3 Alien Blood + Swim Bladder + Unresearched Genetic Material → <em>Abyssal Heart</em><br><small>Medical Fabricator · Medical 40</small></p>
       </section>
 
       <section class="panel" id="gebira">
         <div class="bar-title"><h2>Gebira</h2></div>
         <div class="gebira-art"><img src="img/gebira.webp" alt="Gebira" width="1200" height="359" loading="lazy"></div>
         <p class="txt">A long abyssal sea serpent with ribbon fins. It circles submarines in the depths and snatches divers outside the hull.</p>
+        <p class="txt">Its carcass yields alien blood, swim bladders and unresearched genetic material, which can be researched into the Latcher gene.</p>
+      </section>
+
+      <section class="panel" id="kramer">
+        <div class="bar-title"><h2>Kramer Prototype</h2></div>
+        <p class="txt">A failed experiment in growing living gear: a pale bony skull and shoulders, a dark ribbed body, long blade-like legs and spikes along its spine. Tougher than a husk chimera (<b>900 health</b>), but it doesn't carry the husk infection and isn't friendly with husks.</p>
+        <p class="txt">Its carcass yields alien blood, unresearched genetic material. It doesn't appear in the campaign yet: <code>spawn KramerPrototype cursor</code>.</p>
       </section>
 
       <section class="panel" id="changelog">
         <div class="bar-title"><h2>Update timeline</h2></div>
         <ol class="timeline">
           <li class="now">
-            <div class="tl-head"><span class="ver-tag">0.0.6 alpha</span><h3>New weapon sprites</h3><time datetime="2026-11-14">14 Nov 2026</time> <span class="cur">current</span></div>
+            <div class="tl-head"><span class="ver-tag">0.0.7 alpha</span><h3>Bio-Slipsuit and weapon recipes</h3><time datetime="2026-11-22">22 Nov 2026</time> <span class="cur">current</span></div>
+            <ul class="tl-list">
+              <li><span class="k add">Added</span><span>Bio-Slipsuit: a dark blue slipsuit of living tissue. While fed with blood, its wearer swims as fast as a crawler.</span></li>
+              <li><span class="k add">Added</span><span>Fabricator recipes for the Symbiont Stinger and the Needler.</span></li>
+              <li><span class="k add">Added</span><span>Gebira loot: alien blood, swim bladders and unresearched genetic material.</span></li>
+              <li><span class="k chg">Changed</span><span>Needle Glands drop from about one in five spinelings. Each grown needle costs 2 blood from the suit’s vial.</span></li>
+              <li><span class="k chg">Changed</span><span>Thalamus gene allies live 2–5 minutes depending on gene quality.</span></li>
+              <li><span class="k chg">Changed</span><span>The Latcher tongue pierces its target and causes lacerations, bleeding and concussion; a husk appendage grows on the carrier’s head.</span></li>
+              <li><span class="k chg">Changed</span><span>The Biosuit Embryo can’t be damaged from outside and drops leftover blood when it matures.</span></li>
+              <li><span class="k fix">Fixed</span><span>Latcher gene: the tongue no longer spams console errors, retracts fully and despawns.</span></li>
+              <li><span class="k add">Added</span><span>Leviathan: a living deep-sea exosuit running on an Abyssal Heart and blood, with its own organ weapons: Needle Volley and Acid Spit.</span></li>
+              <li><span class="k add">Added</span><span>Kramer Prototype: a pale creature on blade-like legs with 900 health. For now it can only be spawned with a command.</span></li>
+              <li><span class="k add">Added</span><span>Abyssal Heart: the Leviathan's fuel, a rare drop from the Gebira.</span></li>
+              <li><span class="k chg">Changed</span><span>The Symbiote Stinger and the Bonespike are temporarily disabled while their in-hand position is reworked.</span></li>
+            </ul>
+          </li>
+          <li>
+            <div class="tl-head"><span class="ver-tag">0.0.6 alpha</span><h3>New weapon sprites</h3><time datetime="2026-11-14">14 Nov 2026</time></div>
             <ul class="tl-list">
               <li><span class="k chg">Changed</span><span>New Needler, Symbiote Stinger and Bonespike sprites in the vanilla style.</span></li>
               <li><span class="k chg">Changed</span><span>New Thalamus Gene vial modelled on the vanilla genes.</span></li>
@@ -628,10 +699,14 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <div class="cmd"><div><code>spawnitem bioexo_embryo inventory</code><small>Biosuit Embryo</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_suitbase inventory</code><small>Biosuit Base</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_thalamusgene inventory</code><small>Thalamus Gene</small></div><button class="copy" type="button">Copy</button></div>
-            <div class="cmd"><div><code>spawnitem bioexo_bonespike inventory</code><small>Bonespike</small></div><button class="copy" type="button">Copy</button></div>
-            <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>Symbiote Stinger</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_bonespike inventory</code><small>Bonespike — temporarily disabled</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>Symbiote Stinger — temporarily disabled</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needler inventory</code><small>Needler</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needlegland inventory</code><small>Needle Gland</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_slip inventory</code><small>Bio-Slipsuit</small></div>
+            <div class="cmd"><div><code>spawnitem bioexo_leviathan inventory</code><small>Leviathan</small></div>
+            <div class="cmd"><div><code>spawnitem bioexo_abyssheart inventory</code><small>Abyssal Heart</small></div>
+            <div class="cmd"><div><code>spawn KramerPrototype cursor</code><small>Kramer Prototype</small></div><button class="copy" type="button">Copy</button></div>
           </div>
           <div>
             <div class="bar-sub"><h3>Ingredients and tests</h3></div>
@@ -672,8 +747,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
         <ul class="dots">
           <li><b>Early alpha.</b> Expect bugs and balance changes; report them in the mod comments</li>
           <li><b>Changes the Thalamus Brain and spinelings</b> (adds loot). May conflict with mods that change them too</li>
-          <li><b>Gland drop chance is 100% for now</b> for testing, it will be lowered later</li>
-          <li><b>Stinger and Needler have no recipes yet</b>, console only</li>
+          <li><b>The Bio-Slipsuit and the Latcher tongue</b> are new; their balance may still change</li>
         </ul>
       </section>
 
@@ -681,9 +755,9 @@ footer { border-top: 1px solid var(--line); background: #060304; }
         <h3 class="panel-title">Latest version</h3>
         <div class="log">
           <div class="entry">
-            <b>0.0.6 alpha</b>
-            <time datetime="2026-11-14">14 Nov 2026</time>
-            <p>New weapon and gene vial sprites.</p>
+            <b>0.0.7 alpha</b>
+            <time datetime="2026-11-22">22 Nov 2026</time>
+            <p>Bio-Slipsuit, weapon recipes and a reworked Latcher gene.</p>
           </div>
         </div>
         <a class="more" href="#changelog">Full timeline</a>
@@ -717,7 +791,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
   </div>
   <div class="foot-line">
     <div class="gutter">
-      <span>Biopunk for Barotrauma · alpha 0.0.6</span>
+      <span>Biopunk for Barotrauma · alpha 0.0.7</span>
       <span>Fan-made mod. Barotrauma belongs to FakeFish and Undertow Games.</span>
     </div>
   </div>

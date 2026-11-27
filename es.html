@@ -15,6 +15,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tektur:wght@500;700;800&family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
+.off{display:inline-block;margin-left:.35em;padding:.05em .45em;border:1px solid #8a6a2a;border-radius:3px;color:#d7b25a;font-size:.72em;font-weight:600;letter-spacing:.02em;vertical-align:middle;white-space:nowrap}
+.offnote{color:#d7b25a}
 /* Layout: wiki-style portal — banner header, left nav with labelled bars, centre column of titled panels (icon grids + link strips), right info column. Single dark look by choice. */
 :root {
   --abyss: #0a0607;
@@ -390,6 +392,8 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <h4>Equipo</h4>
       <a href="#suit">Biotraje</a>
       <a href="#breath">Respiración y sangre</a>
+      <a href="#slipsuit">Biotraje de buceo</a>
+      <a href="#leviathan">Leviatán</a>
       <a href="#grow">Embrión</a>
       <a href="#thalamus-gene">Gen de Tálamo</a>
       <a href="#latcher-gene">Gen del latcher</a>
@@ -401,6 +405,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <a href="#weapons">Glándula de agujas</a>
       <a href="#bonespike">Espina Ósea</a>
       <a href="#gebira">Gebira</a>
+      <a href="#kramer">Kramer</a>
     </nav>
     <nav aria-label="Fabricación">
       <h4>Fabricación</h4>
@@ -427,13 +432,15 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <section class="panel welcome">
         <h1>Bienvenido a <span>Biopunk for Barotrauma</span></h1>
         <p>Un Biotraje vivo que se alimenta de sangre alienígena, armas simbiontes, el Gen de Tálamo y Gebira, una serpiente marina del abismo.</p>
-        <p class="ver">Versión actual del mod: <b>0.0.6 alpha</b> · juego <b>1.13.5.0</b></p>
+        <p class="ver">Versión actual del mod: <b>0.0.7 alpha</b> · juego <b>1.13.5.0</b></p>
       </section>
 
       <section class="panel" id="suit">
         <div class="bar-title"><h2>Equipo</h2></div>
         <div class="icons">
           <a class="ico" href="#suit-stats"><span class="pic"><img src="img/suit.png" alt="" width="128" height="128"></span><b>Biotraje</b></a>
+          <a class="ico" href="#slipsuit"><span class="pic"><img src="img/slipsuit.png" alt="" width="120" height="118"></span><b>Biotraje de buceo</b></a>
+          <a class="ico" href="#leviathan"><span class="pic"><img src="img/leviathan.png" alt="" width="127" height="100" style="width:76px;height:auto"></span><b>Leviatán</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/embryo.png" alt="" width="50" height="46"></span><b>Embrión</b></a>
           <a class="ico" href="#grow"><span class="pic"><img src="img/base.png" alt="" width="166" height="50"></span><b>Base del traje</b></a>
           <a class="ico" href="#thalamus-gene"><span class="pic"><img src="img/gene.png" alt="" width="64" height="64"></span><b>Gen de Tálamo</b></a>
@@ -449,10 +456,10 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <section class="panel" id="weapons">
         <div class="bar-title"><h2>Armas simbiontes</h2></div>
         <div class="icons">
-          <a class="ico" href="#weapons-table"><span class="pic"><img src="img/stinger.png" alt="" width="198" height="46"></span><b>Aguijón simbionte</b></a>
+          <a class="ico" href="#weapons-table"><span class="pic"><img src="img/stinger.png" alt="" width="198" height="46"></span><b>Aguijón simbionte</b> <span class="off">desactivado temporalmente</span></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/needler.png" alt="" width="166" height="109"></span><b>Lanzaagujas</b></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/gland.png" alt="" width="50" height="59"></span><b>Glándula de agujas</b></a>
-          <a class="ico" href="#bonespike"><span class="pic"><img src="img/bonespike.png" alt="" width="248" height="53"></span><b>Espina Ósea</b></a>
+          <a class="ico" href="#bonespike"><span class="pic"><img src="img/bonespike.png" alt="" width="248" height="53"></span><b>Espina Ósea</b> <span class="off">desactivado temporalmente</span></a>
         </div>
         <div class="strip">
           <a href="#weapons-table">Daño</a>
@@ -516,7 +523,8 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <li><b>Huevo extraño</b>: cualquier huevo de mascota; armarios y tiendas</li>
             <li><b>Restos de buceador</b>: armarios de almacenamiento y de minerales</li>
             <li><b>Sangre alienígena</b>: monstruos, órganos del Tálamo</li>
-            <li><b>Glándula de agujas</b>: inventario del cadáver de un bacalao espinado</li>
+            <li><b>Glándula de agujas</b>: inventario de un bacalao espinado muerto, aproximadamente uno de cada cinco</li>
+            <li><b>Gebira</b>: sangre alienígena, vejigas natatorias, material genético sin investigar</li>
           </ul>
         </section>
       </div>
@@ -528,12 +536,12 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <thead><tr><th>Armas</th><th>Daño</th><th>Propiedades especiales</th></tr></thead>
             <tbody>
               <tr>
-                <td><a href="#bonespike"><b>Espina Ósea</b></a><br>cuerpo a cuerpo</td>
+                <td><a href="#bonespike"><b>Espina Ósea</b></a> <span class="off">desactivado temporalmente</span><br>cuerpo a cuerpo</td>
                 <td><div class="tags"><span>laceraciones 16</span><span>hemorragia 10</span><span>penetración de armadura 22%</span></div></td>
                 <td>Hoja viva de combate cuerpo a cuerpo. Penetra parcialmente la armadura y ralentiza brevemente al objetivo. Funciona sin Biotraje.</td>
               </tr>
               <tr>
-                <td><b>Aguijón simbionte</b><br>cuerpo a cuerpo</td>
+                <td><b>Aguijón simbionte</b> <span class="off">desactivado temporalmente</span><br>cuerpo a cuerpo</td>
                 <td><div class="tags"><span>laceraciones 10</span><span>hemorragia 6</span><span>aturdimiento 0.2</span></div></td>
                 <td>En manos del portador de un biotraje alimentado golpea <b>2,5 veces</b> más fuerte (25 / 15) y cada golpe bombea la sangre de la víctima al frasco del traje.</td>
               </tr>
@@ -545,15 +553,19 @@ footer { border-top: 1px solid var(--line); background: #060304; }
               <tr>
                 <td><b>Glándula de agujas</b><br>cargador</td>
                 <td><div class="tags"><span>20 agujas</span></div></td>
-                <td>Regenera 1 aguja cada 6 s. Una vacía se puede regenerar en un fabricador con sangre alienígena</td>
+                <td>En un Lanzaagujas en manos del portador de un traje alimentado, hace crecer una aguja cada 6 s; cada aguja cuesta <b>2 de sangre</b> del vial. Una glándula vacía se regenera en el fabricador con sangre alienígena.</td>
               </tr>
             </tbody>
           </table>
         </div>
+        <div class="bar-sub"><h3>Fabricador</h3></div>
+        <p class="txt">Aguijón de husk + fibra orgánica + sangre alienígena → <em>Aguijón simbionte</em> <span class="off">desactivado temporalmente</span><br><small>40 s · Armas 40</small></p>
+        <p class="txt">2 púas de bacalao espinado + 2 fibras orgánicas + sangre alienígena → <em>Lanzaagujas</em><br><small>50 s · Armas 50</small></p>
       </section>
 
       <section class="panel" id="bonespike">
         <div class="bar-title"><h2>Espina Ósea</h2></div>
+        <p class="txt offnote"><b>Desactivado temporalmente: se está rehaciendo el agarre, así que este objeto no está en el juego en la 0.0.7.</b></p>
         <p class="txt">Hoja viva de combate cuerpo a cuerpo. Penetra parcialmente la armadura y ralentiza brevemente al objetivo. Funciona sin Biotraje.</p>
         <div class="bar-sub"><h3>Fabricador</h3></div>
         <p class="txt">2 de calcio + 1 de fibra orgánica + 1 de sangre alienígena → <em>Espina Ósea</em><br><small>30 s · habilidad Armas 35 recomendada</small></p>
@@ -562,27 +574,86 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <section class="panel" id="thalamus-gene">
         <div class="bar-title"><h2>Gen de Tálamo</h2></div>
         <p class="txt">Destruye un cerebro de Tálamo en un pecio infestado y refina el material que suelta con estabilocina en una estación de investigación. Inserta el gen refinado en un empalmador genético y equípalo desde la interfaz de salud.</p>
-        <p class="txt">Si el portador con el gen activo mata a un PNJ enemigo, este se levanta a los <b>8 segundos</b> y combate de su lado. El aliado muere <b>5 minutos</b> después. Cada objetivo solo puede revivir una vez por ronda.</p>
+        <p class="txt">Si el portador con el gen activo mata a un PNJ enemigo, este se levanta a los <b>8 segundos</b> y combate de su lado. El aliado muere de <b>2 a 5 minutos</b> después (más con un gen de mejor calidad). Cada objetivo solo puede revivir una vez por ronda.</p>
         <p class="txt">La reanimación requiere <a href="https://github.com/Luatrauma/Luatrauma.Docs/blob/master/manual/docs/installation.md">LuaCs for Barotrauma</a> en el servidor multijugador o en el cliente para partidas de un jugador.</p>
       </section>
 
       <section class="panel" id="latcher-gene">
         <div class="bar-title"><h2>Gen del latcher</h2></div>
         <p class="txt">Aparece al investigar material genético sin identificar en la estación de investigación, igual que los genes normales. Colócalo en un empalmador genético y al portador le crecerá una lengua larga con ganchos.</p>
-        <p class="txt">La tecla de ataque (<kbd>R</kbd> por defecto) dispara la lengua hacia delante: engancha al objetivo, lo arrastra hacia el portador y lo aturde un instante. Recarga: <b>8 segundos</b>. Este gen no necesita LuaCs.</p>
+        <p class="txt">La tecla de ataque (<kbd>R</kbd> por defecto) dispara la lengua hasta 10 m. Atraviesa al objetivo (hasta tres partes del cuerpo), causa laceraciones, sangrado y conmoción, lo aturde y lo sujeta 2,5 segundos arrastrándolo hacia el portador; luego se recoge. Recarga: <b>8 segundos</b>. Al portador le crece un pequeño apéndice de husk en la cabeza. Este gen no necesita LuaCs.</p>
+      </section>
+
+      <section class="panel" id="slipsuit">
+        <div class="bar-title"><h2>Biotraje de buceo</h2></div>
+        <p class="txt">Un traje de buceo con aletas fusionado con tejido vivo del biotraje: sus aletas se han convertido en membranas palmeadas. No necesita bombona: el traje da oxígeno por sí mismo y solo se alimenta de sangre alienígena.</p>
+        <dl class="kv">
+          <dt>+350%</dt><dd>a la velocidad de nado mientras está alimentado: como un reptador</dd>
+          <dt>+40%</dt><dd>a la propulsión del escúter mientras está alimentado</dd>
+          <dt>6500</dt><dd>protección contra la presión alimentado (5000 hambriento)</dd>
+          <dt>−15%</dt><dd>de daño: heridas, sangrado, quemaduras, veneno, radiación</dd>
+          <dt>~2:45</dt><dd>por vial de sangre bajo el agua; en una sala con aire no gasta sangre</dd>
+          <dt>−20%</dt><dd>a la velocidad al caminar: las aletas estorban en tierra</dd>
+        </dl>
+        <p class="txt">Sin sangre, el traje se alimenta de su portador: <b>2 de daño interno cada 2 segundos</b>. Mientras está alimentado, el Aguijón simbionte y el Lanzaagujas funcionan con él.</p>
+        <div class="bar-sub"><h3>Fabricador</h3></div>
+        <p class="txt">Traje de buceo con aletas + base de biotraje + 2 sangre alienígena → <em>Biotraje de buceo</em><br><small>60 s · Medicina 40</small></p>
+      </section>
+
+      <section class="panel" id="leviathan">
+        <div class="bar-title"><h2>Leviatán</h2></div>
+        <p class="txt">Un exotraje vivo de aguas profundas cultivado sobre uno normal: caparazón oscuro, glándulas azules, aletas. Donde iría la barra de combustible late un <b>Corazón abisal</b> (unos 30 minutos cada uno), y la sangre alienígena da oxígeno y alimenta sus armas orgánicas.</p>
+        <dl class="kv">
+          <dt>7500</dt><dd>protección contra la presión</dd>
+          <dt>−70%</dt><dd>de daño físico</dd>
+          <dt>×1,3</dt><dd>de velocidad mientras late el corazón; +50% al nadar</dd>
+          <dt>10</dt><dd>bolsillos para objetos pequeños</dd>
+        </dl>
+        <p class="txt">Sin corazón el traje se detiene; sin sangre se alimenta de su portador: <b>2 de daño interno cada 2 segundos</b>.</p>
+        <div class="bar-sub"><h3>Armas orgánicas</h3></div>
+        <p class="txt"><img src="img/levi_volley.png" alt="" width="140" height="65" loading="lazy"><br><b>Andanada de agujas</b>: unas 10 agujas de hueso por segundo.</p>
+        <p class="txt"><img src="img/levi_acid.png" alt="" width="130" height="65" loading="lazy"><br><b>Escupitajo ácido</b>: un chorro de ácido de ~3 m que corroe carne y blindaje.</p>
+        <p class="txt">La reserva de la andanada y del escupitajo se regenera sola mientras el portador lleva un Leviatán con sangre, por aproximadamente 1 de sangre por segundo.</p>
+        <div class="bar-sub"><h3>Recetas</h3></div>
+        <p class="txt">Exotraje + base de biotraje + 4 sangre alienígena → <em>Leviatán</em><br><small>Fabricador · Medicina 50, Mecánica 40</small></p>
+        <p class="txt">3 sangre alienígena + vejiga natatoria + material genético sin investigar → <em>Corazón abisal</em><br><small>Fabricador médico · Medicina 40</small></p>
       </section>
 
       <section class="panel" id="gebira">
         <div class="bar-title"><h2>Gebira</h2></div>
         <div class="gebira-art"><img src="img/gebira.webp" alt="Gebira" width="1200" height="359" loading="lazy"></div>
         <p class="txt">Una larga serpiente marina del abismo con aletas en forma de cinta. Rodea los submarinos en las profundidades y atrapa a los buceadores que salen al exterior.</p>
+        <p class="txt">De su cadáver se obtiene sangre alienígena, vejigas natatorias y material genético sin investigar, que al investigarse puede dar el gen del enganchador.</p>
+      </section>
+
+      <section class="panel" id="kramer">
+        <div class="bar-title"><h2>Prototipo de Kramer</h2></div>
+        <p class="txt">Un experimento fallido de cultivo de equipo vivo: cráneo y hombros pálidos y huesudos, cuerpo oscuro y estriado, largas patas como cuchillas y púas a lo largo de la columna. Más resistente que una quimera husk (<b>900 de vida</b>), pero no transmite la infección husk ni es amigo de los husks.</p>
+        <p class="txt">De su cadáver se obtiene sangre alienígena, material genético sin investigar. Aún no aparece en la campaña: <code>spawn KramerPrototype cursor</code>.</p>
       </section>
 
       <section class="panel" id="changelog">
         <div class="bar-title"><h2>Cronología de actualizaciones</h2></div>
         <ol class="timeline">
           <li class="now">
-            <div class="tl-head"><span class="ver-tag">0.0.6 alpha</span><h3>Nuevos sprites de armas</h3><time datetime="2026-11-14">14.11.2026</time> <span class="cur">actual</span></div>
+            <div class="tl-head"><span class="ver-tag">0.0.7 alpha</span><h3>Biotraje de buceo y recetas de armas</h3><time datetime="2026-11-22">22.11.2026</time> <span class="cur">actual</span></div>
+            <ul class="tl-list">
+              <li><span class="k add">Añadido</span><span>Biotraje de buceo: un traje azul oscuro de tejido vivo. Mientras tiene sangre, su portador nada tan rápido como un reptador.</span></li>
+              <li><span class="k add">Añadido</span><span>Recetas de fabricador para el Aguijón simbionte y el Lanzaagujas.</span></li>
+              <li><span class="k add">Añadido</span><span>Botín de la Gebira: sangre alienígena, vejigas natatorias y material genético sin investigar.</span></li>
+              <li><span class="k chg">Cambiado</span><span>La Glándula de agujas cae de aproximadamente uno de cada cinco bacalaos espinados. Cada aguja cuesta 2 de sangre del vial del traje.</span></li>
+              <li><span class="k chg">Cambiado</span><span>Los aliados del gen de Tálamo viven de 2 a 5 minutos según la calidad del gen.</span></li>
+              <li><span class="k chg">Cambiado</span><span>La lengua del enganchador atraviesa al objetivo y causa laceraciones, sangrado y conmoción; al portador le crece un apéndice de husk en la cabeza.</span></li>
+              <li><span class="k chg">Cambiado</span><span>El Embrión del biotraje no recibe daño externo y suelta la sangre sobrante al madurar.</span></li>
+              <li><span class="k fix">Corregido</span><span>Gen del enganchador: la lengua ya no llena la consola de errores, se recoge entera y desaparece.</span></li>
+              <li><span class="k add">Añadido</span><span>Leviatán: un exotraje vivo de aguas profundas que funciona con un Corazón abisal y sangre, con sus propias armas orgánicas: Andanada de agujas y Escupitajo ácido.</span></li>
+              <li><span class="k add">Añadido</span><span>Prototipo de Kramer: una criatura pálida sobre patas como cuchillas, con 900 de vida. Por ahora solo aparece mediante comando.</span></li>
+              <li><span class="k add">Añadido</span><span>Corazón abisal: el combustible del Leviatán, botín raro de la Gebira.</span></li>
+              <li><span class="k chg">Cambiado</span><span>El Aguijón simbionte y la Espina Ósea están desactivados temporalmente mientras se rehace su posición en la mano.</span></li>
+            </ul>
+          </li>
+          <li>
+            <div class="tl-head"><span class="ver-tag">0.0.6 alpha</span><h3>Nuevos sprites de armas</h3><time datetime="2026-11-14">14.11.2026</time></div>
             <ul class="tl-list">
               <li><span class="k chg">Cambiado</span><span>Nuevos sprites del Lanzaagujas, el Aguijón simbionte y la Espina Ósea al estilo del juego base.</span></li>
               <li><span class="k chg">Cambiado</span><span>Nuevo frasco del Gen de Tálamo, hecho a imagen de los genes del juego base.</span></li>
@@ -628,10 +699,14 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <div class="cmd"><div><code>spawnitem bioexo_embryo inventory</code><small>Embrión de biotraje</small></div><button class="copy" type="button">Copiar</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_suitbase inventory</code><small>Base de biotraje</small></div><button class="copy" type="button">Copiar</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_thalamusgene inventory</code><small>Gen de Tálamo</small></div><button class="copy" type="button">Copiar</button></div>
-            <div class="cmd"><div><code>spawnitem bioexo_bonespike inventory</code><small>Espina Ósea</small></div><button class="copy" type="button">Copiar</button></div>
-            <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>Aguijón simbionte</small></div><button class="copy" type="button">Copiar</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_bonespike inventory</code><small>Espina Ósea — desactivado temporalmente</small></div><button class="copy" type="button">Copiar</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>Aguijón simbionte — desactivado temporalmente</small></div><button class="copy" type="button">Copiar</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needler inventory</code><small>Lanzaagujas</small></div><button class="copy" type="button">Copiar</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needlegland inventory</code><small>Glándula de agujas</small></div><button class="copy" type="button">Copiar</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_slip inventory</code><small>Biotraje de buceo</small></div>
+            <div class="cmd"><div><code>spawnitem bioexo_leviathan inventory</code><small>Leviatán</small></div>
+            <div class="cmd"><div><code>spawnitem bioexo_abyssheart inventory</code><small>Corazón abisal</small></div>
+            <div class="cmd"><div><code>spawn KramerPrototype cursor</code><small>Prototipo de Kramer</small></div><button class="copy" type="button">Copiar</button></div>
           </div>
           <div>
             <div class="bar-sub"><h3>Ingredientes y pruebas</h3></div>
@@ -672,8 +747,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
         <ul class="dots">
           <li><b>Alfa temprana.</b> Puede haber errores y cambios de equilibrio; avísalos en los comentarios del mod</li>
           <li><b>Modifica el Cerebro de Tálamo y los bacalaos espinados</b> (añade botín). Puede chocar con mods que también los cambien</li>
-          <li><b>La probabilidad de glándula es del 100% por ahora</b> para pruebas, luego bajará</li>
-          <li><b>El Aguijón y el Lanzaagujas aún no tienen receta</b>, solo por consola</li>
+          <li><b>El Biotraje de buceo y la lengua del enganchador</b> son nuevos; su equilibrio aún puede cambiar</li>
         </ul>
       </section>
 
@@ -681,9 +755,9 @@ footer { border-top: 1px solid var(--line); background: #060304; }
         <h3 class="panel-title">Última versión</h3>
         <div class="log">
           <div class="entry">
-            <b>0.0.6 alpha</b>
-            <time datetime="2026-11-14">14.11.2026</time>
-            <p>Nuevos sprites de armas y del frasco del gen.</p>
+            <b>0.0.7 alpha</b>
+            <time datetime="2026-11-22">22.11.2026</time>
+            <p>Biotraje de buceo, recetas de armas y un gen del enganchador mejorado.</p>
           </div>
         </div>
         <a class="more" href="#changelog">Cronología completa</a>
@@ -717,7 +791,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
   </div>
   <div class="foot-line">
     <div class="gutter">
-      <span>Biopunk for Barotrauma · alfa 0.0.6</span>
+      <span>Biopunk for Barotrauma · alfa 0.0.7</span>
       <span>Mod hecho por fans. Barotrauma pertenece a FakeFish y Undertow Games.</span>
     </div>
   </div>
