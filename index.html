@@ -15,6 +15,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tektur:wght@500;700;800&family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
+.off{display:inline-block;margin-left:.35em;padding:.05em .45em;border:1px solid #8a6a2a;border-radius:3px;color:#d7b25a;font-size:.72em;font-weight:600;letter-spacing:.02em;vertical-align:middle;white-space:nowrap}
+.offnote{color:#d7b25a}
 /* Layout: wiki-style portal — banner header, left nav with labelled bars, centre column of titled panels (icon grids + link strips), right info column. Single dark look by choice. */
 :root {
   --abyss: #0a0607;
@@ -457,10 +459,10 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <section class="panel" id="weapons">
         <div class="bar-title"><h2>Оружие симбионта</h2></div>
         <div class="icons">
-          <a class="ico" href="#weapons-table"><span class="pic"><img src="img/stinger.png" alt="" width="198" height="46"></span><b>Жало симбионта</b></a>
+          <a class="ico" href="#weapons-table"><span class="pic"><img src="img/stinger.png" alt="" width="198" height="46"></span><b>Жало симбионта</b> <span class="off">временно отключено</span></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/needler.png" alt="" width="166" height="109"></span><b>Иглострел</b></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/gland.png" alt="" width="50" height="59"></span><b>Игольная железа</b></a>
-          <a class="ico" href="#bonespike"><span class="pic"><img src="img/bonespike.png" alt="" width="248" height="53"></span><b>Костошип</b></a>
+          <a class="ico" href="#bonespike"><span class="pic"><img src="img/bonespike.png" alt="" width="248" height="53"></span><b>Костошип</b> <span class="off">временно отключено</span></a>
         </div>
         <div class="strip">
           <a href="#weapons-table">Урон</a>
@@ -537,12 +539,12 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <thead><tr><th>Оружие</th><th>Урон</th><th>Особенности</th></tr></thead>
             <tbody>
               <tr>
-                <td><a href="#bonespike"><b>Костошип</b></a><br>ближний бой</td>
+                <td><a href="#bonespike"><b>Костошип</b></a> <span class="off">временно отключено</span><br>ближний бой</td>
                 <td><div class="tags"><span>рваные раны 16</span><span>кровотечение 10</span><span>пробивание брони 22%</span><span>замедление 10</span></div></td>
                 <td>Пробивает часть брони и ненадолго замедляет цель. Биокостюм ему не нужен.</td>
               </tr>
               <tr>
-                <td><b>Жало симбионта</b><br>ближний бой</td>
+                <td><b>Жало симбионта</b> <span class="off">временно отключено</span><br>ближний бой</td>
                 <td><div class="tags"><span>рваные раны 10</span><span>кровотечение 6</span><span>оглушение 0.2</span></div></td>
                 <td>В руках носителя сытого биокостюма бьёт в <b>2,5 раза</b> сильнее (25 / 15) и с каждым ударом перекачивает кровь жертвы во флакон костюма.</td>
               </tr>
@@ -560,12 +562,13 @@ footer { border-top: 1px solid var(--line); background: #060304; }
           </table>
         </div>
         <div class="bar-sub"><h3>Обычный фабрикатор</h3></div>
-        <p class="txt">Жало хаска + органическое волокно + инопланетная кровь → <em>Жало симбионта</em><br><small>40 с · Оружие 40</small></p>
+        <p class="txt">Жало хаска + органическое волокно + инопланетная кровь → <em>Жало симбионта</em> <span class="off">временно отключено</span><br><small>40 с · Оружие 40</small></p>
         <p class="txt">2 шипа шипостая + 2 органических волокна + инопланетная кровь → <em>Иглострел</em><br><small>50 с · Оружие 50</small></p>
       </section>
 
       <section class="panel" id="bonespike">
         <div class="bar-title"><h2>Костошип</h2></div>
+        <p class="txt offnote"><b>Временно отключено: хват в руках дорабатывается, в версии 0.0.7 предмета нет в игре.</b></p>
         <p class="txt">Изогнутый костяной клинок на волокнистой рукояти. Пробивает часть брони, а вязкий секрет на лезвии ненадолго замедляет цель. Симбиоз ему не нужен: костошип одинаково бьёт в любых руках.</p>
         <div class="bar-sub"><h3>Обычный фабрикатор</h3></div>
         <p class="txt">2 кальция + 1 органическое волокно + 1 инопланетная кровь → <em>Костошип</em><br><small>30 с · Оружие 35 (рекомендуемый навык)</small></p>
@@ -649,6 +652,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
               <li><span class="k add">Добавлено</span><span>Левиафан: живой глубоководный экзокостюм на Сердце бездны и крови, со своими органами-оружием: Игольным залпом и Кислотным плевком.</span></li>
               <li><span class="k add">Добавлено</span><span>Прототип Крамера: бледное существо на ногах-клинках, 900 здоровья. Пока вызывается только командой.</span></li>
               <li><span class="k add">Добавлено</span><span>Сердце бездны: топливо Левиафана, редкий лут с Гебиры.</span></li>
+              <li><span class="k chg">Изменено</span><span>Жало симбионта и Костошип временно отключены, пока дорабатывается их положение в руках.</span></li>
             </ul>
           </li>
           <li>
@@ -698,8 +702,8 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <div class="cmd"><div><code>spawnitem bioexo_embryo inventory</code><small>Зародыш биокостюма</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_suitbase inventory</code><small>Основа биокостюма</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_thalamusgene inventory</code><small>Ген Таламуса</small></div><button class="copy" type="button">Копировать</button></div>
-            <div class="cmd"><div><code>spawnitem bioexo_bonespike inventory</code><small>Костошип</small></div><button class="copy" type="button">Копировать</button></div>
-            <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>Жало симбионта</small></div><button class="copy" type="button">Копировать</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_bonespike inventory</code><small>Костошип — временно отключено</small></div><button class="copy" type="button">Копировать</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>Жало симбионта — временно отключено</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needler inventory</code><small>Иглострел</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needlegland inventory</code><small>Игольная железа</small></div><button class="copy" type="button">Копировать</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_slip inventory</code><small>Биогидрокостюм</small></div>

@@ -15,6 +15,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tektur:wght@500;700;800&family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
+.off{display:inline-block;margin-left:.35em;padding:.05em .45em;border:1px solid #8a6a2a;border-radius:3px;color:#d7b25a;font-size:.72em;font-weight:600;letter-spacing:.02em;vertical-align:middle;white-space:nowrap}
+.offnote{color:#d7b25a}
 /* Layout: wiki-style portal — banner header, left nav with labelled bars, centre column of titled panels (icon grids + link strips), right info column. Single dark look by choice. */
 :root {
   --abyss: #0a0607;
@@ -457,10 +459,10 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <section class="panel" id="weapons">
         <div class="bar-title"><h2>共生武器</h2></div>
         <div class="icons">
-          <a class="ico" href="#weapons-table"><span class="pic"><img src="img/stinger.png" alt="" width="198" height="46"></span><b>共生毒刺</b></a>
+          <a class="ico" href="#weapons-table"><span class="pic"><img src="img/stinger.png" alt="" width="198" height="46"></span><b>共生毒刺</b> <span class="off">暂时停用</span></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/needler.png" alt="" width="166" height="109"></span><b>针刺枪</b></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/gland.png" alt="" width="50" height="59"></span><b>针腺</b></a>
-          <a class="ico" href="#bonespike"><span class="pic"><img src="img/bonespike.png" alt="" width="248" height="53"></span><b>骨棘刃</b></a>
+          <a class="ico" href="#bonespike"><span class="pic"><img src="img/bonespike.png" alt="" width="248" height="53"></span><b>骨棘刃</b> <span class="off">暂时停用</span></a>
         </div>
         <div class="strip">
           <a href="#weapons-table">伤害</a>
@@ -537,12 +539,12 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <thead><tr><th>武器</th><th>伤害</th><th>特殊效果</th></tr></thead>
             <tbody>
               <tr>
-                <td><a href="#bonespike"><b>骨棘刃</b></a><br>近战</td>
+                <td><a href="#bonespike"><b>骨棘刃</b></a> <span class="off">暂时停用</span><br>近战</td>
                 <td><div class="tags"><span>撕裂伤 16</span><span>流血 10</span><span>护甲穿透 22%</span></div></td>
                 <td>活体近战刀刃，可部分穿透护甲并短暂减缓目标。不需要装备生物服。</td>
               </tr>
               <tr>
-                <td><b>共生毒刺</b><br>近战</td>
+                <td><b>共生毒刺</b> <span class="off">暂时停用</span><br>近战</td>
                 <td><div class="tags"><span>撕裂伤 10</span><span>出血 6</span><span>眩晕 0.2</span></div></td>
                 <td>在穿着已喂饱生物服的人手中，伤害提高到 <b>2.5 倍</b>（25 / 15），每次命中都会把受害者的血液抽入生物服的血瓶。</td>
               </tr>
@@ -560,12 +562,13 @@ footer { border-top: 1px solid var(--line); background: #060304; }
           </table>
         </div>
         <div class="bar-sub"><h3>加工台</h3></div>
-        <p class="txt">尸壳毒刺 + 有机纤维 + 异星血浆 → <em>共生毒刺</em><br><small>40 秒 · 武器 40</small></p>
+        <p class="txt">尸壳毒刺 + 有机纤维 + 异星血浆 → <em>共生毒刺</em> <span class="off">暂时停用</span><br><small>40 秒 · 武器 40</small></p>
         <p class="txt">2 脊刺之刺 + 2 有机纤维 + 异星血浆 → <em>针刺枪</em><br><small>50 秒 · 武器 50</small></p>
       </section>
 
       <section class="panel" id="bonespike">
         <div class="bar-title"><h2>骨棘刃</h2></div>
+        <p class="txt offnote"><b>暂时停用：持握位置正在重做，0.0.7 版本中游戏内没有此物品。</b></p>
         <p class="txt">活体近战刀刃，可部分穿透护甲并短暂减缓目标。不需要装备生物服。</p>
         <div class="bar-sub"><h3>加工台</h3></div>
         <p class="txt">2 份钙 + 1 份有机纤维 + 1 份异星血浆 → <em>骨棘刃</em><br><small>30 秒 · 建议武器技能 35</small></p>
@@ -649,6 +652,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
               <li><span class="k add">新增</span><span>利维坦：以深渊之心和血液驱动的深海活体外骨骼，配有专属器官武器：针雨和酸液喷吐。</span></li>
               <li><span class="k add">新增</span><span>克雷默原型：立在刀刃般长腿上的苍白生物，生命值 900。目前只能用指令生成。</span></li>
               <li><span class="k add">新增</span><span>深渊之心：利维坦的燃料，戈比拉的稀有掉落。</span></li>
+              <li><span class="k chg">调整</span><span>共生毒刺和骨棘刃暂时停用，正在重做持握位置。</span></li>
             </ul>
           </li>
           <li>
@@ -698,8 +702,8 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <div class="cmd"><div><code>spawnitem bioexo_embryo inventory</code><small>生物服胚胎</small></div><button class="copy" type="button">复制</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_suitbase inventory</code><small>生物服基底</small></div><button class="copy" type="button">复制</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_thalamusgene inventory</code><small>丘脑基因</small></div><button class="copy" type="button">复制</button></div>
-            <div class="cmd"><div><code>spawnitem bioexo_bonespike inventory</code><small>骨棘刃</small></div><button class="copy" type="button">复制</button></div>
-            <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>共生毒刺</small></div><button class="copy" type="button">复制</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_bonespike inventory</code><small>骨棘刃 — 暂时停用</small></div><button class="copy" type="button">复制</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>共生毒刺 — 暂时停用</small></div><button class="copy" type="button">复制</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needler inventory</code><small>针刺枪</small></div><button class="copy" type="button">复制</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needlegland inventory</code><small>针腺</small></div><button class="copy" type="button">复制</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_slip inventory</code><small>生物潜水服</small></div>

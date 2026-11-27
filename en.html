@@ -15,6 +15,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tektur:wght@500;700;800&family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
+.off{display:inline-block;margin-left:.35em;padding:.05em .45em;border:1px solid #8a6a2a;border-radius:3px;color:#d7b25a;font-size:.72em;font-weight:600;letter-spacing:.02em;vertical-align:middle;white-space:nowrap}
+.offnote{color:#d7b25a}
 /* Layout: wiki-style portal — banner header, left nav with labelled bars, centre column of titled panels (icon grids + link strips), right info column. Single dark look by choice. */
 :root {
   --abyss: #0a0607;
@@ -454,10 +456,10 @@ footer { border-top: 1px solid var(--line); background: #060304; }
       <section class="panel" id="weapons">
         <div class="bar-title"><h2>Symbiote weapons</h2></div>
         <div class="icons">
-          <a class="ico" href="#weapons-table"><span class="pic"><img src="img/stinger.png" alt="" width="198" height="46"></span><b>Symbiote Stinger</b></a>
+          <a class="ico" href="#weapons-table"><span class="pic"><img src="img/stinger.png" alt="" width="198" height="46"></span><b>Symbiote Stinger</b> <span class="off">temporarily disabled</span></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/needler.png" alt="" width="166" height="109"></span><b>Needler</b></a>
           <a class="ico" href="#weapons-table"><span class="pic"><img src="img/gland.png" alt="" width="50" height="59"></span><b>Needle Gland</b></a>
-          <a class="ico" href="#bonespike"><span class="pic"><img src="img/bonespike.png" alt="" width="248" height="53"></span><b>Bonespike</b></a>
+          <a class="ico" href="#bonespike"><span class="pic"><img src="img/bonespike.png" alt="" width="248" height="53"></span><b>Bonespike</b> <span class="off">temporarily disabled</span></a>
         </div>
         <div class="strip">
           <a href="#weapons-table">Damage</a>
@@ -534,12 +536,12 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <thead><tr><th>Weapons</th><th>Damage</th><th>Special properties</th></tr></thead>
             <tbody>
               <tr>
-                <td><a href="#bonespike"><b>Bonespike</b></a><br>melee</td>
+                <td><a href="#bonespike"><b>Bonespike</b></a> <span class="off">temporarily disabled</span><br>melee</td>
                 <td><div class="tags"><span>lacerations 16</span><span>bleeding 10</span><span>armor penetration 22%</span></div></td>
                 <td>A living melee blade that partially penetrates armor and briefly slows the target. It works without a Biosuit.</td>
               </tr>
               <tr>
-                <td><b>Symbiote Stinger</b><br>melee</td>
+                <td><b>Symbiote Stinger</b> <span class="off">temporarily disabled</span><br>melee</td>
                 <td><div class="tags"><span>lacerations 10</span><span>bleeding 6</span><span>stun 0.2</span></div></td>
                 <td>Wielded by the wearer of a fed Biosuit it hits <b>2.5 times</b> harder (25 / 15), and every strike pumps the victim's blood into the suit's vial.</td>
               </tr>
@@ -557,12 +559,13 @@ footer { border-top: 1px solid var(--line); background: #060304; }
           </table>
         </div>
         <div class="bar-sub"><h3>Fabricator</h3></div>
-        <p class="txt">Husk Stinger + Organic Fiber + Alien Blood → <em>Symbiont Stinger</em><br><small>40 s · Weapons 40</small></p>
+        <p class="txt">Husk Stinger + Organic Fiber + Alien Blood → <em>Symbiont Stinger</em> <span class="off">temporarily disabled</span><br><small>40 s · Weapons 40</small></p>
         <p class="txt">2 Spineling Spikes + 2 Organic Fiber + Alien Blood → <em>Needler</em><br><small>50 s · Weapons 50</small></p>
       </section>
 
       <section class="panel" id="bonespike">
         <div class="bar-title"><h2>Bonespike</h2></div>
+        <p class="txt offnote"><b>Temporarily disabled: the grip is being reworked, so this item is not in the game in 0.0.7.</b></p>
         <p class="txt">A living melee blade that partially penetrates armor and briefly slows the target. It works without a Biosuit.</p>
         <div class="bar-sub"><h3>Fabricator</h3></div>
         <p class="txt">2 Calcium + 1 Organic Fiber + 1 Alien Blood → <em>Bonespike</em><br><small>30 s · Weapons 35 recommended</small></p>
@@ -646,6 +649,7 @@ footer { border-top: 1px solid var(--line); background: #060304; }
               <li><span class="k add">Added</span><span>Leviathan: a living deep-sea exosuit running on an Abyssal Heart and blood, with its own organ weapons: Needle Volley and Acid Spit.</span></li>
               <li><span class="k add">Added</span><span>Kramer Prototype: a pale creature on blade-like legs with 900 health. For now it can only be spawned with a command.</span></li>
               <li><span class="k add">Added</span><span>Abyssal Heart: the Leviathan's fuel, a rare drop from the Gebira.</span></li>
+              <li><span class="k chg">Changed</span><span>The Symbiote Stinger and the Bonespike are temporarily disabled while their in-hand position is reworked.</span></li>
             </ul>
           </li>
           <li>
@@ -695,8 +699,8 @@ footer { border-top: 1px solid var(--line); background: #060304; }
             <div class="cmd"><div><code>spawnitem bioexo_embryo inventory</code><small>Biosuit Embryo</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_suitbase inventory</code><small>Biosuit Base</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_thalamusgene inventory</code><small>Thalamus Gene</small></div><button class="copy" type="button">Copy</button></div>
-            <div class="cmd"><div><code>spawnitem bioexo_bonespike inventory</code><small>Bonespike</small></div><button class="copy" type="button">Copy</button></div>
-            <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>Symbiote Stinger</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_bonespike inventory</code><small>Bonespike — temporarily disabled</small></div><button class="copy" type="button">Copy</button></div>
+            <div class="cmd"><div><code>spawnitem bioexo_stinger inventory</code><small>Symbiote Stinger — temporarily disabled</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needler inventory</code><small>Needler</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_needlegland inventory</code><small>Needle Gland</small></div><button class="copy" type="button">Copy</button></div>
             <div class="cmd"><div><code>spawnitem bioexo_slip inventory</code><small>Bio-Slipsuit</small></div>
